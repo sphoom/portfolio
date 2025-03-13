@@ -1,8 +1,10 @@
 /* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 body {
     background-color: #121212;
     color: #ffffff;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -14,6 +16,7 @@ header {
     align-items: center;
     padding: 20px;
     background: #181818;
+    border-bottom: 2px solid #00ffcc;
 }
 
 nav {
@@ -24,110 +27,137 @@ nav {
 }
 
 .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: 600;
     color: #00ffcc;
+    transition: 0.3s;
 }
 
-.logo span {
+.logo:hover {
     color: #ff004f;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
-}
-
-nav ul li {
-    display: inline;
+    gap: 25px;
 }
 
 nav ul li a {
     text-decoration: none;
     color: #00ffcc;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    font-weight: 600;
+    transition: all 0.3s;
+    position: relative;
 }
 
-nav ul li a:hover {
-    color: #ff004f;
+nav ul li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ff004f;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 /* Hero Section */
 .hero {
     text-align: center;
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #002244, #181818);
+    padding: 120px 20px;
+    background: linear-gradient(135deg, #002244, #121212);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
 }
 
 .hero-content h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
+    font-weight: 600;
     color: #00ffcc;
+    margin-bottom: 10px;
 }
 
 .hero-content p {
     font-size: 1.2rem;
     color: #b3b3b3;
+    max-width: 700px;
+    margin: auto;
 }
 
 .hero-content .btn {
     display: inline-block;
     margin-top: 20px;
-    padding: 10px 25px;
+    padding: 12px 30px;
     color: #121212;
     background: #00ffcc;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
+    font-weight: 600;
+    border-radius: 8px;
     transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 255, 204, 0.2);
 }
 
 .hero-content .btn:hover {
     background: #ff004f;
     color: white;
+    box-shadow: 0 4px 15px rgba(255, 0, 79, 0.3);
 }
 
 /* Projects */
 .projects {
     text-align: center;
-    padding: 50px 20px;
+    padding: 60px 20px;
 }
 
 .projects h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    font-weight: 600;
     color: #00ffcc;
+    margin-bottom: 30px;
 }
 
 .project-grid {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
 }
 
 .project-card {
     background: #222;
     padding: 20px;
-    border-radius: 10px;
-    width: 300px;
+    border-radius: 12px;
     text-align: center;
     transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 255, 204, 0.2);
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    background: #333;
+    box-shadow: 0 6px 15px rgba(0, 255, 204, 0.3);
 }
 
 .project-card h3 {
     color: #00ffcc;
+    font-weight: 600;
 }
 
 .project-card a {
     text-decoration: none;
     color: #ff004f;
     font-weight: bold;
+    transition: 0.3s;
 }
 
-.project-card:hover {
-    transform: scale(1.05);
-    background: #333;
+.project-card a:hover {
+    color: #ffffff;
 }
 
 /* Footer */
@@ -135,11 +165,14 @@ footer {
     text-align: center;
     padding: 20px;
     background: #181818;
+    border-top: 2px solid #00ffcc;
 }
 
 footer a {
     color: #00ffcc;
     text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
 footer a:hover {
