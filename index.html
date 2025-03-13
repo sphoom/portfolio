@@ -6,6 +6,14 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".btn").addEventListener("click", function(event) {
+                event.preventDefault();
+                document.querySelector(".projects").scrollIntoView({ behavior: "smooth" });
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -23,25 +31,22 @@
         <div class="hero-content">
             <h2>Welcome to My Portfolio</h2>
             <p>Hi, I'm <span>[Your Name]</span>, a data analyst specializing in <strong>finance, optimization, and marketing analytics</strong>.</p>
-            <a href="projects.html" class="btn">View Projects</a>
+            <a href="#projects" class="btn">View Projects</a>
         </div>
     </section>
 
-    <section class="projects">
+    <section class="projects" id="projects">
         <h2>Featured Projects</h2>
         <div class="project-grid">
-            <div class="project-card">
+            <a href="projects/financial-portfolio.html" class="project-card">
                 <h3>Financial Portfolio Optimization</h3>
-                <a href="projects/financial-portfolio.html">Learn More</a>
-            </div>
-            <div class="project-card">
+            </a>
+            <a href="projects/hospital-wait-time.html" class="project-card">
                 <h3>Hospital Waiting Time Analysis</h3>
-                <a href="projects/hospital-wait-time.html">Learn More</a>
-            </div>
-            <div class="project-card">
+            </a>
+            <a href="projects/powerbi-dashboard.html" class="project-card">
                 <h3>Power BI Dashboard for Retail</h3>
-                <a href="projects/powerbi-dashboard.html">Learn More</a>
-            </div>
+            </a>
         </div>
     </section>
 
