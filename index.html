@@ -4,23 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #0ff;
+            text-shadow: 0px 0px 10px rgba(0, 255, 255, 0.8);
+        }
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+        }
+        nav a {
+            color: #0ff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #ff007f;
+            text-shadow: 0 0 8px #ff007f;
+        }
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .project-card {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            transition: transform 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ff007f;
+        }
+        .project-card a {
+            color: #0ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: 30px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        footer a {
+            color: #0ff;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to My Portfolio</h1>
     <p>Hi, I'm [Your Name]! A data analyst specializing in finance, optimization, and marketing analytics.</p>
 
     <nav>
-        <a href="index.html">Home</a> |
-        <a href="projects.html">Projects</a> |
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
         <a href="contact.html">Contact</a>
     </nav>
 
     <h2>Featured Projects</h2>
-    <ul>
-        <li><a href="projects/financial-portfolio.html">Financial Portfolio Optimization</a></li>
-        <li><a href="projects/hospital-wait-time.html">Hospital Waiting Time Analysis</a></li>
-        <li><a href="projects/powerbi-dashboard.html">Power BI Dashboard for Retail</a></li>
-    </ul>
+    <div class="projects">
+        <div class="project-card">
+            <a href="projects/financial-portfolio.html">Financial Portfolio Optimization</a>
+        </div>
+        <div class="project-card">
+            <a href="projects/hospital-wait-time.html">Hospital Waiting Time Analysis</a>
+        </div>
+        <div class="project-card">
+            <a href="projects/powerbi-dashboard.html">Power BI Dashboard for Retail</a>
+        </div>
+    </div>
 
     <footer>
         <p>Connect with me on <a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a></p>
