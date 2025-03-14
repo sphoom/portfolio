@@ -5,6 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name | Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .projects {
+            margin-top: 40px;
+        }
+        .project {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .project:hover {
+            transform: scale(1.05);
+        }
+        .project a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -14,19 +40,25 @@
         <div class="projects">
             <h2>Projects</h2>
             <div class="project">
-                <h3>A/B Testing - Website Optimization</h3>
-                <p>E-commerce product page optimization.</p>
+                <a href="projects/UI_AB_testing.HTML">
+                    <h3>A/B Testing - Website Optimization</h3>
+                    <p>E-commerce product page optimization.</p>
+                </a>
             </div>
             <div class="project">
-                <h3>A/B Testing & Survival Analysis - Subscription Retention</h3>
-                <p>Pricing model optimization and churn analysis.</p>
+                <a href="projects/financial-portfolio.html">
+                    <h3>A/B Testing & Survival Analysis - Subscription Retention</h3>
+                    <p>Pricing model optimization and churn analysis.</p>
+                </a>
             </div>
             <div class="project">
-                <h3>Linear Regression - Predictive Analysis</h3>
-                <p>Forecasting future trends based on historical data.</p>
+                <a href="projects/projects.html">
+                    <h3>Linear Regression - Predictive Analysis</h3>
+                    <p>Forecasting future trends based on historical data.</p>
+                </a>
             </div>
         </div>
-
+        
         <div class="contact">
             <p>Contact me: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
             <p><a href="https://github.com/yourgithub">GitHub</a> | <a href="https://linkedin.com/in/yourprofile">LinkedIn</a></p>
