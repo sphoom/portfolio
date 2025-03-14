@@ -3,80 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Your Name | Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector(".btn").addEventListener("click", function(event) {
-                event.preventDefault();
-                document.querySelector(".projects").scrollIntoView({ behavior: "smooth" });
-            });
-        });
-    </script>
 </head>
 <body>
-    <header>
-        <nav>
-            <h1 class="logo">My<span>Portfolio</span></h1>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="container">
+        <h1>Your Name</h1>
+        <p>Data Scientist | Product Analyst</p>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Welcome to My Portfolio</h2>
-            <p>Hi, I'm <span>[Your Name]</span>, a data analyst specializing in <strong>finance, optimization, and marketing analytics</strong>.</p>
-            <a href="#projects" class="btn">View Projects</a>
-        </div>
-    </section>
-
-    <section class="projects" id="projects">
-        <h2>Featured Projects</h2>
-
-        <div class="project-section">
-            <div class="project-image">
-                <img src="images/financial-portfolio.jpg" alt="Financial Portfolio Optimization">
+        <div class="projects">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>A/B Testing - Website Optimization</h3>
+                <p>E-commerce product page optimization.</p>
             </div>
-            <div class="project-info">
-                <h3>Financial Portfolio Optimization</h3>
-                <p>Optimizing asset allocation using data-driven techniques to maximize returns.</p>
-                <a href="projects/financial-portfolio.html" class="project-link">Explore Project →</a>
+            <div class="project">
+                <h3>A/B Testing & Survival Analysis - Subscription Retention</h3>
+                <p>Pricing model optimization and churn analysis.</p>
+            </div>
+            <div class="project">
+                <h3>Linear Regression - Predictive Analysis</h3>
+                <p>Forecasting future trends based on historical data.</p>
             </div>
         </div>
 
-        <div class="project-section">
-            <div class="project-image">
-                <img src="images/hospital-wait-time.jpg" alt="Hospital Waiting Time Analysis">
-            </div>
-            <div class="project-info">
-                <h3>Hospital Waiting Time Analysis</h3>
-                <p>Analyzing hospital efficiency to improve patient flow and reduce wait times.</p>
-                <a href="projects/hospital-wait-time.html" class="project-link">Explore Project →</a>
-            </div>
+        <div class="contact">
+            <p>Contact me: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            <p><a href="https://github.com/yourgithub">GitHub</a> | <a href="https://linkedin.com/in/yourprofile">LinkedIn</a></p>
         </div>
-
-        <div class="project-section">
-            <div class="project-image">
-                <img src="images/powerbi-dashboard.jpg" alt="Power BI Dashboard for Retail">
-            </div>
-            <div class="project-info">
-                <h3>Power BI Dashboard for Retail</h3>
-                <p>Developing interactive dashboards to track sales performance and customer behavior.</p>
-                <a href="projects/powerbi-dashboard.html" class="project-link">Explore Project →</a>
-            </div>
-        </div>
-        
-        <div class="more-projects">
-            <a href="projects.html" class="btn">See All Projects</a>
-        </div>
-    </section>
-
-    <footer>
-        <p>Connect with me on <a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a></p>
-    </footer>
+    </div>
 </body>
 </html>
