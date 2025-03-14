@@ -1,36 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Your Name</h1>
-        <p>Data Scientist | Product Analyst</p>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    text-align: center;
+}
 
-        <div class="projects">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>A/B Testing - Website Optimization</h3>
-                <p>E-commerce product page optimization.</p>
-            </div>
-            <div class="project">
-                <h3>A/B Testing & Survival Analysis - Subscription Retention</h3>
-                <p>Pricing model optimization and churn analysis.</p>
-            </div>
-            <div class="project">
-                <h3>Linear Regression - Predictive Analysis</h3>
-                <p>Forecasting future trends based on historical data.</p>
-            </div>
-        </div>
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
 
-        <div class="contact">
-            <p>Contact me: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-            <p><a href="https://github.com/yourgithub">GitHub</a> | <a href="https://linkedin.com/in/yourprofile">LinkedIn</a></p>
-        </div>
-    </div>
-</body>
-</html>
+h1 {
+    font-size: 2.5em;
+}
+
+p {
+    font-size: 1.2em;
+    opacity: 0.8;
+}
+
+.projects {
+    margin-top: 40px;
+}
+
+.project {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.project:hover {
+    transform: scale(1.05);
+}
+
+.contact {
+    margin-top: 50px;
+    font-size: 1.2em;
+}
+
+a {
+    color: #00bcd4;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
