@@ -2,299 +2,465 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Portfolio - Darlene Robertson</title>
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      body {
+        background-color: #0a0a0a;
+        color: #f5f5f5;
+        line-height: 1.6;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      /* Navigation */
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 0;
+      }
+      
+      .nav-logo {
+        font-size: 24px;
+        font-weight: 700;
+      }
+      
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+      
+      .nav-links a {
+        color: #f5f5f5;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      
+      .nav-links a:hover {
+        color: #1E88E5;
+      }
+      
+      /* Hero section */
+      .hero {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 100px 0;
+      }
+      
+      .hero-subtitle {
+        font-size: 24px;
+        color: #1E88E5;
+      }
+      
+      .hero-title {
+        font-size: 72px;
+        background: linear-gradient(90deg, #1E88E5, #00ACC1);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 20px;
+      }
+      
+      .hero-desc {
+        max-width: 800px;
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+      
+      /* Social links */
+      .social-links {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 80px;
+      }
+      
+      .social-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 20px;
+        border: 1px solid #444;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #f5f5f5;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      
+ {
+        background: rgba(138, 112, 255, 0.1);
+        border-color: #8a70ff;
+      }
+      
+      /* Section headers */
+      .section-header {
+        font-size: 14px;
+        letter-spacing: 2px;
+        color: #1E88E5;
+        margin: 80px 0 40px;
+      }
+      
+      /* Experience */
+      .experience-item {
+        border-left: 2px solid #1E88E5;
+        padding-left: 30px;
+        margin-bottom: 40px;
+        position: relative;
+      }
+      
+      .experience-item::before {
+        content: "";
+        position: absolute;
+        left: -8px;
+        top: 0;
+        width: 14px;
+        height: 14px;
+        background: #1E88E5;
+        border-radius: 50%;
+      }
+      
+      .exp-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      
+      .exp-title {
+        font-size: 22px;
+        font-weight: 600;
+      }
+      
+      .exp-date {
+        color: #aaa;
+      }
+      
+      .exp-company {
+        color: #1E88E5;
+        margin-bottom: 15px;
+      }
+      
+      /* Projects grid */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+      
+      @media (max-width: 768px) {
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      .project-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s;
+      }
+      
+      .project-card:hover {
+        transform: translateY(-5px);
+      }
+      
+      .project-img {
+        width: 100%;
+        height: 180px;
+        background: linear-gradient(45deg, #1E88E5, #00ACC1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+      }
+      
+      .project-content {
+        padding: 20px;
+      }
+      
+      .project-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      
+      .project-desc {
+        color: #aaa;
+        margin-bottom: 15px;
+        min-height: 70px;
+      }
+      
+      .project-tech {
+        color: #1E88E5;
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+      
+      .project-links {
+        display: flex;
+        gap: 15px;
+      }
+      
+      .project-btn {
+        padding: 8px 15px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+      }
+      
+      .btn-primary {
+        background: linear-gradient(90deg, #1E88E5, #00ACC1);
+        color: white;
+      }
+      
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: #f5f5f5;
+      }
+      
+      /* Gradient accents */
+      .gradient-accent {
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        filter: blur(150px);
+        opacity: 0.15;
+        z-index: -1;
+      }
+      
+      .accent-1 {
+        background: #1E88E5;
+        top: 10%;
+        left: -100px;
+      }
+      
+      .accent-2 {
+        background: #00ACC1;
+        bottom: 10%;
+        right: -100px;
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 48px;
+        }
+        
+        .social-links {
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="cover">
-      <div class="div">
-        <div class="group">
-          <div class="portoflio-dark">
-            <div class="overlap">
-              <div class="overlap-group">
-                <img class="line" src="img/line-4.svg" />
-                <div class="frame">
-                  <div class="frame-2">
-                    <div class="text-wrapper">Software Developer (Remote)</div>
-                    <div class="text-wrapper-2">Jun 2021 - Present</div>
-                  </div>
-                  <p class="selfbook-US-new-york">Selfbook / US - New York</p>
-                  <p class="p">
-                    - Developing screens and UI components for the web application using React and Tailwind.
-                  </p>
-                  <p class="p">- Fixing UI issues and integrating backend APIs with Redux Saga.</p>
-                </div>
-                <div class="line-wrapper"><img class="img" src="img/line-6.svg" /></div>
-                <div class="text-wrapper-3">Selfbook</div>
-              </div>
-              <div class="text-wrapper-4">Wevoz</div>
-              <div class="text-wrapper-5">FreeBeings</div>
-            </div>
-            <div class="text-wrapper-6">Darlene Robertson</div>
-            <div class="text-wrapper-7">Hey, I’m</div>
-            <p class="i-m-a-software">
-              I&#39;m a software engineer based in Toronto, Canada and also a communication and journalism student. I
-              enjoy creating things that live on the internet, whether that be websites, applications, or anything in
-              between. I have been freelancing for a year now while studying at the university and I&#39;ve manage to
-              gain a decent amount of experience and valuable knowledge from all different kinds of fields throughout my
-              projects/work.
+    <!-- Gradient accents -->
+    <div class="gradient-accent accent-1"></div>
+    <div class="gradient-accent accent-2"></div>
+    
+    <div class="container">
+      <!-- Navigation -->
+      <nav class="nav">
+        <div class="nav-logo">DR.</div>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+      
+      <!-- Hero section -->
+      <section class="hero">
+        <div class="hero-subtitle">Hey, I'm</div>
+        <h1 class="hero-title">Darlene Robertson</h1>
+        <p class="hero-desc">
+          I'm a data analyst and scientist based in Toronto, Canada with a passion for transforming raw data into actionable insights. 
+          With expertise in statistical analysis, data visualization, and machine learning, I help organizations make data-driven decisions. 
+          I have experience working with various datasets across different industries and enjoy finding patterns and telling stories through data.
+        </p>
+        
+        <!-- Social links -->
+        <div class="social-links">
+          <a href="#" class="social-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+            </svg>
+            Send an email
+          </a>
+          <a href="#" class="social-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+            </svg>
+            LinkedIn
+          </a>
+          <a href="#" class="social-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            Github
+          </a>
+          <a href="#" class="social-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+            </svg>
+            Twitter
+          </a>
+        </div>
+      </section>
+      
+      <!-- Projects section -->
+      <div class="section-header" id="projects">FEATURED PROJECTS</div>
+      <section class="projects-grid">
+        <div class="project-card">
+          <div class="project-img">Customer Segmentation</div>
+          <div class="project-content">
+            <h3 class="project-title">Customer Segmentation Analysis</h3>
+            <p class="project-desc">
+              Used K-means clustering to segment customers based on purchasing behavior, demographic data, and engagement metrics
             </p>
-            <div class="navigation-bar-dark">
-              <div class="frame-wrapper">
-                <div class="frame-3">
-                  <div class="text-wrapper-8">DR.</div>
-                  <div class="frame-4">
-                    <div class="text-wrapper-9">Projects</div>
-                    <div class="text-wrapper-9">Resume</div>
-                    <div class="text-wrapper-9">Contact</div>
-                    <div class="sun-fill"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <img class="line-2" src="img/line-5.svg" />
-            <div class="frame-5">
-              <div class="overlap-group-wrapper">
-                <div class="overlap-group-2">
-                  <img class="vector" src="img/vector-4.svg" />
-                  <div class="text-wrapper-10">Send an email</div>
-                </div>
-              </div>
-              <div class="btn-linkedin-outline">
-                <div class="div-wrapper">
-                  <div class="overlap-group-3">
-                    <div class="text-wrapper-11">LinkedIn</div>
-                    <img class="vector-2" src="img/vector-7.svg" />
-                  </div>
-                </div>
-              </div>
-              <div class="overlap-group-wrapper">
-                <div class="overlap-2">
-                  <div class="text-wrapper-12">Upwork</div>
-                  <img class="vector-3" src="img/vector-14.svg" />
-                </div>
-              </div>
-              <div class="btn-github-outline">
-                <div class="overlap-3">
-                  <div class="text-wrapper-13">Github</div>
-                  <img class="vector-4" src="img/vector-9.svg" />
-                </div>
-              </div>
-            </div>
-            <div class="experience">EXPERIENCE</div>
-            <div class="featured-projects">FEATURED PROJECTS</div>
-            <div class="more-projects">MORE PROJECTS</div>
-            <img class="line-3" src="img/line-8.svg" />
-            <div class="text-wrapper-14">TDF</div>
-            <div class="text-wrapper-15">Upwork</div>
-            <div class="text-wrapper-16">Shoppy</div>
-            <div class="gradients-sugar"></div>
-            <div class="gradients-sugar-2"></div>
-            <div class="gradients-sugar-3"></div>
-            <div class="gradients-sugar-4"></div>
-            <div class="gradients-sugar-5"></div>
-            <div class="gradients-sugar-6"></div>
-            <div class="gradients-sugar-7"></div>
-            <div class="gradients-sugar-8"></div>
-            <div class="gradients-sugar-9"></div>
-            <div class="frame-6">
-              <div class="text-wrapper-17">IntenseProxy</div>
-              <p class="text-wrapper-18">
-                Proxy provider website including authentication, dashboard and dynamic features
-              </p>
-              <p class="text-wrapper-19">React - Bootstrap - Styled Components</p>
-              <div class="frame-7">
-                <div class="group-2">
-                  <div class="overlap-group-4">
-                    <img class="group-3" src="img/group-12.png" />
-                    <img class="vector-5" src="img/vector-5.svg" />
-                    <img class="gradients-purple-sky" src="img/purple-sky-eased.svg" />
-                  </div>
-                  <div class="text-wrapper-20">Live demo</div>
-                </div>
-              </div>
-            </div>
-            <div class="group-4">
-              <div class="frame-8">
-                <div class="text-wrapper-21">Vue Weather APP</div>
-                <p class="text-wrapper-18">
-                  My first Vue app using OpenWeather API and fetch API with no custom libraries for requests or styling.
-                </p>
-                <div class="text-wrapper-22">Vue.js</div>
-                <div class="frame-7">
-                  <div class="group-2">
-                    <div class="overlap-group-5">
-                      <img class="group-3" src="img/group-14.png" />
-                      <img class="vector-5" src="img/vector-2.svg" />
-                      <img class="gradients-purple-sky" src="img/purple-sky-eased-5.svg" />
-                    </div>
-                    <div class="text-wrapper-20">Live demo</div>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-9">
-                <div class="text-wrapper-23">Vuewinder</div>
-                <p class="used-all-what-i-was">
-                  Used all what I was able to find publicly that is similar to Twitter&#39;s UI and also added the tweet
-                  function
-                </p>
-                <div class="text-wrapper-22">Vue.js - TailwindCSS</div>
-                <div class="frame-10">
-                  <div class="group-5">
-                    <div class="overlap-group-6">
-                      <img class="group-3" src="img/group-15.png" />
-                      <img class="vector-5" src="img/vector-13.svg" />
-                      <img class="gradients-purple-sky" src="img/purple-sky-eased-7.svg" />
-                    </div>
-                    <div class="text-wrapper-20">Live demo</div>
-                  </div>
-                  <img class="vector-6" src="img/vector-12.svg" />
-                </div>
-                <div class="frame-11"></div>
-              </div>
-            </div>
-            <div class="frame-12">
-              <div class="text-wrapper-24">$AAPE Coin</div>
-              <p class="text-wrapper-25">Site for a BSC based coin called $AAPE</p>
-              <p class="text-wrapper-26">Vue - Nuxt - Netlify</p>
-              <div class="frame-7">
-                <div class="group-2">
-                  <div class="overlap-group-7">
-                    <img class="group-3" src="img/group.png" />
-                    <img class="vector-5" src="img/vector-11.svg" />
-                    <img class="gradients-purple-sky" src="img/purple-sky-eased-11.svg" />
-                  </div>
-                  <div class="text-wrapper-20">Live demo</div>
-                </div>
-              </div>
-            </div>
-            <div class="frame-13">
-              <div class="text-wrapper-27">GitProfile</div>
-              <p class="text-wrapper-28">
-                A nicer look to Github profiles using features such as user search, authentication using Firebase and
-                charts using the GitHub API.
-              </p>
-              <p class="text-wrapper-29">React - Redux - Firebase - GitHub API</p>
-              <div class="frame-14">
-                <div class="group-5">
-                  <div class="overlap-group-8">
-                    <img class="group-3" src="img/group-9.png" />
-                    <img class="vector-5" src="img/vector-10.svg" />
-                    <img class="gradients-purple-sky" src="img/purple-sky-eased-9.svg" />
-                  </div>
-                  <div class="text-wrapper-20">Live demo</div>
-                </div>
-                <div class="github-fill"></div>
-              </div>
-            </div>
-            <div class="overlap-4">
-              <div class="frame-15">
-                <div class="text-wrapper-30">Mu6icbot</div>
-                <p class="discord-music-bot">
-                  Discord music bot using Node.js and Discord&#39;s API library to play music through YouTube, added
-                  Genius API making the bot capable to pull the lyrics for the current playing song
-                </p>
-                <p class="text-wrapper-31">Discord Library - Node.js - Genius API - Youtube API</p>
-                <div class="frame-7"><div class="github-fill-2"></div></div>
-              </div>
-              <div class="frame-16">
-                <div class="text-wrapper-17">IntenseProxy</div>
-                <p class="text-wrapper-18">
-                  Proxy provider website including authentication, dashboard and dynamic features
-                </p>
-                <p class="text-wrapper-19">React - Bootstrap - Styled Components</p>
-                <div class="frame-14">
-                  <div class="group-5">
-                    <div class="overlap-group-9">
-                      <img class="group-3" src="img/group-3.png" />
-                      <img class="vector-5" src="img/vector-6.svg" />
-                      <img class="gradients-purple-sky" src="img/purple-sky-eased-3.svg" />
-                    </div>
-                    <div class="text-wrapper-20">Live demo</div>
-                  </div>
-                  <div class="github-fill-3"></div>
-                </div>
-              </div>
-              <img class="line-4" src="img/line-9.svg" />
-            </div>
-            <div class="frame-17">
-              <div class="text-wrapper-32">MovieDB</div>
-              <p class="text-wrapper-33">
-                TV application, displays different categories of movies/shows (popular, in theaters, trending etc)
-                alongside a search option using TheMovieDB API for the data
-              </p>
-              <p class="text-wrapper-34">React.js - Redux - TheMovieDB API</p>
-              <div class="frame-14">
-                <div class="group-5">
-                  <div class="overlap-group-10">
-                    <img class="group-3" src="img/group-10.png" />
-                    <img class="vector-5" src="img/vector-8.svg" />
-                    <img class="gradients-purple-sky" src="img/purple-sky-eased-6.svg" />
-                  </div>
-                  <div class="text-wrapper-20">Live demo</div>
-                </div>
-                <div class="github-fill-4"></div>
-              </div>
-            </div>
-            <div class="frame-18">
-              <p class="text-wrapper-35">Blockchain Explorer; Hive Attention Tokens</p>
-              <p class="text-wrapper-36">Sidechain explorer open source project (block explorer) for transactions.</p>
-              <p class="text-wrapper-37">React - TailwindCSS - Context API</p>
-              <div class="frame-14">
-                <div class="group-5">
-                  <div class="overlap-group-11">
-                    <img class="group-3" src="img/group-6.png" />
-                    <img class="vector-5" src="img/vector-3.svg" />
-                    <img class="gradients-purple-sky" src="img/purple-sky-eased-2.svg" />
-                  </div>
-                  <div class="text-wrapper-20">Live demo</div>
-                </div>
-                <div class="github-fill-5"></div>
-              </div>
-            </div>
-            <div class="frame-19">
-              <div class="text-wrapper-38">Soundify</div>
-              <p class="text-wrapper-39">
-                Music search application, displays informations about artists such as albums, biography, songs that are
-                available on youtube and much more using TheAudioDB API
-              </p>
-              <p class="text-wrapper-40">Vue.js - Vuex - TheAudioDB API</p>
-              <div class="frame-14">
-                <div class="group-5">
-                  <div class="overlap-group-12">
-                    <img class="group-3" src="img/group-8.png" />
-                    <img class="vector-5" src="img/vector.svg" />
-                    <img class="gradients-purple-sky" src="img/purple-sky-eased-4.svg" />
-                  </div>
-                  <div class="text-wrapper-20">Live demo</div>
-                </div>
-                <div class="github-fill-6"></div>
-              </div>
-            </div>
-            <div class="frame-20">
-              <div class="text-wrapper-17">IntenseProxy</div>
-              <p class="text-wrapper-18">
-                Proxy provider website including authentication, dashboard and dynamic features
-              </p>
-              <p class="text-wrapper-19">React - Bootstrap - Styled Components</p>
-              <div class="frame-14">
-                <div class="group-5">
-                  <div class="overlap-group-13">
-                    <img class="group-3" src="img/group-5.png" />
-                    <img class="vector-5" src="img/vector-15.svg" />
-                    <img class="gradients-purple-sky" src="img/purple-sky-eased-8.svg" />
-                  </div>
-                  <div class="text-wrapper-20">Live demo</div>
-                </div>
-                <div class="github-fill-7"></div>
-              </div>
+            <div class="project-tech">Python - Scikit-learn - Pandas - Matplotlib</div>
+            <div class="project-links">
+              <a href="#" class="project-btn btn-primary">View Project</a>
+              <a href="#" class="project-btn btn-secondary">Code</a>
             </div>
           </div>
         </div>
-        <p class="portfolio-UI-design">
-          <span class="span">Portfolio UI Design<br /></span> <span class="text-wrapper-41">Template</span>
-        </p>
-      </div>
+        
+        <div class="project-card">
+          <div class="project-img">Sales Dashboard</div>
+          <div class="project-content">
+            <h3 class="project-title">Interactive Sales Dashboard</h3>
+            <p class="project-desc">
+              Created an interactive dashboard with dynamic filtering capabilities to visualize sales performance across regions
+            </p>
+            <div class="project-tech">Tableau - SQL - Excel</div>
+            <div class="project-links">
+              <a href="#" class="project-btn btn-primary">View Project</a>
+              <a href="#" class="project-btn btn-secondary">Code</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- More projects section -->
+      <div class="section-header">MORE PROJECTS</div>
+      <section class="projects-grid">
+        <div class="project-card">
+          <div class="project-img">Sentiment Analysis</div>
+          <div class="project-content">
+            <h3 class="project-title">Social Media Sentiment Analysis</h3>
+            <p class="project-desc">
+              Built a natural language processing model to analyze sentiment in social media posts about specific brands
+            </p>
+            <div class="project-tech">Python - NLTK - TensorFlow - Pandas</div>
+            <div class="project-links">
+              <a href="#" class="project-btn btn-primary">View Project</a>
+              <a href="#" class="project-btn btn-secondary">Code</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-img">Time Series</div>
+          <div class="project-content">
+            <h3 class="project-title">Stock Price Prediction</h3>
+            <p class="project-desc">
+              Applied time series analysis models to predict stock price movements based on historical data
+            </p>
+            <div class="project-tech">Python - pandas - statsmodels - Prophet</div>
+            <div class="project-links">
+              <a href="#" class="project-btn btn-primary">View Project</a>
+              <a href="#" class="project-btn btn-secondary">Code</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-img">Market Analysis</div>
+          <div class="project-content">
+            <h3 class="project-title">Market Basket Analysis</h3>
+            <p class="project-desc">
+              Used association rule mining to identify frequently co-purchased products for a retail client
+            </p>
+            <div class="project-tech">R - Python - SQL - Gephi</div>
+            <div class="project-links">
+              <a href="#" class="project-btn btn-primary">View Project</a>
+              <a href="#" class="project-btn btn-secondary">Code</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-img">Data Pipeline</div>
+          <div class="project-content">
+            <h3 class="project-title">Automated ETL Pipeline</h3>
+            <p class="project-desc">
+              Designed and implemented an ETL pipeline to automate data processing and reporting workflows
+            </p>
+            <div class="project-tech">Airflow - Python - SQL - AWS</div>
+            <div class="project-links">
+              <a href="#" class="project-btn btn-primary">View Project</a>
+              <a href="#" class="project-btn btn-secondary">Code</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Experience section -->
+      <div class="section-header" id="experience">EXPERIENCE</div>
+      <section class="experience">
+        <div class="experience-item">
+          <div class="exp-header">
+            <div class="exp-title">Data Analyst</div>
+            <div class="exp-date">Jun 2021 - Present</div>
+          </div>
+          <div class="exp-company">DataCorp / Toronto</div>
+          <p>- Building interactive dashboards and reports using Tableau, Power BI, and Python visualization libraries</p>
+          <p>- Performing statistical analysis and developing predictive models using Python and R</p>
+          <p>- Collaborating with cross-functional teams to identify KPIs and metrics for business performance</p>
+        </div>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <div class="exp-title">Data Science Intern</div>
+            <div class="exp-date">Jan 2020 - May 2021</div>
+          </div>
+          <div class="exp-company">TechAnalytics / Toronto</div>
+          <p>- Implemented machine learning models for customer segmentation and churn prediction</p>
+          <p>- Cleaned and preprocessed large datasets for analysis and visualization</p>
+          <p>- Created automated data pipelines using SQL and Python to streamline reporting processes</p>
+        </div>
+        
+        <div class="experience-item">
+          <div class="exp-header">
+            <div class="exp-title">Research Assistant</div>
+            <div class="exp-date">Sep 2018 - Dec 2019</div>
+          </div>
+          <div class="exp-company">University of Toronto / Research Lab</div>
+          <p>- Collected and analyzed survey data for academic research projects</p>
+          <p>- Applied statistical methods to validate research hypotheses</p>
+          <p>- Presented findings at departmental research symposiums</p>
+        </div>
+      </section>
+      
+      <!-- Contact section -->
+      <section id="contact" style="height: 80px; margin-top: 100px; text-align: center; color: #1E88E5;">
+        <p>© 2025 Darlene Robertson. All rights reserved.</p>
+      </section>
     </div>
   </body>
 </html>
