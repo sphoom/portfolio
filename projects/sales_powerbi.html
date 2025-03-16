@@ -148,40 +148,6 @@
         width: fit-content;
       }
       
-      /* Project Content */
-      .project-content {
-        display: grid;
-        grid-template-columns: 7fr 3fr;
-        gap: 40px;
-        margin-bottom: 60px;
-      }
-      
-      .main-content h2 {
-        font-size: 24px;
-        margin: 30px 0 15px;
-        color: #1E88E5;
-      }
-      
-      .main-content h3 {
-        font-size: 20px;
-        margin: 25px 0 12px;
-        color: #ccc;
-      }
-      
-      .main-content p {
-        margin-bottom: 20px;
-        color: #ddd;
-      }
-      
-      .main-content ul, .main-content ol {
-        margin: 0 0 20px 20px;
-        color: #ddd;
-      }
-      
-      .main-content li {
-        margin-bottom: 10px;
-      }
-      
       /* Key Metrics Section */
       .metrics-grid {
         display: grid;
@@ -219,7 +185,102 @@
         color: #F44336;
       }
       
-      /* Sidebar */
+      /* Hybrid Content Area - Light Background */
+      .content-area-light {
+        background-color: #f8f9fa;
+        border-radius: 12px;
+        margin: 40px 0;
+        padding: 40px;
+        color: #333;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      
+      .content-area-light h2 {
+        font-size: 24px;
+        margin: 0 0 20px;
+        color: #1E88E5;
+      }
+      
+      .content-area-light h3 {
+        font-size: 20px;
+        margin: 25px 0 15px;
+        color: #333;
+      }
+      
+      .content-area-light p {
+        margin-bottom: 20px;
+        color: #444;
+      }
+      
+      .content-area-light ul, 
+      .content-area-light ol {
+        margin: 0 0 20px 20px;
+        color: #444;
+      }
+      
+      .content-area-light li {
+        margin-bottom: 10px;
+      }
+      
+      .content-area-light code {
+        background: #eaeaea;
+        color: #333;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 14px;
+      }
+      
+      /* Section headers outside light areas */
+      .section-header {
+        font-size: 28px;
+        margin: 50px 0 20px;
+        color: #1E88E5;
+      }
+      
+      /* Dark/Light Toggle */
+      .theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        user-select: none;
+      }
+      
+      .toggle-label {
+        font-size: 14px;
+        color: #ccc;
+      }
+      
+      .toggle-switch {
+        position: relative;
+        width: 50px;
+        height: 24px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 2px;
+      }
+      
+      .toggle-switch::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #1E88E5;
+        left: 2px;
+        transition: all 0.3s ease;
+      }
+      
+      /* Project Sidebar */
+      .project-layout {
+        display: grid;
+        grid-template-columns: 7fr 3fr;
+        gap: 40px;
+      }
+      
       .sidebar {
         position: sticky;
         top: 30px;
@@ -280,6 +341,18 @@
         color: #f5f5f5;
       }
       
+      /* Back to Dark - Content Section */
+      .content-area-dark {
+        padding: 30px 0;
+        color: #f5f5f5;
+      }
+      
+      .content-area-dark h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #1E88E5;
+      }
+      
       /* Mobile optimizations */
       .mobile-note {
         display: none;
@@ -325,7 +398,7 @@
       
       /* Responsive */
       @media (max-width: 900px) {
-        .project-content {
+        .project-layout {
           grid-template-columns: 1fr;
         }
         
@@ -343,6 +416,10 @@
         
         .dashboard-container {
           padding-bottom: 75%; /* Taller aspect ratio for mobile */
+        }
+        
+        .content-area-light {
+          padding: 25px;
         }
       }
     </style>
@@ -398,7 +475,7 @@
         </div>
       </header>
       
-      <!-- Dashboard Section -->
+      <!-- Dashboard Section - Dark Theme -->
       <section class="dashboard-section">
         <h2 class="dashboard-title">Sales Performance Dashboard</h2>
         <p class="dashboard-desc">
@@ -421,8 +498,8 @@
         </a>
       </section>
       
-      <!-- Key Metrics -->
-      <h2>Key Performance Metrics</h2>
+      <!-- Key Metrics - Dark Theme -->
+      <h2 class="section-header">Key Performance Metrics</h2>
       <div class="metrics-grid">
         <div class="metric-card">
           <div class="metric-title">Total Revenue</div>
@@ -443,72 +520,106 @@
         </div>
       </div>
       
-      <!-- Project Content -->
-      <div class="project-content">
+      <!-- Project Content - Hybrid Layout -->
+      <div class="project-layout">
         <div class="main-content">
-          <h2 id="overview">Project Overview</h2>
-          <p>
-            This interactive sales dashboard was created to provide stakeholders with real-time insights into sales performance across different dimensions. The goal was to create a centralized visualization tool that could help identify trends, opportunities, and areas for improvement in the sales pipeline.
-          </p>
+          <!-- Detailed Analysis - Light Theme -->
+          <h2 class="section-header">Detailed Analysis</h2>
           
-          <p>
-            The dashboard enables users to filter data by region, product category, time period, and customer segment, allowing for deep dives into specific areas of interest. The interactive nature of Power BI allows for dynamic exploration of data relationships and patterns.
-          </p>
+          <div class="content-area-light">
+            <h2 id="overview">Project Overview</h2>
+            <p>
+              This interactive sales dashboard was created to provide stakeholders with real-time insights into sales performance across different dimensions. The goal was to create a centralized visualization tool that could help identify trends, opportunities, and areas for improvement in the sales pipeline.
+            </p>
+            
+            <p>
+              The dashboard enables users to filter data by region, product category, time period, and customer segment, allowing for deep dives into specific areas of interest. The interactive nature of Power BI allows for dynamic exploration of data relationships and patterns.
+            </p>
+            
+            <h3>Data Preparation</h3>
+            <p>
+              The project began with collecting and cleaning sales data from multiple sources, including:
+            </p>
+            <ul>
+              <li>Transaction records from the company's CRM system</li>
+              <li>Product information from inventory management systems</li>
+              <li>Customer demographic data</li>
+              <li>Geographic and regional sales territories</li>
+            </ul>
+            
+            <p>
+              Data cleaning and preparation involved handling missing values, standardizing formats, and creating calculated fields for metrics like profit margin, growth rates, and performance against targets.
+            </p>
+            
+            <h3>Dashboard Design</h3>
+            <p>
+              The dashboard was designed with user experience in mind, following these principles:
+            </p>
+            <ul>
+              <li>Most important KPIs prominently displayed at the top</li>
+              <li>Logical flow from high-level metrics to detailed breakdowns</li>
+              <li>Consistent color scheme with intuitive visual cues</li>
+              <li>Interactive filters that maintain context across visualizations</li>
+              <li>Mobile-responsive design for access on various devices</li>
+            </ul>
+          </div>
           
-          <h2 id="approach">Development Approach</h2>
-          <h3>Data Preparation</h3>
-          <p>
-            The project began with collecting and cleaning sales data from multiple sources, including:
-          </p>
-          <ul>
-            <li>Transaction records from the company's CRM system</li>
-            <li>Product information from inventory management systems</li>
-            <li>Customer demographic data</li>
-            <li>Geographic and regional sales territories</li>
-          </ul>
+          <!-- Features - Dark Theme -->
+          <div class="content-area-dark">
+            <h2 id="features">Key Features</h2>
+            <p>
+              The dashboard includes several interactive visualizations:
+            </p>
+            <ul>
+              <li><strong>Sales Overview:</strong> High-level metrics and trend analysis</li>
+              <li><strong>Geographic Performance:</strong> Map visualization of sales by region</li>
+              <li><strong>Product Analysis:</strong> Performance by product category and individual SKUs</li>
+              <li><strong>Customer Segmentation:</strong> Insights based on customer demographics and behavior</li>
+              <li><strong>Time Trends:</strong> Seasonal patterns and year-over-year comparisons</li>
+            </ul>
+          </div>
           
-          <p>
-            Data cleaning and preparation involved handling missing values, standardizing formats, and creating calculated fields for metrics like profit margin, growth rates, and performance against targets.
-          </p>
+          <!-- Business Impact - Light Theme -->
+          <div class="content-area-light">
+            <h2 id="impact">Business Impact</h2>
+            <p>
+              This dashboard has delivered significant value to the organization:
+            </p>
+            <ul>
+              <li>Reduced reporting time by 75%, freeing up analyst resources</li>
+              <li>Identified $120,000 in potential revenue from underperforming regions</li>
+              <li>Enabled data-driven decision making for product assortment and promotions</li>
+              <li>Provided sales teams with real-time performance tracking against targets</li>
+            </ul>
+            
+            <p>
+              The dashboard is now used by over 50 stakeholders across the organization, including sales managers, product teams, and executive leadership.
+            </p>
+            
+            <h3>Technical Implementation</h3>
+            <p>
+              The technical architecture of this solution involved:
+            </p>
+            <ul>
+              <li>Data modeling with star schema for optimal performance</li>
+              <li>Custom DAX measures for complex calculations</li>
+              <li>Power Query transformations for data cleansing</li>
+              <li>Incremental refresh patterns for large datasets</li>
+              <li>Row-level security implementation for data governance</li>
+            </ul>
+            
+            <p>
+              This approach ensured that the dashboard remained responsive even when handling millions of transaction records.
+            </p>
+          </div>
           
-          <h3>Dashboard Design</h3>
-          <p>
-            The dashboard was designed with user experience in mind, following these principles:
-          </p>
-          <ul>
-            <li>Most important KPIs prominently displayed at the top</li>
-            <li>Logical flow from high-level metrics to detailed breakdowns</li>
-            <li>Consistent color scheme with intuitive visual cues</li>
-            <li>Interactive filters that maintain context across visualizations</li>
-            <li>Mobile-responsive design for access on various devices</li>
-          </ul>
-          
-          <h2 id="features">Key Features</h2>
-          <p>
-            The dashboard includes several interactive visualizations:
-          </p>
-          <ul>
-            <li><strong>Sales Overview:</strong> High-level metrics and trend analysis</li>
-            <li><strong>Geographic Performance:</strong> Map visualization of sales by region</li>
-            <li><strong>Product Analysis:</strong> Performance by product category and individual SKUs</li>
-            <li><strong>Customer Segmentation:</strong> Insights based on customer demographics and behavior</li>
-            <li><strong>Time Trends:</strong> Seasonal patterns and year-over-year comparisons</li>
-          </ul>
-          
-          <h2 id="impact">Business Impact</h2>
-          <p>
-            This dashboard has delivered significant value to the organization:
-          </p>
-          <ul>
-            <li>Reduced reporting time by 75%, freeing up analyst resources</li>
-            <li>Identified $120,000 in potential revenue from underperforming regions</li>
-            <li>Enabled data-driven decision making for product assortment and promotions</li>
-            <li>Provided sales teams with real-time performance tracking against targets</li>
-          </ul>
-          
-          <p>
-            The dashboard is now used by over 50 stakeholders across the organization, including sales managers, product teams, and executive leadership.
-          </p>
+          <!-- Conclusion - Dark Theme -->
+          <div class="content-area-dark">
+            <h2 id="conclusion">Conclusion</h2>
+            <p>
+              The Interactive Sales Dashboard project demonstrates how effective data visualization can transform raw business data into actionable insights. By combining technical expertise with strategic business understanding, this solution has become an essential tool for decision-making across the organization.
+            </p>
+          </div>
         </div>
         
         <div class="sidebar">
