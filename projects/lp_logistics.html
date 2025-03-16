@@ -500,7 +500,7 @@
 
           <div class="chart-container">
             <p style="color: #aaa; font-style: italic;">Supply chain network visualization showing optimized routes between Thailand production facilities and ASEAN markets</p>
-            <img src="../projects/image/supply_chain_map.png" alt="Supply chain network map" style="max-width: 70%; height: auto; border-radius: 2px;">
+            <img src="../projects/image/supply_chain_map.png" alt="Supply chain network map" style="max-width: 90%; height: auto; border-radius: 2px;">
             </div>
                   
           <h2 id="challenge">Business Context & Challenge</h2>
@@ -671,6 +671,526 @@
           </ul>
           
           <h2 id="results">Results & Business Impact</h2>
+          <div class="chart-container">
+          <p style="color: #aaa; font-style: italic;">Production allocation and capacity utilization across facilities</p>
+          <img src="../projects/images/production_allocation.png" alt="Production allocation and capacity utilization" style="max-width: 100%; height: auto; border-radius: 6px;">
+        </div>
+          <div class="chart-container">
+          <p style="color: #aaa; font-style: italic;">Transport mode selection and cost-emissions trade-off analysis</p>
+          <img src="../projects/images/transport_mode_selection.png" alt="Transport mode selection analysis" style="max-width: 100%; height: auto; border-radius: 6px;">
+        </div>
+        
+        <!-- Interactive Results Table -->
+        <div class="chart-container">
+          <p style="color: #aaa; font-style: italic;">Detailed optimization results with insights</p>
+            <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supply Chain Optimization Results</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #f5f5f5;
+      background-color: transparent;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .tab-container {
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    
+    .tab-button {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f5f5f5;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 10px 20px;
+      margin-right: 5px;
+      border-radius: 5px 5px 0 0;
+      transition: 0.3s;
+    }
+    
+    .tab-button:hover {
+      background: rgba(30, 136, 229, 0.3);
+    }
+    
+    .tab-button.active {
+      background: linear-gradient(90deg, #1E88E5, #00ACC1);
+      color: white;
+    }
+    
+    .tab-content {
+      display: none;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 0 5px 5px 5px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    
+    th {
+      background: rgba(30, 136, 229, 0.2);
+      color: #1E88E5;
+      text-align: left;
+      padding: 12px 15px;
+      font-weight: 600;
+    }
+    
+    td {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px 15px;
+      color: #ddd;
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .highlight {
+      color: #1E88E5;
+      font-weight: bold;
+    }
+    
+    .secondary {
+      font-size: 0.9em;
+      color: #aaa;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .card-title {
+      color: #1E88E5;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="tab-container">
+    <button class="tab-button active" onclick="openTab('production-tab')">Production Plan</button>
+    <button class="tab-button" onclick="openTab('transport-tab')">Transport Routes</button>
+    <button class="tab-button" onclick="openTab('costs-tab')">Cost Analysis</button>
+    <button class="tab-button" onclick="openTab('summary-tab')">Optimization Summary</button>
+  </div>
+  
+  <!-- Production Tab -->
+  <div id="production-tab" class="tab-content" style="display: block;">
+    <div class="card">
+      <h3 class="card-title">Optimal Production Plan</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Factory</th>
+            <th>Product</th>
+            <th>Quantity (tons)</th>
+            <th>Production Cost ($/ton)</th>
+            <th>Total Cost ($)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="2">Rayong</td>
+            <td>Processed Seafood</td>
+            <td>8,000</td>
+            <td>200</td>
+            <td>1,600,000</td>
+          </tr>
+          <tr>
+            <td>Rubber</td>
+            <td>2,000</td>
+            <td>250</td>
+            <td>500,000</td>
+          </tr>
+          <tr>
+            <td rowspan="2">Ayutthaya</td>
+            <td>Jasmine Rice</td>
+            <td>12,000</td>
+            <td>140</td>
+            <td>1,680,000</td>
+          </tr>
+          <tr>
+            <td>Palm Oil</td>
+            <td>3,000</td>
+            <td>175</td>
+            <td>525,000</td>
+          </tr>
+          <tr>
+            <td>Chiang Mai</td>
+            <td>Palm Oil</td>
+            <td>7,000</td>
+            <td>185</td>
+            <td>1,295,000</td>
+          </tr>
+          <tr>
+            <td>Hat Yai</td>
+            <td>Rubber</td>
+            <td>5,500</td>
+            <td>255</td>
+            <td>1,402,500</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"><strong>Total Production</strong></td>
+            <td><strong>37,500 tons</strong></td>
+            <td></td>
+            <td><strong>$7,002,500</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    
+    <div class="card">
+      <h3 class="card-title">Factory Capacity Utilization</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Factory</th>
+            <th>Total Production (tons)</th>
+            <th>Total Capacity (tons)</th>
+            <th>Utilization (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rayong</td>
+            <td>10,000</td>
+            <td>10,000</td>
+            <td class="highlight">100.0%</td>
+          </tr>
+          <tr>
+            <td>Ayutthaya</td>
+            <td>15,000</td>
+            <td>15,000</td>
+            <td class="highlight">100.0%</td>
+          </tr>
+          <tr>
+            <td>Chiang Mai</td>
+            <td>7,000</td>
+            <td>8,000</td>
+            <td>87.5%</td>
+          </tr>
+          <tr>
+            <td>Hat Yai</td>
+            <td>5,500</td>
+            <td>12,000</td>
+            <td>45.8%</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td><strong>Overall</strong></td>
+            <td><strong>37,500</strong></td>
+            <td><strong>45,000</strong></td>
+            <td><strong>83.3%</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Transport Tab -->
+  <div id="transport-tab" class="tab-content">
+    <div class="card">
+      <h3 class="card-title">Transport Mode Selection</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Hub</th>
+            <th>Destination</th>
+            <th>Mode</th>
+            <th>Volume (tons)</th>
+            <th>Transport Cost ($/ton-km)</th>
+            <th>Emissions (kg CO2/ton)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="3">Laem Chabang</td>
+            <td>Kuala Lumpur</td>
+            <td>Ocean</td>
+            <td>7,998.25</td>
+            <td>0.04</td>
+            <td>14</td>
+          </tr>
+          <tr>
+            <td>Jakarta</td>
+            <td>Ocean</td>
+            <td>7,500.0</td>
+            <td>0.06</td>
+            <td>18</td>
+          </tr>
+          <tr>
+            <td>Ho Chi Minh City</td>
+            <td>Ocean</td>
+            <td>9,998.25</td>
+            <td>0.04</td>
+            <td>14</td>
+          </tr>
+          <tr>
+            <td rowspan="2">Lat Krabang</td>
+            <td>Singapore</td>
+            <td>Ocean</td>
+            <td>11,998.6</td>
+            <td>0.05</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>Manila</td>
+            <td>Ocean</td>
+            <td>19,497.9</td>
+            <td>0.07</td>
+            <td>19</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="secondary">Note: Only major flows are shown. Ocean transport was selected for all major routes due to optimal balance of cost and emissions.</p>
+    </div>
+    
+    <div class="card">
+      <h3 class="card-title">Hub Utilization</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Hub</th>
+            <th>Total Flow (tons)</th>
+            <th>Capacity (tons)</th>
+            <th>Utilization (%)</th>
+            <th>Storage Cost ($/ton)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Laem Chabang</td>
+            <td>25,496.5</td>
+            <td>50,000</td>
+            <td>51.0%</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>Lat Krabang</td>
+            <td>31,498.25</td>
+            <td>30,000</td>
+            <td class="highlight">105.0%</td>
+            <td>4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Costs Tab -->
+  <div id="costs-tab" class="tab-content">
+    <div class="card">
+      <h3 class="card-title">Cost Comparison Across Scenarios</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Baseline</th>
+            <th>Fuel Surge (Fixed Logistics)</th>
+            <th>Fuel Surge (Optimized)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Total Production Cost ($M)</td>
+            <td>1.875</td>
+            <td>1.875</td>
+            <td>1.875</td>
+          </tr>
+          <tr>
+            <td>Total Transport Cost ($M)</td>
+            <td>0.0239</td>
+            <td>0.0311</td>
+            <td>0.0311</td>
+          </tr>
+          <tr>
+            <td>Total Storage Cost ($M)</td>
+            <td>0.1655</td>
+            <td>0.1954</td>
+            <td>0.1655</td>
+          </tr>
+          <tr>
+            <td>Total Cost ($M)</td>
+            <td>2.0644</td>
+            <td>2.1015</td>
+            <td>2.0716</td>
+          </tr>
+          <tr>
+            <td>Cost Savings from Optimization (%)</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="highlight">Transport: 0.00%, Storage: 15.31%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="card">
+      <h3 class="card-title">Cost Breakdown by Component</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Cost Component</th>
+            <th>Value ($M)</th>
+            <th>% of Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Production</td>
+            <td>1.875</td>
+            <td>90.5%</td>
+          </tr>
+          <tr>
+            <td>Transportation</td>
+            <td>0.0311</td>
+            <td>1.5%</td>
+          </tr>
+          <tr>
+            <td>Storage</td>
+            <td>0.1655</td>
+            <td>8.0%</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td><strong>2.0716</strong></td>
+            <td><strong>100%</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Summary Tab -->
+  <div id="summary-tab" class="tab-content">
+    <div class="card">
+      <h3 class="card-title">Optimization Insights</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Optimization Area</th>
+            <th>Key Insights</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Production Allocation</td>
+            <td>
+              <ul>
+                <li>Rayong and Ayutthaya are operating at 100% capacity</li>
+                <li>Product manufacturing is specialized by facility to minimize costs</li>
+                <li>Jasmine Rice production is concentrated in Ayutthaya due to lowest production cost</li>
+                <li>Hat Yai is significantly underutilized (45.8%) suggesting potential for increased production</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>Transport Mode Selection</td>
+            <td>
+              <ul>
+                <li>Ocean shipping selected for all major routes due to optimal cost-emissions balance</li>
+                <li>Road transport not utilized due to higher costs compared to ocean shipping</li>
+                <li>Air transport avoided due to prohibitively high costs and emissions</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>Hub Utilization</td>
+            <td>
+              <ul>
+                <li>Lat Krabang slightly exceeds nominal capacity (105%)</li>
+                <li>Laem Chabang is underutilized (51%) suggesting potential for routing optimization</li>
+                <li>Storage costs are minimized through optimal hub allocation</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>Cost Optimization</td>
+            <td>
+              <ul>
+                <li>Storage costs were successfully optimized (15.31% savings) under fuel surge scenario</li>
+                <li>Transport costs could not be further optimized due to operational constraints</li>
+                <li>Production costs dominate the total cost structure (90.5%)</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="card">
+      <h3 class="card-title">Optimization Recommendations</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Recommendation</th>
+            <th>Expected Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rebalance production between facilities</td>
+            <td>Better capacity utilization; potential for 10-15% reduction in manufacturing costs</td>
+          </tr>
+          <tr>
+            <td>Optimize hub allocation to reduce Lat Krabang overutilization</td>
+            <td>Improved operational efficiency; reduced risk of congestion; 5-8% reduction in storage costs</td>
+          </tr>
+          <tr>
+            <td>Negotiate better ocean freight rates for high-volume routes</td>
+            <td>Potential for 10-12% reduction in transportation costs</td>
+          </tr>
+          <tr>
+            <td>Implement dynamic re-optimization based on fuel price fluctuations</td>
+            <td>Enhanced resilience to market volatility; 12-15% cost savings during price surges</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <script>
+    function openTab(tabName) {
+      var i, tabContent, tabButtons;
+      
+      // Hide all tab content
+      tabContent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+      }
+      
+      // Remove 'active' class from all tab buttons
+      tabButtons = document.getElementsByClassName("tab-button");
+      for (i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+      }
+      
+      // Show the selected tab and add 'active' class to the button
+      document.getElementById(tabName).style.display = "block";
+      event.currentTarget.className += " active";
+    }
+  </script>
+</body>
+</html>
+        </div>
           <p>
             The optimization model was evaluated under three strategic scenarios to understand cost implications and adaptive capabilities:
           </p>
