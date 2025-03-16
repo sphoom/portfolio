@@ -4,12 +4,7 @@ import { Education } from "./Education";
 import { Experience } from "./Experience";
 import { FeaturedProjects } from "./FeaturedProjects";
 import { Navbar } from "./Navbar";
-import line1 from "./line-1.svg";
-import line2 from "./line-2.svg";
-import line3 from "./line-3.svg";
-import line4 from "./line-4.svg";
 import "./style.css";
-import upworkIcon from "./upwork-icon.svg";
 
 export const PortfolioDark = () => {
   return (
@@ -35,3 +30,5 @@ export const PortfolioDark = () => {
     </div>
   );
 };
+
+export default PortfolioDark;
