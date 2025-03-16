@@ -568,57 +568,82 @@
           </button>
           
           <div id="mathContent" class="math-content">
-            <h3>Decision Variables</h3>
-            <p>Let:</p>
-            <ul>
-              <li><strong>Production<sub>p,l</sub></strong> = Quantity produced at each plant l for each product p</li>
-              <li><strong>Transport<sub>l,h</sub></strong> = Amount transported from each plant l to an intermodal hub h</li>
-              <li><strong>Ship<sub>h,c,m</sub></strong> = Amount shipped from hub h to country c using transport mode m</li>
-            </ul>
+              <h3>Decision Variables</h3>
+              <p>Let:</p>
+              <ul>
+                <li><strong>Production<sub>p,l</sub></strong> = Quantity produced at each plant l for each product p</li>
+                <li><strong>Transport<sub>l,h</sub></strong> = Amount transported from each plant l to an intermodal hub h</li>
+                <li><strong>Ship<sub>h,c,m</sub></strong> = Amount shipped from hub h to country c using transport mode m</li>
+              </ul>
+              
+              <h3>Objective Function: Minimize Total Cost</h3>
+              <pre><code>min ∑(p,l) (ProductionCost_{p,l} · Production_{p,l}) 
+            + ∑(l,h) (TransportCost_{l,h} · Transport_{l,h}) 
+            + ∑(h,c,m) (ShippingCost_{h,c,m} · Ship_{h,c,m})</code></pre>
+              
+              <p>where:</p>
+              <ul>
+                <li><strong>ProductionCost</strong> includes manufacturing expenses</li>
+                <li><strong>TransportCost</strong> includes domestic trucking costs</li>
+                <li><strong>ShippingCost</strong> includes ocean freight, air transport, and tariffs</li>
+              </ul>
+              
+              <h3>Constraints</h3>
+              
+              <h4>(A) Production Constraints</h4>
+              <p><strong>1. Factory Capacity Limits</strong></p>
+              <div class="constraint-formula">
+                ∑<sub>p</sub> Production<sub>p,l</sub> ≤ FactoryCapacity<sub>l</sub>, ∀l
+              </div>
+              
+              <p><strong>2. Meet Demand</strong></p>
+              <div class="constraint-formula">
+                ∑<sub>l</sub> Production<sub>p,l</sub> ≥ Demand<sub>p</sub>, ∀p
+              </div>
+              
+              <h4>(B) Domestic Transportation Constraints</h4>
+              <p><strong>3. Flow Conservation at Hubs</strong> (Inbound = Outbound)</p>
+              <div class="constraint-formula">
+                ∑<sub>l</sub> Transport<sub>l,h</sub> = ∑<sub>c,m</sub> Ship<sub>h,c,m</sub>, ∀h
+              </div>
+              
+              <p><strong>4. Hub Capacity Limits</strong></p>
+              <div class="constraint-formula">
+                ∑<sub>p</sub> Transport<sub>l,h</sub> ≤ HubCapacity<sub>h</sub>, ∀h
+              </div>
+              
+              <h4>(C) International Shipping Constraints</h4>
+              <p><strong>5. Mode-Specific Capacity Limits</strong></p>
+              <div class="constraint-formula">
+                Ship<sub>h,c,m</sub> ≤ ModeCapacity<sub>h,m</sub>, ∀h, c, m
+              </div>
+              
+              <p><strong>6. Carbon Emissions Limit</strong></p>
+              <div class="constraint-formula">
+                ∑<sub>h,c,m</sub> (CO2Emission<sub>m</sub> · Ship<sub>h,c,m</sub>) ≤ EmissionLimit
+              </div>
+              
+              <h3>Optimization Outcome</h3>
+              <p>Solving this multi-stage LP model provides:</p>
+              <ul>
+                <li>Cost-optimal production and transportation decisions</li>
+                <li>The best transport mode mix to minimize fuel costs and emissions</li>
+                <li>Adaptability to real-world constraints (e.g., fuel price surge, trade policies)</li>
+              </ul>
+            </div>
             
-            <h3>Objective Function: Minimize Total Cost</h3>
-            <pre><code>min ∑(p,l) (ProductionCost_{p,l} · Production_{p,l}) 
-    + ∑(l,h) (TransportCost_{l,h} · Transport_{l,h}) 
-    + ∑(h,c,m) (ShippingCost_{h,c,m} · Ship_{h,c,m})</code></pre>
-            
-            <p>where:</p>
-            <ul>
-              <li><strong>ProductionCost</strong> includes manufacturing expenses</li>
-              <li><strong>TransportCost</strong> includes domestic trucking costs</li>
-              <li><strong>ShippingCost</strong> includes ocean freight, air transport, and tariffs</li>
-            </ul>
-            
-            <h3>Constraints</h3>
-            
-            <h4>(A) Production Constraints</h4>
-            <p><strong>1. Factory Capacity Limits</strong></p>
-            <pre><code>∑(p) Production_{p,l} ≤ FactoryCapacity_{l}, ∀l</code></pre>
-            
-            <p><strong>2. Meet Demand</strong></p>
-            <pre><code>∑(l) Production_{p,l} ≥ Demand_{p}, ∀p</code></pre>
-            
-            <h4>(B) Domestic Transportation Constraints</h4>
-            <p><strong>3. Flow Conservation at Hubs</strong> (Inbound = Outbound)</p>
-            <pre><code>∑(l) Transport_{l,h} = ∑(c,m) Ship_{h,c,m}, ∀h</code></pre>
-            
-            <p><strong>4. Hub Capacity Limits</strong></p>
-            <pre><code>∑(p) Transport_{l,h} ≤ HubCapacity_{h}, ∀h</code></pre>
-            
-            <h4>(C) International Shipping Constraints</h4>
-            <p><strong>5. Mode-Specific Capacity Limits</strong></p>
-            <pre><code>Ship_{h,c,m} ≤ ModeCapacity_{h,m}, ∀h, c, m</code></pre>
-            
-            <p><strong>6. Carbon Emissions Limit</strong></p>
-            <pre><code>∑(h,c,m) (CO2Emission_{m} · Ship_{h,c,m}) ≤ EmissionLimit</code></pre>
-            
-            <h3>Optimization Outcome</h3>
-            <p>Solving this multi-stage LP model provides:</p>
-            <ul>
-              <li>Cost-optimal production and transportation decisions</li>
-              <li>The best transport mode mix to minimize fuel costs and emissions</li>
-              <li>Adaptability to real-world constraints (e.g., fuel price surge, trade policies)</li>
-            </ul>
-          </div>
+            <style>
+            /* Add this to your CSS styles */
+            .constraint-formula {
+              background: rgba(30, 136, 229, 0.1);
+              padding: 15px;
+              border-radius: 8px;
+              margin: 10px 0 20px 0;
+              font-family: 'Courier New', monospace;
+              font-size: 16px;
+              text-align: center;
+            }
+            </style>
           
           <h2 id="scenario-analysis">Strategic Decision Support Through Scenario Analysis</h2>
           <p>
