@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sales Dashboard Project - Darlene Robertson</title>
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      body {
+        background-color: #0a0a0a;
+        color: #f5f5f5;
+        line-height: 1.6;
+      }
+      
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      /* Navigation */
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 0;
+      }
+      
+      .nav-logo {
+        font-size: 24px;
+        font-weight: 700;
+      }
+      
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+      
+      .nav-links a {
+        color: #f5f5f5;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      
+      .nav-links a:hover {
+        color: #1E88E5;
+      }
+      
+      /* Project Header */
+      .project-header {
+        padding: 60px 0 40px;
+      }
+      
+      .breadcrumb {
+        display: flex;
+        gap: 10px;
+        font-size: 14px;
+        margin-bottom: 30px;
+        color: #888;
+      }
+      
+      .breadcrumb a {
+        color: #1E88E5;
+        text-decoration: none;
+      }
+      
+      .project-title {
+        font-size: 42px;
+        background: linear-gradient(90deg, #1E88E5, #00ACC1);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 20px;
+      }
+      
+      .project-meta {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 30px;
+        color: #aaa;
+        font-size: 14px;
+      }
+      
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      /* Dashboard Container */
+      .dashboard-section {
+        margin: 20px 0 60px;
+      }
+      
+      .dashboard-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 12px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      .dashboard-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      
+      .dashboard-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #1E88E5;
+      }
+      
+      .dashboard-desc {
+        margin-bottom: 20px;
+        color: #ccc;
+      }
+      
+      /* Full-screen button */
+      .fullscreen-button {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 15px;
+        background: linear-gradient(90deg, #1E88E5, #00ACC1);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+      }
+      
+      /* Project Content */
+      .project-content {
+        display: grid;
+        grid-template-columns: 7fr 3fr;
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+      
+      .main-content h2 {
+        font-size: 24px;
+        margin: 30px 0 15px;
+        color: #1E88E5;
+      }
+      
+      .main-content h3 {
+        font-size: 20px;
+        margin: 25px 0 12px;
+        color: #ccc;
+      }
+      
+      .main-content p {
+        margin-bottom: 20px;
+        color: #ddd;
+      }
+      
+      .main-content ul, .main-content ol {
+        margin: 0 0 20px 20px;
+        color: #ddd;
+      }
+      
+      .main-content li {
+        margin-bottom: 10px;
+      }
+      
+      /* Key Metrics Section */
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin: 30px 0;
+      }
+      
+      .metric-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+      }
+      
+      .metric-title {
+        font-size: 16px;
+        color: #aaa;
+        margin-bottom: 10px;
+      }
+      
+      .metric-value {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1E88E5;
+        margin-bottom: 5px;
+      }
+      
+      .metric-change {
+        font-size: 14px;
+        color: #4CAF50;
+      }
+      
+      .metric-change.negative {
+        color: #F44336;
+      }
+      
+      /* Sidebar */
+      .sidebar {
+        position: sticky;
+        top: 30px;
+        align-self: start;
+      }
+      
+      .sidebar-box {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 30px;
+      }
+      
+      .sidebar-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #1E88E5;
+      }
+      
+      .tech-list {
+        margin-bottom: 15px;
+      }
+      
+      .tech-tag {
+        display: inline-block;
+        background: rgba(30, 136, 229, 0.1);
+        border: 1px solid rgba(30, 136, 229, 0.3);
+        color: #1E88E5;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin: 0 5px 8px 0;
+      }
+      
+      .project-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .project-btn {
+        padding: 12px 15px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        text-align: center;
+        font-weight: 500;
+        display: block;
+      }
+      
+      .btn-primary {
+        background: linear-gradient(90deg, #1E88E5, #00ACC1);
+        color: white;
+      }
+      
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: #f5f5f5;
+      }
+      
+      /* Mobile optimizations */
+      .mobile-note {
+        display: none;
+        background: rgba(30, 136, 229, 0.1);
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        color: #ccc;
+        font-size: 14px;
+      }
+      
+      /* Gradient accents */
+      .gradient-accent {
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        filter: blur(150px);
+        opacity: 0.15;
+        z-index: -1;
+      }
+      
+      .accent-1 {
+        background: #1E88E5;
+        top: 10%;
+        left: -100px;
+      }
+      
+      .accent-2 {
+        background: #00ACC1;
+        bottom: 10%;
+        right: -100px;
+      }
+      
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 40px 0;
+        color: #1E88E5;
+        margin-top: 60px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+      
+      /* Responsive */
+      @media (max-width: 900px) {
+        .project-content {
+          grid-template-columns: 1fr;
+        }
+        
+        .sidebar {
+          position: static;
+        }
+        
+        .metrics-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .mobile-note {
+          display: block;
+        }
+        
+        .dashboard-container {
+          padding-bottom: 75%; /* Taller aspect ratio for mobile */
+        }
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Gradient accents -->
+    <div class="gradient-accent accent-1"></div>
+    <div class="gradient-accent accent-2"></div>
+    
+    <div class="container">
+      <!-- Navigation -->
+      <nav class="nav">
+        <div class="nav-logo">DR.</div>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="../projects.html">Projects</a>
+          <a href="../index.html#experience">Experience</a>
+          <a href="../contact.html">Contact</a>
+        </div>
+      </nav>
+      
+      <!-- Project Header -->
+      <header class="project-header">
+        <div class="breadcrumb">
+          <a href="../index.html">Home</a> / 
+          <a href="../projects.html">Projects</a> / 
+          <span>Interactive Sales Dashboard</span>
+        </div>
+        
+        <h1 class="project-title">Interactive Sales Dashboard</h1>
+        
+        <div class="project-meta">
+          <div class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+            </svg>
+            Retail Industry
+          </div>
+          <div class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+            </svg>
+            Completed: February 2023
+          </div>
+          <div class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+            </svg>
+            Data Visualization
+          </div>
+        </div>
+      </header>
+      
+      <!-- Dashboard Section -->
+      <section class="dashboard-section">
+        <h2 class="dashboard-title">Sales Performance Dashboard</h2>
+        <p class="dashboard-desc">
+          This interactive Power BI dashboard provides a comprehensive view of sales performance across regions, product categories, and time periods. Users can filter data to drill down into specific insights.
+        </p>
+        
+        <div class="mobile-note">
+          <strong>Note:</strong> For the best experience, view this dashboard on a larger screen or in landscape orientation on mobile devices.
+        </div>
+        
+        <div class="dashboard-container">
+          <iframe title="Sales Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiYjU2N2MzMTEtODI4Yi00OGRhLTlkYjYtNTRlOTMzNTg3YTEwIiwidCI6IjRhNTM3OGY5LTI5ZjQtNGQzZS1iZTg5LTY2OWQwM2FkYTlkOCIsImMiOjh9&pageName=5fc24bfe02f94ac0ea85" frameborder="0" allowFullScreen="true"></iframe>
+        </div>
+        
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiYjU2N2MzMTEtODI4Yi00OGRhLTlkYjYtNTRlOTMzNTg3YTEwIiwidCI6IjRhNTM3OGY5LTI5ZjQtNGQzZS1iZTg5LTY2OWQwM2FkYTlkOCIsImMiOjh9&pageName=5fc24bfe02f94ac0ea85" target="_blank" class="fullscreen-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707zm0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707zm-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707z"/>
+          </svg>
+          View in Full Screen
+        </a>
+      </section>
+      
+      <!-- Key Metrics -->
+      <h2>Key Performance Metrics</h2>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-title">Total Revenue</div>
+          <div class="metric-value">$1.8M</div>
+          <div class="metric-change">+12.5% YoY</div>
+        </div>
+        
+        <div class="metric-card">
+          <div class="metric-title">Sales Volume</div>
+          <div class="metric-value">24,892</div>
+          <div class="metric-change">+8.3% YoY</div>
+        </div>
+        
+        <div class="metric-card">
+          <div class="metric-title">Profit Margin</div>
+          <div class="metric-value">23.7%</div>
+          <div class="metric-change negative">-1.2% YoY</div>
+        </div>
+      </div>
+      
+      <!-- Project Content -->
+      <div class="project-content">
+        <div class="main-content">
+          <h2 id="overview">Project Overview</h2>
+          <p>
+            This interactive sales dashboard was created to provide stakeholders with real-time insights into sales performance across different dimensions. The goal was to create a centralized visualization tool that could help identify trends, opportunities, and areas for improvement in the sales pipeline.
+          </p>
+          
+          <p>
+            The dashboard enables users to filter data by region, product category, time period, and customer segment, allowing for deep dives into specific areas of interest. The interactive nature of Power BI allows for dynamic exploration of data relationships and patterns.
+          </p>
+          
+          <h2 id="approach">Development Approach</h2>
+          <h3>Data Preparation</h3>
+          <p>
+            The project began with collecting and cleaning sales data from multiple sources, including:
+          </p>
+          <ul>
+            <li>Transaction records from the company's CRM system</li>
+            <li>Product information from inventory management systems</li>
+            <li>Customer demographic data</li>
+            <li>Geographic and regional sales territories</li>
+          </ul>
+          
+          <p>
+            Data cleaning and preparation involved handling missing values, standardizing formats, and creating calculated fields for metrics like profit margin, growth rates, and performance against targets.
+          </p>
+          
+          <h3>Dashboard Design</h3>
+          <p>
+            The dashboard was designed with user experience in mind, following these principles:
+          </p>
+          <ul>
+            <li>Most important KPIs prominently displayed at the top</li>
+            <li>Logical flow from high-level metrics to detailed breakdowns</li>
+            <li>Consistent color scheme with intuitive visual cues</li>
+            <li>Interactive filters that maintain context across visualizations</li>
+            <li>Mobile-responsive design for access on various devices</li>
+          </ul>
+          
+          <h2 id="features">Key Features</h2>
+          <p>
+            The dashboard includes several interactive visualizations:
+          </p>
+          <ul>
+            <li><strong>Sales Overview:</strong> High-level metrics and trend analysis</li>
+            <li><strong>Geographic Performance:</strong> Map visualization of sales by region</li>
+            <li><strong>Product Analysis:</strong> Performance by product category and individual SKUs</li>
+            <li><strong>Customer Segmentation:</strong> Insights based on customer demographics and behavior</li>
+            <li><strong>Time Trends:</strong> Seasonal patterns and year-over-year comparisons</li>
+          </ul>
+          
+          <h2 id="impact">Business Impact</h2>
+          <p>
+            This dashboard has delivered significant value to the organization:
+          </p>
+          <ul>
+            <li>Reduced reporting time by 75%, freeing up analyst resources</li>
+            <li>Identified $120,000 in potential revenue from underperforming regions</li>
+            <li>Enabled data-driven decision making for product assortment and promotions</li>
+            <li>Provided sales teams with real-time performance tracking against targets</li>
+          </ul>
+          
+          <p>
+            The dashboard is now used by over 50 stakeholders across the organization, including sales managers, product teams, and executive leadership.
+          </p>
+        </div>
+        
+        <div class="sidebar">
+          <div class="sidebar-box">
+            <h3 class="sidebar-title">Technologies Used</h3>
+            <div class="tech-list">
+              <span class="tech-tag">Power BI</span>
+              <span class="tech-tag">DAX</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">Excel</span>
+              <span class="tech-tag">Power Query</span>
+              <span class="tech-tag">M Language</span>
+            </div>
+            
+            <div class="project-links">
+              <a href="https://app.powerbi.com/view?r=eyJrIjoiYjU2N2MzMTEtODI4Yi00OGRhLTlkYjYtNTRlOTMzNTg3YTEwIiwidCI6IjRhNTM3OGY5LTI5ZjQtNGQzZS1iZTg5LTY2OWQwM2FkYTlkOCIsImMiOjh9&pageName=5fc24bfe02f94ac0ea85" target="_blank" class="project-btn btn-primary">View Dashboard</a>
+              <a href="#" class="project-btn btn-secondary">Project Documentation</a>
+            </div>
+          </div>
+          
+          <div class="sidebar-box">
+            <h3 class="sidebar-title">Skills Demonstrated</h3>
+            <ul style="list-style-type: none; margin-left: 0; color: #ccc;">
+              <li>✓ Data Modeling</li>
+              <li>✓ DAX Formula Creation</li>
+              <li>✓ ETL Processes</li>
+              <li>✓ Dashboard Design</li>
+              <li>✓ KPI Development</li>
+              <li>✓ Visual Storytelling</li>
+              <li>✓ Performance Optimization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Footer -->
+      <footer class="footer">
+        <p>© 2025 Darlene Robertson. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>
