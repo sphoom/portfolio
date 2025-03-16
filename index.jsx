@@ -4,12 +4,14 @@ import { Education } from "./Education";
 import { Experience } from "./Experience";
 import { FeaturedProjects } from "./FeaturedProjects";
 import { Navbar } from "./Navbar";
+import { Cover } from "./Cover";
 import "./style.css";
 
 export const PortfolioDark = () => {
   return (
     <div className="portfolio-dark">
       <Navbar />
+      <Cover />
       <div className="container">
         <h1 className="title">Your Name</h1>
         <h2 className="subtitle">Hey, I’m</h2>
