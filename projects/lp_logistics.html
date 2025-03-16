@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supply Chain Network Optimization - Darlene Robertson</title>
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      body {
+        background-color: #0a0a0a;
+        color: #f5f5f5;
+        line-height: 1.6;
+      }
+      
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      /* Navigation */
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 0;
+      }
+      
+      .nav-logo {
+        font-size: 24px;
+        font-weight: 700;
+      }
+      
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+      
+      .nav-links a {
+        color: #f5f5f5;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      
+      .nav-links a:hover {
+        color: #1E88E5;
+      }
+      
+      /* Project Header */
+      .project-header {
+        padding: 60px 0 40px;
+      }
+      
+      .breadcrumb {
+        display: flex;
+        gap: 10px;
+        font-size: 14px;
+        margin-bottom: 30px;
+        color: #888;
+      }
+      
+      .breadcrumb a {
+        color: #1E88E5;
+        text-decoration: none;
+      }
+      
+      .project-title {
+        font-size: 42px;
+        background: linear-gradient(90deg, #1E88E5, #00ACC1);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 20px;
+      }
+      
+      .project-meta {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 30px;
+        color: #aaa;
+        font-size: 14px;
+      }
+      
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      /* Project Banner */
+      .project-banner {
+        width: 100%;
+        height: 300px;
+        background: linear-gradient(45deg, #1E88E5, #00ACC1);
+        border-radius: 12px;
+        margin-bottom: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 32px;
+        font-weight: 600;
+        overflow: hidden;
+      }
+      
+      /* Project Content */
+      .project-content {
+        display: grid;
+        grid-template-columns: 7fr 3fr;
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+      
+      .main-content h2 {
+        font-size: 24px;
+        margin: 30px 0 15px;
+        color: #1E88E5;
+      }
+      
+      .main-content h3 {
+        font-size: 20px;
+        margin: 25px 0 12px;
+        color: #ccc;
+      }
+      
+      .main-content p {
+        margin-bottom: 20px;
+        color: #ddd;
+      }
+      
+      .main-content ul, .main-content ol {
+        margin: 0 0 20px 20px;
+        color: #ddd;
+      }
+      
+      .main-content li {
+        margin-bottom: 10px;
+      }
+      
+      .main-content img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+      
+      .main-content code {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 14px;
+      }
+      
+      .main-content pre {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+      
+      .main-content pre code {
+        background: transparent;
+        padding: 0;
+      }
+      
+      .chart-container {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 30px 0;
+        text-align: center;
+      }
+      
+      /* Sidebar */
+      .sidebar {
+        position: sticky;
+        top: 30px;
+        align-self: start;
+      }
+      
+      .sidebar-box {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 30px;
+      }
+      
+      .sidebar-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #1E88E5;
+      }
+      
+      .tech-list {
+        margin-bottom: 15px;
+      }
+      
+      .tech-tag {
+        display: inline-block;
+        background: rgba(30, 136, 229, 0.1);
+        border: 1px solid rgba(30, 136, 229, 0.3);
+        color: #1E88E5;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin: 0 5px 8px 0;
+      }
+      
+      .project-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .project-btn {
+        padding: 12px 15px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        text-align: center;
+        font-weight: 500;
+        display: block;
+      }
+      
+      .btn-primary {
+        background: linear-gradient(90deg, #1E88E5, #00ACC1);
+        color: white;
+      }
+      
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: #f5f5f5;
+      }
+      
+      .table-of-contents {
+        list-style-type: none;
+        margin-left: 0;
+      }
+      
+      .table-of-contents li {
+        margin-bottom: 12px;
+      }
+      
+      .table-of-contents a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      
+      .table-of-contents a:hover {
+        color: #1E88E5;
+      }
+      
+      /* Results section */
+      .results-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin: 20px 0 30px;
+      }
+      
+      .result-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 20px;
+      }
+      
+      .result-card h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #1E88E5;
+      }
+      
+      .stat {
+        font-size: 32px;
+        font-weight: 700;
+        margin: 10px 0;
+      }
+      
+      /* Data table styling */
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0 30px;
+        font-size: 14px;
+      }
+      
+      .data-table th {
+        background: rgba(30, 136, 229, 0.2);
+        color: #1E88E5;
+        text-align: left;
+        padding: 12px 15px;
+        font-weight: 600;
+      }
+      
+      .data-table td {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 12px 15px;
+        color: #ddd;
+      }
+      
+      .data-table tr:last-child td {
+        border-bottom: none;
+      }
+      
+      /* Math toggle section */
+      .math-toggle-btn {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(30, 136, 229, 0.1);
+        border: 1px solid rgba(30, 136, 229, 0.3);
+        color: #1E88E5;
+        padding: 8px 15px;
+        border-radius: 4px;
+        font-size: 14px;
+        margin: 10px 0;
+        cursor: pointer;
+        gap: 8px;
+      }
+      
+      .math-content {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        display: none; /* Hidden by default */
+      }
+      
+      /* Gradient accents */
+      .gradient-accent {
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        filter: blur(150px);
+        opacity: 0.15;
+        z-index: -1;
+      }
+      
+      .accent-1 {
+        background: #1E88E5;
+        top: 10%;
+        left: -100px;
+      }
+      
+      .accent-2 {
+        background: #00ACC1;
+        bottom: 10%;
+        right: -100px;
+      }
+      
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 40px 0;
+        color: #1E88E5;
+        margin-top: 60px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+      
+      /* Related projects */
+      .related-projects-title {
+        font-size: 24px;
+        margin: 60px 0 30px;
+        color: #1E88E5;
+      }
+      
+      .related-projects {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      
+      .related-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s;
+      }
+      
+      .related-card:hover {
+        transform: translateY(-5px);
+      }
+      
+      .related-img {
+        height: 120px;
+        background: linear-gradient(45deg, #1E88E5, #00ACC1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+      
+      .related-content {
+        padding: 15px;
+      }
+      
+      .related-title {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+      
+      .related-desc {
+        font-size: 13px;
+        color: #aaa;
+        margin-bottom: 0;
+      }
+      
+      /* Responsive */
+      @media (max-width: 900px) {
+        .project-content {
+          grid-template-columns: 1fr;
+        }
+        
+        .sidebar {
+          position: static;
+        }
+        
+        .results-grid,
+        .related-projects {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Gradient accents -->
+    <div class="gradient-accent accent-1"></div>
+    <div class="gradient-accent accent-2"></div>
+    
+    <div class="container">
+      <!-- Navigation -->
+      <nav class="nav">
+        <div class="nav-logo">DR.</div>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="../projects.html">Projects</a>
+          <a href="../index.html#experience">Experience</a>
+          <a href="../contact.html">Contact</a>
+        </div>
+      </nav>
+      
+      <!-- Project Header -->
+      <header class="project-header">
+        <div class="breadcrumb">
+          <a href="../index.html">Home</a> / 
+          <a href="../projects.html">Projects</a> / 
+          <span>Supply Chain Network Optimization</span>
+        </div>
+        
+        <h1 class="project-title">Supply Chain Network Optimization</h1>
+        
+        <div class="project-meta">
+          <div class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+            </svg>
+            Logistics & Supply Chain Management
+          </div>
+          <div class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+            </svg>
+            Completed: January 2025
+          </div>
+          <div class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+            </svg>
+            Optimization
+          </div>
+        </div>
+      </header>
+      
+      <!-- Project Banner -->
+      <div class="project-banner">
+        <div style="text-align: center;">
+          <div>Supply Chain Network Optimization</div>
+          <div style="font-size: 18px; margin-top: 10px; opacity: 0.8;">Integrating Production, Transportation & Distribution</div>
+        </div>
+      </div>
+      
+      <!-- Project Content -->
+      <div class="project-content">
+        <div class="main-content">
+          <h2 id="overview">Project Overview</h2>
+          <p>
+            As a Supply Chain Analytics Specialist at an Agricultural Export Company, I developed a multi-stage linear programming model to optimize our logistics network across Southeast Asia. The solution integrates production, domestic transportation, and international distribution into a unified decision framework, resulting in significant cost reductions and improved operational efficiency.
+          </p>
+          
+          <div class="chart-container">
+            <p style="color: #aaa; font-style: italic;">Supply chain network visualization showing optimized routes between Thailand production facilities and ASEAN markets</p>
+            <div style="height: 200px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #888;">
+              [Geographic visualization of optimized supply chain network]
+            </div>
+          </div>
+          
+          <h2 id="challenge">Business Context & Challenge</h2>
+          <p>
+            Our company operates four production facilities across Thailand and exports agricultural products to five key ASEAN markets. Previously, each supply chain stage was managed in isolation:
+          </p>
+          <ul>
+            <li><strong>Production decisions</strong> were made without considering transportation constraints</li>
+            <li><strong>Domestic transport routes</strong> were planned separately from international shipping</li>
+            <li><strong>Intermodal hubs</strong> experienced either congestion or underutilization</li>
+          </ul>
+          
+          <p>This siloed approach resulted in:</p>
+          <ul>
+            <li>Elevated transportation and warehousing costs</li>
+            <li>Frequent shipment delays affecting customer satisfaction</li>
+            <li>Inefficient use of logistics infrastructure</li>
+            <li>Difficulty meeting emissions reduction targets</li>
+          </ul>
+          
+          <h2 id="approach">Solution Approach</h2>
+          <p>
+            I developed an integrated optimization model that simultaneously considers all three interdependent stages of our supply chain:
+          </p>
+          
+          <h3>1. Production Stage</h3>
+          <ul>
+            <li>Optimized production quantities across four facilities (Rayong, Ayutthaya, Chiang Mai, and Hat Yai)</li>
+            <li>Balanced manufacturing costs against transportation availability</li>
+            <li>Ensured production capacities were optimally utilized</li>
+          </ul>
+          
+          <h3>2. Domestic Transportation Stage</h3>
+          <ul>
+            <li>Determined optimal product flow from production plants to intermodal hubs</li>
+            <li>Minimized transportation costs while considering hub capacity constraints</li>
+            <li>Reduced congestion and storage costs at intermodal facilities</li>
+          </ul>
+          
+          <h3>3. International Distribution Stage</h3>
+          <ul>
+            <li>Selected optimal shipping modes (ocean, road, air) for each destination market</li>
+            <li>Accounted for tariffs, transit times, and carbon footprints</li>
+            <li>Ensured compliance with emissions policies while minimizing costs</li>
+          </ul>
+          
+          <h2 id="implementation">Technical Implementation</h2>
+          <p>
+            I formulated this complex challenge as a linear programming model that:
+          </p>
+          <ul>
+            <li><strong>Objective</strong>: Minimizes total costs across all three supply chain stages</li>
+            <li><strong>Decision Variables</strong>: Determines production quantities, domestic transport volumes, and international shipping allocations</li>
+            <li><strong>Key Constraints</strong>: Respects factory capacities, ensures demand fulfillment, maintains flow conservation, and adheres to emissions limits</li>
+          </ul>
+          
+          <button class="math-toggle-btn" onclick="toggleMath()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+              <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/>
+            </svg>
+            Show Mathematical Formulation
+          </button>
+          
+          <div id="mathContent" class="math-content">
+            <h3>Decision Variables</h3>
+            <p>Let:</p>
+            <ul>
+              <li><strong>Production<sub>p,l</sub></strong> = Quantity produced at each plant l for each product p</li>
+              <li><strong>Transport<sub>l,h</sub></strong> = Amount transported from each plant l to an intermodal hub h</li>
+              <li><strong>Ship<sub>h,c,m</sub></strong> = Amount shipped from hub h to country c using transport mode m</li>
+            </ul>
+            
+            <h3>Objective Function: Minimize Total Cost</h3>
+            <pre><code>min ∑(p,l) (ProductionCost_{p,l} · Production_{p,l}) 
+    + ∑(l,h) (TransportCost_{l,h} · Transport_{l,h}) 
+    + ∑(h,c,m) (ShippingCost_{h,c,m} · Ship_{h,c,m})</code></pre>
+            
+            <p>where:</p>
+            <ul>
+              <li><strong>ProductionCost</strong> includes manufacturing expenses</li>
+              <li><strong>TransportCost</strong> includes domestic trucking costs</li>
+              <li><strong>ShippingCost</strong> includes ocean freight, air transport, and tariffs</li>
+            </ul>
+            
+            <h3>Constraints</h3>
+            
+            <h4>(A) Production Constraints</h4>
+            <p><strong>1. Factory Capacity Limits</strong></p>
+            <pre><code>∑(p) Production_{p,l} ≤ FactoryCapacity_{l}, ∀l</code></pre>
+            
+            <p><strong>2. Meet Demand</strong></p>
+            <pre><code>∑(l) Production_{p,l} ≥ Demand_{p}, ∀p</code></pre>
+            
+            <h4>(B) Domestic Transportation Constraints</h4>
+            <p><strong>3. Flow Conservation at Hubs</strong> (Inbound = Outbound)</p>
+            <pre><code>∑(l) Transport_{l,h} = ∑(c,m) Ship_{h,c,m}, ∀h</code></pre>
+            
+            <p><strong>4. Hub Capacity Limits</strong></p>
+            <pre><code>∑(p) Transport_{l,h} ≤ HubCapacity_{h}, ∀h</code></pre>
+            
+            <h4>(C) International Shipping Constraints</h4>
+            <p><strong>5. Mode-Specific Capacity Limits</strong></p>
+            <pre><code>Ship_{h,c,m} ≤ ModeCapacity_{h,m}, ∀h, c, m</code></pre>
+            
+            <p><strong>6. Carbon Emissions Limit</strong></p>
+            <pre><code>∑(h,c,m) (CO2Emission_{m} · Ship_{h,c,m}) ≤ EmissionLimit</code></pre>
+            
+            <h3>Optimization Outcome</h3>
+            <p>Solving this multi-stage LP model provides:</p>
+            <ul>
+              <li>Cost-optimal production and transportation decisions</li>
+              <li>The best transport mode mix to minimize fuel costs and emissions</li>
+              <li>Adaptability to real-world constraints (e.g., fuel price surge, trade policies)</li>
+            </ul>
+          </div>
+          
+          <h2 id="scenario-analysis">Strategic Decision Support Through Scenario Analysis</h2>
+          <p>
+            To address key strategic questions from management, I leveraged the optimization model to provide actionable insights:
+          </p>
+          
+          <h3>1. Optimized Standard Scenario</h3>
+          <p><strong>"What is our optimal network configuration under current conditions?"</strong></p>
+          <ul>
+            <li>Established the cost-optimized baseline for production allocation and transport routing</li>
+            <li>Identified existing bottlenecks and opportunities for immediate improvement</li>
+          </ul>
+          
+          <h3>2. Risk Mitigation Planning</h3>
+          <p><strong>"How would we adapt if fuel prices surge by 30%?"</strong></p>
+          <ul>
+            <li>Simulated optimal network reconfiguration in response to significant fuel cost increases</li>
+            <li>Identified alternate transport modes and routes to minimize cost impact</li>
+            <li>Developed contingency plans for operations teams</li>
+          </ul>
+          
+          <h3>3. Cost-Benefit Analysis</h3>
+          <p><strong>"What cost savings can we achieve through dynamic optimization versus fixed logistics plans?"</strong></p>
+          <ul>
+            <li>Quantified the financial benefit of adaptive optimization compared to maintaining fixed logistics decisions</li>
+            <li>Demonstrated the value of integrated planning across all supply chain stages</li>
+          </ul>
+          
+          <h2 id="results">Results & Business Impact</h2>
+          <p>
+            The optimization model was evaluated under three strategic scenarios to understand cost implications and adaptive capabilities:
+          </p>
+          
+          <h3>Scenario Overview</h3>
+          <ol>
+            <li><strong>Optimized Standard Scenario</strong> - Cost-optimized operations under normal conditions</li>
+            <li><strong>Fuel Price Surge (Fixed Logistics)</strong> - 30% fuel cost increase with logistics decisions unchanged</li>
+            <li><strong>Fuel Price Surge (Re-optimized)</strong> - 30% fuel cost increase with full network re-optimization</li>
+          </ol>
+          
+          <div class="chart-container">
+            <p style="color: #aaa; font-style: italic;">Bar chart comparing production, transport, and storage costs across the three scenarios</p>
+            <div style="height: 200px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #888;">
+              [Cost comparison visualization across scenarios]
+            </div>
+          </div>
+          
+          <h3>Results Summary</h3>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Optimized Standard Scenario</th>
+                <th>Fuel Surge (Fixed Logistics)</th>
+                <th>Fuel Surge (Re-optimized)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Total Production Cost ($M)</td>
+                <td>1.875</td>
+                <td>1.875</td>
+                <td>1.875</td>
+              </tr>
+              <tr>
+                <td>Total Transport Cost ($M)</td>
+                <td>0.0239</td>
+                <td>0.0311</td>
+                <td>0.0311</td>
+              </tr>
+              <tr>
+                <td>Total Storage Cost ($M)</td>
+                <td>0.1655</td>
+                <td>0.1954</td>
+                <td>0.1655</td>
+              </tr>
+              <tr>
+                <td><strong>Cost Savings from Optimization (%)</strong></td>
+                <td>-</td>
+                <td>-</td>
+                <td><strong>Transport: 0.00%, Storage: 15.31%</strong></td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <h3>Key Insights</h3>
+          <ul>
+            <li>
+              <strong>Transport Cost Analysis</strong>: The 30% fuel surge directly increased transport costs, which remained unchanged even after re-optimization due to operational constraints
+            </li>
+            <li>
+              <strong>Storage Optimization Success</strong>: Strategic redistribution of shipments and inventory allocation delivered 15.31% savings in storage costs, demonstrating significant value
+            </li>
+            <li>
+              <strong>Optimization Under Constraints</strong>: The model revealed that while some cost elements (transport) had limited flexibility, others (storage) provided substantial optimization opportunities
+            </li>
+          </ul>
+          
+          <h2 id="conclusion">Conclusion</h2>
+          <p>
+            This project demonstrates the power of data-driven optimization in managing complex supply chain networks. Key conclusions include:
+          </p>
+          <ul>
+            <li><strong>Proven Value of Integrated Optimization</strong>: Without re-optimization, rising fuel costs would have directly increased overall expenses across the network</li>
+            <li><strong>Measurable Cost Mitigation</strong>: The optimization model successfully minimized disruption impacts, particularly by reducing storage costs by 15.31%</li>
+            <li><strong>Resilience Through Analytics</strong>: Strategic transshipment planning enabled by this model provides a systematic approach to mitigating external disruptions</li>
+          </ul>
+          
+          <p>
+            This approach ensures more cost-efficient, resilient, and sustainable logistics planning under dynamic market conditions.
+          </p>
