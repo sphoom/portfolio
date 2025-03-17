@@ -661,13 +661,6 @@
             <li>Reduced congestion and storage costs at intermodal facilities</li>
           </ul>
           
-          <h3>3. International Distribution Stage</h3>
-          <ul>
-            <li>Selected optimal shipping modes (ocean, road, air) for each destination market</li>
-            <li>Accounted for tariffs, transit times, and carbon footprints</li>
-            <li>Ensured compliance with emissions policies while minimizing costs</li>
-          </ul>
-          
           <h2 id="implementation">Technical Implementation</h2>
           <p>
             I formulated this complex challenge as a linear programming model that:
@@ -687,865 +680,855 @@
           </button>
           
           <div id="mathContent" class="math-content">
-  <h3>Decision Variables</h3>
-  <p>Let:</p>
-  <ul>
-    <li><strong>x<sub>p,l</sub></strong> = Quantity of product p produced at plant l</li>
-    <li><strong>y<sub>l,h</sub></strong> = Amount transported from plant l to intermodal hub h</li>
-    <li><strong>z<sub>h,c,m</sub></strong> = Amount shipped from hub h to country c using transport mode m</li>
-  </ul>
-  
-  <h3>Objective Function: Minimize Total Cost</h3>
-  <div class="constraint-formula">
-    min ∑<sub>p,l</sub> (c<sub>p,l</sub><sup>prod</sup> · x<sub>p,l</sub>) + ∑<sub>l,h</sub> (c<sub>l,h</sub><sup>trans</sup> · y<sub>l,h</sub>) + ∑<sub>h,c,m</sub> (c<sub>h,c,m</sub><sup>ship</sup> · z<sub>h,c,m</sub>)
-  </div>
-  
-  <p>where:</p>
-  <ul>
-    <li><strong>c<sub>p,l</sub><sup>prod</sup></strong> = Unit production cost for product p at plant l</li>
-    <li><strong>c<sub>l,h</sub><sup>trans</sup></strong> = Unit transportation cost from plant l to hub h</li>
-    <li><strong>c<sub>h,c,m</sub><sup>ship</sup></strong> = Unit shipping cost from hub h to country c via mode m</li>
-  </ul>
-  
-  <h3>Constraints</h3>
-  
-  <h4>(A) Production Constraints</h4>
-  <p><strong>1. Factory Capacity Limits</strong></p>
-  <div class="constraint-formula">
-    ∑<sub>p</sub> x<sub>p,l</sub> ≤ Cap<sub>l</sub>, ∀l
-  </div>
-  
-  <p><strong>2. Meet Demand</strong></p>
-  <div class="constraint-formula">
-    ∑<sub>l</sub> x<sub>p,l</sub> ≥ D<sub>p</sub>, ∀p
-  </div>
-  
-  <h4>(B) Domestic Transportation Constraints</h4>
-  <p><strong>3. Flow Conservation at Hubs</strong> (Inbound = Outbound)</p>
-  <div class="constraint-formula">
-    ∑<sub>l</sub> y<sub>l,h</sub> = ∑<sub>c,m</sub> z<sub>h,c,m</sub>, ∀h
-  </div>
-  
-  <p><strong>4. Hub Capacity Limits</strong></p>
-  <div class="constraint-formula">
-    ∑<sub>p</sub> y<sub>l,h</sub> ≤ HCap<sub>h</sub>, ∀h
-  </div>
-  
-  <h4>(C) International Shipping Constraints</h4>
-  <p><strong>5. Mode-Specific Capacity Limits</strong></p>
-  <div class="constraint-formula">
-    z<sub>h,c,m</sub> ≤ MCap<sub>h,m</sub>, ∀h, c, m
-  </div>
-  
-  <p><strong>6. Carbon Emissions Limit</strong></p>
-  <div class="constraint-formula">
-    ∑<sub>h,c,m</sub> (e<sub>m</sub> · z<sub>h,c,m</sub>) ≤ E<sub>max</sub>
-  </div>
-  
-  <h3>Optimization Outcome</h3>
-  <p>Solving this multi-stage LP model provides:</p>
-  <ul>
-    <li>Cost-optimal production and transportation decisions</li>
-    <li>The best transport mode mix to minimize fuel costs and emissions</li>
-    <li>Adaptability to real-world constraints (e.g., fuel price surge, trade policies)</li>
-  </ul>
-</div>
-
-            <!--  <h3>Optimization Outcome</h3>
-              <p>Solving this multi-stage LP model provides:</p>
-              <ul>
-                <li>Cost-optimal production and transportation decisions</li>
-                <li>The best transport mode mix to minimize fuel costs and emissions</li>
-                <li>Adaptability to real-world constraints (e.g., fuel price surge, trade policies)</li>
-              </ul> -->
-          </div> 
-          
-         <!-- Updated Results & Business Impact Section -->
-<h2 id="results">Results & Business Impact</h2>
-<p>
-  The integrated supply chain optimization model generated significant insights across production allocation, transport mode selection, and cost efficiency. The visualization below shows how production is allocated across our four facilities:
-</p>
-
-<div class="chart-container">
-  <img src="../projects/image/production_allocation.png" alt="Production allocation and capacity utilization">
-  <p>Production allocation and capacity utilization across facilities</p>
-</div>
-
-<h3>Production Allocation Insights</h3>
-<p>
-  As shown in the chart, our production plan reveals:
-</p>
-<ul>
-  <li><strong>Facility Specialization:</strong> Each facility has been assigned specific products to optimize production efficiency</li>
-  <li><strong>Capacity Utilization:</strong> Rayong and Ayutthaya are operating at 100% capacity, while Chiang Mai (87.5%) and Hat Yai (45.8%) have some unused capacity</li>
-  <li><strong>Product Distribution:</strong> Jasmine Rice is concentrated in Ayutthaya, Processed Seafood in Rayong, Palm Oil in Chiang Mai, and Rubber production is split between Rayong and Hat Yai</li>
-</ul>
-
-<p>
-  The optimization model also determined the most efficient transport modes for different destinations, balancing cost and emissions:
-</p>
-
-<div class="chart-container">
-  <img src="../projects/image/transport_mode_selection.png" alt="Transport mode selection analysis">
-  <p>Transport mode selection and cost-emissions trade-off analysis</p>
-</div>
-
-<h3>Transport Mode Selection Insights</h3>
-<p>
-  Our transport analysis reveals several key patterns:
-</p>
-<ul>
-  <li><strong>Mode Preferences:</strong> Ocean shipping dominates for most destinations due to its favorable cost-emissions profile</li>
-  <li><strong>Air Transport:</strong> Manila receives almost all shipments via air transport, highlighting unique constraints or requirements for this market</li>
-  <li><strong>Mixed Strategy:</strong> Jakarta uses a combination of ocean and air transport to balance time-sensitivity with cost efficiency</li>
-  <li><strong>Emissions Consideration:</strong> As shown in the right chart, ocean transport provides the lowest emissions and costs per ton-km, while air transport has significantly higher values in both dimensions</li>
-</ul>
-
-<h3>Scenario Analysis Results</h3>
-<p>
-  We evaluated the optimization model under three scenarios to understand cost implications and adaptive capabilities:
-</p>
-
-<div class="chart-container">
-  <img src="../projects/image/lp_logist_bar.png" alt="Cost comparison across scenarios">
-  <p>Comparison of total costs across the three scenarios</p>
-</div>
-
-<h4>Scenario Comparison</h4>
-<table class="data-table">
-  <thead>
-    <tr>
-      <th>Metric</th>
-      <th>Baseline</th>
-      <th>Fuel Surge (Fixed Logistics)</th>
-      <th>Fuel Surge (Optimized)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Total Cost ($M)</td>
-      <td>$2.09M</td>
-      <td>$2.23M</td>
-      <td>$2.10M</td>
-    </tr>
-    <tr>
-      <td>Production Cost ($M)</td>
-      <td>$1.88M (89.9%)</td>
-      <td>$1.88M (83.9%)</td>
-      <td>$1.88M (89.3%)</td>
-    </tr>
-    <tr>
-      <td>Transport Cost ($M)</td>
-      <td>$0.046M (2.2%)</td>
-      <td>$0.059M (2.6%)</td>
-      <td>$0.059M (2.8%)</td>
-    </tr>
-    <tr>
-      <td>Storage Cost ($M)</td>
-      <td>$0.165M (7.9%)</td>
-      <td>$0.299M (13.4%)</td>
-      <td>$0.165M (7.9%)</td>
-    </tr>
-    <tr>
-      <td>Cost Difference vs. Baseline</td>
-      <td>-</td>
-      <td>+$0.14M (+6.7%)</td>
-      <td>+$0.01M (+0.5%)</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3>Key Business Insights</h3>
-<div class="results-grid">
-  <div class="result-card">
-    <h4>Optimization Value</h4>
-    <p>Re-optimization during fuel surge saved $0.13M compared to fixed logistics, representing a 5.8% reduction in total costs.</p>
-    <div class="stat">5.8%</div>
-    <p>Cost savings through optimization during disruption</p>
-  </div>
-  <div class="result-card">
-    <h4>Impact of Fuel Surge</h4>
-    <p>Transport costs increased by 28.3% during fuel surge, but this was offset by optimizing storage allocation.</p>
-    <div class="stat">28.3%</div>
-    <p>Transport cost increase during fuel surge</p>
-  </div>
-  <div class="result-card">
-    <h4>Storage Optimization</h4>
-    <p>Storage costs were reduced by 44.8% through re-optimization during the fuel surge scenario.</p>
-    <div class="stat">44.8%</div>
-    <p>Storage cost reduction through re-optimization</p>
-  </div>
-  <div class="result-card">
-    <h4>Transport Mode Shift</h4>
-    <p>During optimization, we maintained the same transport modes but reallocated volumes across hubs.</p>
-    <div class="stat">0%</div>
-    <p>Change in transport mode mix after re-optimization</p>
-  </div>
-</div>
-
-<h3>Detailed Optimization Results</h3>
-<div class="chart-container">
-  <p>Detailed optimization results with insights</p>
-  <div class="results-container">
-    <div class="tab-container">
-      <button class="tab-button active" onclick="openTab('production-tab')">Production Plan</button>
-      <button class="tab-button" onclick="openTab('transport-tab')">Transport Routes</button>
-      <button class="tab-button" onclick="openTab('costs-tab')">Cost Analysis</button>
-      <button class="tab-button" onclick="openTab('summary-tab')">Optimization Summary</button>
-    </div>
-    
-    <!-- Production Tab -->
-    <div id="production-tab" class="tab-content" style="display: block;">
-      <div class="card">
-        <h3 class="card-title">Optimal Production Plan</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Factory</th>
-              <th>Product</th>
-              <th>Quantity (tons)</th>
-              <th>Production Cost ($/ton)</th>
-              <th>Total Cost ($)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td rowspan="2">Rayong</td>
-              <td>Processed Seafood</td>
-              <td>8,000</td>
-              <td>200</td>
-              <td>1,600,000</td>
-            </tr>
-            <tr>
-              <td>Rubber</td>
-              <td>2,000</td>
-              <td>250</td>
-              <td>500,000</td>
-            </tr>
-            <tr>
-              <td rowspan="1">Ayutthaya</td>
-              <td>Jasmine Rice</td>
-              <td>15,000</td>
-              <td>140</td>
-              <td>2,100,000</td>
-            </tr>
-            <tr>
-              <td>Chiang Mai</td>
-              <td>Palm Oil</td>
-              <td>7,000</td>
-              <td>185</td>
-              <td>1,295,000</td>
-            </tr>
-            <tr>
-              <td>Hat Yai</td>
-              <td>Rubber</td>
-              <td>5,500</td>
-              <td>255</td>
-              <td>1,402,500</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="2"><strong>Total Production</strong></td>
-              <td><strong>37,500 tons</strong></td>
-              <td></td>
-              <td><strong>$6,897,500</strong></td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-      
-      <div class="card">
-        <h3 class="card-title">Factory Capacity Utilization</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Factory</th>
-              <th>Total Production (tons)</th>
-              <th>Total Capacity (tons)</th>
-              <th>Utilization (%)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Rayong</td>
-              <td>10,000</td>
-              <td>10,000</td>
-              <td class="highlight">100.0%</td>
-            </tr>
-            <tr>
-              <td>Ayutthaya</td>
-              <td>15,000</td>
-              <td>15,000</td>
-              <td class="highlight">100.0%</td>
-            </tr>
-            <tr>
-              <td>Chiang Mai</td>
-              <td>7,000</td>
-              <td>8,000</td>
-              <td>87.5%</td>
-            </tr>
-            <tr>
-              <td>Hat Yai</td>
-              <td>5,500</td>
-              <td>12,000</td>
-              <td>45.8%</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td><strong>Overall</strong></td>
-              <td><strong>37,500</strong></td>
-              <td><strong>45,000</strong></td>
-              <td><strong>83.3%</strong></td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    </div>
-    
-    <!-- Transport Tab -->
-    <div id="transport-tab" class="tab-content">
-      <div class="card">
-        <h3 class="card-title">Transport Mode Selection</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Destination</th>
-              <th>Ocean (tons)</th>
-              <th>Road (tons)</th>
-              <th>Air (tons)</th>
-              <th>Total Volume (tons)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Singapore</td>
-              <td>11,875</td>
-              <td>0</td>
-              <td>0</td>
-              <td>11,875</td>
-            </tr>
-            <tr>
-              <td>Kuala Lumpur</td>
-              <td>7,875</td>
-              <td>0</td>
-              <td>0</td>
-              <td>7,875</td>
-            </tr>
-            <tr>
-              <td>Jakarta</td>
-              <td>5,875</td>
-              <td>0</td>
-              <td>1,425</td>
-              <td>7,300</td>
-            </tr>
-            <tr>
-              <td>Ho Chi Minh City</td>
-              <td>9,875</td>
-              <td>0</td>
-              <td>0</td>
-              <td>9,875</td>
-            </tr>
-            <tr>
-              <td>Manila</td>
-              <td>0</td>
-              <td>0</td>
-              <td>30,000</td>
-              <td>30,000</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td><strong>Total</strong></td>
-              <td><strong>35,500</strong></td>
-              <td><strong>0</strong></td>
-              <td><strong>31,425</strong></td>
-              <td><strong>66,925</strong></td>
-            </tr>
-          </tfoot>
-        </table>
-        <p class="secondary">Note: Ocean transport is preferred for most routes due to optimal balance of cost and emissions, while air transport is used exclusively for Manila and partially for Jakarta.</p>
-      </div>
-      
-      <div class="card">
-        <h3 class="card-title">Transport Cost and Emission Comparison</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Transport Mode</th>
-              <th>Cost ($ per ton-km)</th>
-              <th>Emissions (kg CO2 per ton)</th>
-              <th>Volume Share (%)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Ocean</td>
-              <td>0.04 - 0.12</td>
-              <td>15 - 30</td>
-              <td>53.0%</td>
-            </tr>
-            <tr>
-              <td>Road</td>
-              <td>0.18 - 0.30</td>
-              <td>60 - 120</td>
-              <td>0.0%</td>
-            </tr>
-            <tr>
-              <td>Air</td>
-              <td>1.80 - 2.90</td>
-              <td>800 - 1,100</td>
-              <td>47.0%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    
-    <!-- Costs Tab -->
-    <div id="costs-tab" class="tab-content">
-      <div class="card">
-        <h3 class="card-title">Cost Comparison Across Scenarios</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Metric</th>
-              <th>Baseline</th>
-              <th>Fuel Surge (Fixed Logistics)</th>
-              <th>Fuel Surge (Optimized)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Total Production Cost ($M)</td>
-              <td>1.88</td>
-              <td>1.88</td>
-              <td>1.88</td>
-            </tr>
-            <tr>
-              <td>Total Transport Cost ($M)</td>
-              <td>0.046</td>
-              <td>0.059</td>
-              <td>0.059</td>
-            </tr>
-            <tr>
-              <td>Total Storage Cost ($M)</td>
-              <td>0.165</td>
-              <td>0.299</td>
-              <td>0.165</td>
-            </tr>
-            <tr>
-              <td>Total Cost ($M)</td>
-              <td>2.09</td>
-              <td>2.23</td>
-              <td>2.10</td>
-            </tr>
-            <tr>
-              <td>Cost Increase from Baseline (%)</td>
-              <td>-</td>
-              <td>+6.7%</td>
-              <td>+0.5%</td>
-            </tr>
-            <tr>
-              <td>Savings from Optimization (%)</td>
-              <td>-</td>
-              <td>-</td>
-              <td>5.8%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <div class="card">
-        <h3 class="card-title">Cost Breakdown by Component</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Cost Component</th>
-              <th>Baseline ($M)</th>
-              <th>Baseline (%)</th>
-              <th>Fuel Surge (Optimized) ($M)</th>
-              <th>Fuel Surge (Optimized) (%)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Production</td>
-              <td>1.88</td>
-              <td>89.9%</td>
-              <td>1.88</td>
-              <td>89.3%</td>
-            </tr>
-            <tr>
-              <td>Transportation</td>
-              <td>0.046</td>
-              <td>2.2%</td>
-              <td>0.059</td>
-              <td>2.8%</td>
-            </tr>
-            <tr>
-              <td>Storage</td>
-              <td>0.165</td>
-              <td>7.9%</td>
-              <td>0.165</td>
-              <td>7.9%</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td><strong>Total</strong></td>
-              <td><strong>2.09</strong></td>
-              <td><strong>100%</strong></td>
-              <td><strong>2.10</strong></td>
-              <td><strong>100%</strong></td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    </div>
-    
-    <!-- Summary Tab -->
-    <div id="summary-tab" class="tab-content">
-      <div class="card">
-        <h3 class="card-title">Optimization Insights</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Optimization Area</th>
-              <th>Key Insights</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Production Allocation</td>
-              <td>
-                <ul>
-                  <li>Rayong and Ayutthaya are operating at 100% capacity</li>
-                  <li>Product manufacturing is specialized by facility to minimize costs</li>
-                  <li>Jasmine Rice production is concentrated in Ayutthaya due to lowest production cost</li>
-                  <li>Hat Yai is significantly underutilized (45.8%) suggesting potential for increased production</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td>Transport Mode Selection</td>
-              <td>
-                <ul>
-                  <li>Ocean shipping selected for most destinations (53% of volume)</li>
-                  <li>Air transport heavily used for Manila and partially for Jakarta (47% of volume)</li>
-                  <li>Road transport not utilized due to higher costs compared to ocean shipping</li>
-                  <li>Each destination has an optimal mode pattern that balances cost, time, and emissions</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td>Cost Optimization</td>
-              <td>
-                <ul>
-                  <li>30% fuel surge would increase costs by 6.7% if logistics remained fixed</li>
-                  <li>Re-optimization during fuel surge limited overall cost increase to just 0.5%</li>
-                  <li>Storage costs were successfully optimized, reducing them by 44.8% compared to fixed logistics</li>
-                  <li>Production costs dominate the total cost structure (89.3-89.9%)</li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <div class="card">
-        <h3 class="card-title">Optimization Recommendations</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Recommendation</th>
-              <th>Expected Impact</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Rebalance production between facilities</td>
-              <td>Better capacity utilization; potential for 10-15% reduction in manufacturing costs</td>
-            </tr>
-            <tr>
-              <td>Implement dynamic re-optimization during fuel price fluctuations</td>
-              <td>Enhanced resilience to market volatility; ~6% cost savings during price surges</td>
-            </tr>
-            <tr>
-              <td>Evaluate alternative routes for Manila shipments</td>
-              <td>Potential to reduce dependency on air transport; 20-30% reduction in emissions possible</td>
-            </tr>
-            <tr>
-              <td>Negotiate better ocean freight rates for high-volume routes</td>
-              <td>Potential for 8-10% reduction in transportation costs</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-
-<h2 id="conclusion">Conclusion</h2>
-<p>
-  This project demonstrates the power of data-driven optimization in managing complex supply chain networks. Key conclusions include:
-</p>
-<ul>
-  <li><strong>Proven Value of Integrated Optimization</strong>: Without re-optimization, rising fuel costs would have increased overall expenses by 6.7%; with optimization, the increase was limited to just 0.5%</li>
-  <li><strong>Measurable Cost Mitigation</strong>: The optimization model successfully minimized disruption impacts, delivering 5.8% cost savings compared to fixed logistics during a fuel surge</li>
-  <li><strong>Strategic Mode Selection</strong>: The analysis revealed that ocean transport is the most efficient mode for most destinations, while air transport, despite higher costs, remains necessary for time-sensitive routes</li>
-  <li><strong>Resilience Through Analytics</strong>: Dynamic optimization enables the supply chain to adapt to changing conditions, maintaining efficiency despite external disruptions</li>
-</ul>
-
-<p>
-  This approach ensures more cost-efficient, resilient, and sustainable logistics planning under dynamic market conditions.
-</p>
-
-<style>
-/* Results grid styling */
-.results-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-  margin: 25px 0 35px;
-}
-
-.result-card {
-  background: white;
-  border: 1px solid #eee;
-  border-radius: 10px;
-  padding: 25px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.result-card h4 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #1E88E5;
-}
-
-.stat {
-  font-size: 36px;
-  font-weight: 700;
-  margin: 15px 0;
-  color: #333;
-}
-
-/* Interactive table styling */
-.results-container {
-  font-family: 'Inter', sans-serif;
-  color: #333;
-}
-
-.tab-container {
-  overflow: hidden;
-  margin-bottom: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-
-.tab-button {
-  background: rgba(30, 136, 229, 0.08);
-  color: #1E88E5;
-  border: 1px solid rgba(30, 136, 229, 0.2);
-  outline: none;
-  cursor: pointer;
-  padding: 10px 15px;
-  border-radius: 6px;
-  transition: 0.3s;
-  font-weight: 500;
-  font-size: 14px;
-}
-
-.tab-button:hover {
-  background: rgba(30, 136, 229, 0.15);
-}
-
-.tab-button.active {
-  background: linear-gradient(90deg, #1E88E5, #00ACC1);
-  color: white;
-  border-color: transparent;
-}
-
-.tab-content {
-  display: none;
-  padding: 5px;
-  border-radius: 8px;
-}
-
-.card {
-  background: white;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.card-title {
-  font-size: 18px;
-  margin: 0 0 15px 0;
-  color: #1E88E5;
-  font-weight: 600;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 15px;
-  font-size: 14px;
-}
-
-th {
-  background: rgba(30, 136, 229, 0.1);
-  color: #1E88E5;
-  text-align: left;
-  padding: 12px 15px;
-  font-weight: 600;
-}
-
-td {
-  border-bottom: 1px solid #eee;
-  padding: 12px 15px;
-  color: #444;
-}
-
-tr:last-child td {
-  border-bottom: none;
-}
-
-tr:hover td {
-  background-color: rgba(0,0,0,0.01);
-}
-
-.highlight {
-  color: #1E88E5;
-  font-weight: bold;
-}
-
-.secondary {
-  font-size: 13px;
-  color: #777;
-  margin-top: 10px;
-  font-style: italic;
-}
-
-@media (max-width: 768px) {
-  .results-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  table {
-    display: block;
-    overflow-x: auto;
-  }
-  
-  .tab-button {
-    padding: 8px 12px;
-    font-size: 13px;
-  }
-}
-</style>
-
-<script>
-function openTab(tabName) {
-  var i, tabContent, tabButtons;
-  
-  // Hide all tab content
-  tabContent = document.getElementsByClassName("tab-content");
-  for (i = 0; i < tabContent.length; i++) {
-    tabContent[i].style.display = "none";
-  }
-  
-  // Remove 'active' class from all tab buttons
-  tabButtons = document.getElementsByClassName("tab-button");
-  for (i = 0; i < tabButtons.length; i++) {
-    tabButtons[i].className = tabButtons[i].className.replace(" active", "");
-  }
-  
-  // Show the selected tab and add 'active' class to the button
-  document.getElementById(tabName).style.display = "block";
-  event.currentTarget.className += " active";
-}
-</script>
-        
-        <!-- Sidebar with revised order and button changes -->
-      <div class="sidebar">
-        <div class="sidebar-box">
-          <h3 class="sidebar-title">Table of Contents</h3>
-          <ul class="table-of-contents">
-            <li><a href="#overview">Project Overview</a></li>
-            <li><a href="#challenge">Business Context & Challenge</a></li>
-            <li><a href="#approach">Solution Approach</a></li>
-            <li><a href="#implementation">Technical Implementation</a></li>
-            <li><a href="#scenario-analysis">Scenario Analysis</a></li>
-            <li><a href="#results">Results & Business Impact</a></li>
-            <li><a href="#conclusion">Conclusion</a></li>
-          </ul>
-        </div>
-        
-        <div class="sidebar-box">
-          <h3 class="sidebar-title">Technologies Used</h3>
-          <div class="tech-list">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Pandas</span>
-            <span class="tech-tag">NumPy</span>
-            <span class="tech-tag">Matplotlib</span>
-            <span class="tech-tag">Linear Programming</span>
-            <span class="tech-tag">PuLP</span>
+            <h3>Decision Variables</h3>
+            <p>Let:</p>
+            <ul>
+              <li><strong>x<sub>p,l</sub></strong> = Quantity of product p produced at plant l</li>
+              <li><strong>y<sub>l,h</sub></strong> = Amount transported from plant l to intermodal hub h</li>
+              <li><strong>z<sub>h,c,m</sub></strong> = Amount shipped from hub h to country c using transport mode m</li>
+            </ul>
+            
+            <h3>Objective Function: Minimize Total Cost</h3>
+            <div class="constraint-formula">
+              min ∑<sub>p,l</sub> (c<sub>p,l</sub><sup>prod</sup> · x<sub>p,l</sub>) + ∑<sub>l,h</sub> (c<sub>l,h</sub><sup>trans</sup> · y<sub>l,h</sub>) + ∑<sub>h,c,m</sub> (c<sub>h,c,m</sub><sup>ship</sup> · z<sub>h,c,m</sub>)
+            </div>
+            
+            <p>where:</p>
+            <ul>
+              <li><strong>c<sub>p,l</sub><sup>prod</sup></strong> = Unit production cost for product p at plant l</li>
+              <li><strong>c<sub>l,h</sub><sup>trans</sup></strong> = Unit transportation cost from plant l to hub h</li>
+              <li><strong>c<sub>h,c,m</sub><sup>ship</sup></strong> = Unit shipping cost from hub h to country c via mode m</li>
+            </ul>
+            
+            <h3>Constraints</h3>
+            
+            <h4>(A) Production Constraints</h4>
+            <p><strong>1. Factory Capacity Limits</strong></p>
+            <div class="constraint-formula">
+              ∑<sub>p</sub> x<sub>p,l</sub> ≤ Cap<sub>l</sub>, ∀l
+            </div>
+            
+            <p><strong>2. Meet Demand</strong></p>
+            <div class="constraint-formula">
+              ∑<sub>l</sub> x<sub>p,l</sub> ≥ D<sub>p</sub>, ∀p
+            </div>
+            
+            <h4>(B) Domestic Transportation Constraints</h4>
+            <p><strong>3. Flow Conservation at Hubs</strong> (Inbound = Outbound)</p>
+            <div class="constraint-formula">
+              ∑<sub>l</sub> y<sub>l,h</sub> = ∑<sub>c,m</sub> z<sub>h,c,m</sub>, ∀h
+            </div>
+            
+            <p><strong>4. Hub Capacity Limits</strong></p>
+            <div class="constraint-formula">
+              ∑<sub>p</sub> y<sub>l,h</sub> ≤ HCap<sub>h</sub>, ∀h
+            </div>
+            
+            <h4>(C) International Shipping Constraints</h4>
+            <p><strong>5. Mode-Specific Capacity Limits</strong></p>
+            <div class="constraint-formula">
+              z<sub>h,c,m</sub> ≤ MCap<sub>h,m</sub>, ∀h, c, m
+            </div>
+            
+            <p><strong>6. Carbon Emissions Limit</strong></p>
+            <div class="constraint-formula">
+              ∑<sub>h,c,m</sub> (e<sub>m</sub> · z<sub>h,c,m</sub>) ≤ E<sub>max</sub>
+            </div>
+            
+            <h3>Optimization Outcome</h3>
+            <p>Solving this multi-stage LP model provides:</p>
+            <ul>
+              <li>Cost-optimal production and transportation decisions</li>
+              <li>The best transport mode mix to minimize fuel costs and emissions</li>
+              <li>Adaptability to real-world constraints (e.g., fuel price surge, trade policies)</li>
+            </ul>
           </div>
           
-          <div class="project-links">
-            <a href="#" class="project-btn btn-secondary">Code</a>
+          <h2 id="results">Results & Business Impact</h2>
+      <p>
+        The integrated supply chain optimization model generated significant insights across production allocation, transport mode selection, and cost efficiency. The visualization below shows how production is allocated across our four facilities:
+      </p>
+      
+      <div class="chart-container">
+        <img src="../projects/image/production_allocation.png" alt="Production allocation and capacity utilization">
+        <p>Production allocation and capacity utilization across facilities</p>
+      </div>
+      
+      <h3>Production Allocation Insights</h3>
+      <p>
+        As shown in the chart, our production plan reveals:
+      </p>
+      <ul>
+        <li><strong>Facility Specialization:</strong> Each facility has been assigned specific products to optimize production efficiency</li>
+        <li><strong>Capacity Utilization:</strong> Rayong and Ayutthaya are operating at 100% capacity, while Chiang Mai (87.5%) and Hat Yai (45.8%) have some unused capacity</li>
+        <li><strong>Product Distribution:</strong> Jasmine Rice is concentrated in Ayutthaya, Processed Seafood in Rayong, Palm Oil in Chiang Mai, and Rubber production is split between Rayong and Hat Yai</li>
+      </ul>
+      
+      <p>
+        The optimization model also determined the most efficient transport modes for different destinations, balancing cost and emissions:
+      </p>
+      
+      <div class="chart-container">
+        <img src="../projects/image/transport_mode_selection.png" alt="Transport mode selection analysis">
+        <p>Transport mode selection and cost-emissions trade-off analysis</p>
+      </div>
+      
+      <h3>Transport Mode Selection Insights</h3>
+      <p>
+        Our transport analysis reveals several key patterns:
+      </p>
+      <ul>
+        <li><strong>Mode Preferences:</strong> Ocean shipping dominates for most destinations due to its favorable cost-emissions profile</li>
+        <li><strong>Air Transport:</strong> Manila receives almost all shipments via air transport, highlighting unique constraints or requirements for this market</li>
+        <li><strong>Mixed Strategy:</strong> Jakarta uses a combination of ocean and air transport to balance time-sensitivity with cost efficiency</li>
+        <li><strong>Emissions Consideration:</strong> As shown in the right chart, ocean transport provides the lowest emissions and costs per ton-km, while air transport has significantly higher values in both dimensions</li>
+      </ul>
+      
+      <h3>Scenario Analysis Results</h3>
+      <p>
+        We evaluated the optimization model under three scenarios to understand cost implications and adaptive capabilities:
+      </p>
+      
+      <div class="chart-container">
+        <img src="../projects/image/lp_logist_bar.png" alt="Cost comparison across scenarios">
+        <p>Comparison of total costs across the three scenarios</p>
+      </div>
+      
+      <h4>Scenario Comparison</h4>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Baseline</th>
+            <th>Fuel Surge (Fixed Logistics)</th>
+            <th>Fuel Surge (Optimized)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Total Cost ($M)</td>
+            <td>$2.09M</td>
+            <td>$2.23M</td>
+            <td>$2.10M</td>
+          </tr>
+          <tr>
+            <td>Production Cost ($M)</td>
+            <td>$1.88M (89.9%)</td>
+            <td>$1.88M (83.9%)</td>
+            <td>$1.88M (89.3%)</td>
+          </tr>
+          <tr>
+            <td>Transport Cost ($M)</td>
+            <td>$0.046M (2.2%)</td>
+            <td>$0.059M (2.6%)</td>
+            <td>$0.059M (2.8%)</td>
+          </tr>
+          <tr>
+            <td>Storage Cost ($M)</td>
+            <td>$0.165M (7.9%)</td>
+            <td>$0.299M (13.4%)</td>
+            <td>$0.165M (7.9%)</td>
+          </tr>
+          <tr>
+            <td>Cost Difference vs. Baseline</td>
+            <td>-</td>
+            <td>+$0.14M (+6.7%)</td>
+            <td>+$0.01M (+0.5%)</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <h3>Key Business Insights</h3>
+      <div class="results-grid">
+        <div class="result-card">
+          <h4>Optimization Value</h4>
+          <p>Re-optimization during fuel surge saved $0.13M compared to fixed logistics, representing a 5.8% reduction in total costs.</p>
+          <div class="stat">5.8%</div>
+          <p>Cost savings through optimization during disruption</p>
+        </div>
+        <div class="result-card">
+          <h4>Impact of Fuel Surge</h4>
+          <p>Transport costs increased by 28.3% during fuel surge, but this was offset by optimizing storage allocation.</p>
+          <div class="stat">28.3%</div>
+          <p>Transport cost increase during fuel surge</p>
+        </div>
+        <div class="result-card">
+          <h4>Storage Optimization</h4>
+          <p>Storage costs were reduced by 44.8% through re-optimization during the fuel surge scenario.</p>
+          <div class="stat">44.8%</div>
+          <p>Storage cost reduction through re-optimization</p>
+        </div>
+        <div class="result-card">
+          <h4>Transport Mode Shift</h4>
+          <p>During optimization, we maintained the same transport modes but reallocated volumes across hubs.</p>
+          <div class="stat">0%</div>
+          <p>Change in transport mode mix after re-optimization</p>
+        </div>
+      </div>
+      
+      <h3>Detailed Optimization Results</h3>
+      <div class="chart-container">
+        <p>Detailed optimization results with insights</p>
+        <div class="results-container">
+          <div class="tab-container">
+            <button class="tab-button active" onclick="openTab('production-tab')">Production Plan</button>
+            <button class="tab-button" onclick="openTab('transport-tab')">Transport Routes</button>
+            <button class="tab-button" onclick="openTab('costs-tab')">Cost Analysis</button>
+            <button class="tab-button" onclick="openTab('summary-tab')">Optimization Summary</button>
+          </div>
+          
+          <!-- Production Tab -->
+          <div id="production-tab" class="tab-content" style="display: block;">
+            <div class="card">
+              <h3 class="card-title">Optimal Production Plan</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Factory</th>
+                    <th>Product</th>
+                    <th>Quantity (tons)</th>
+                    <th>Production Cost ($/ton)</th>
+                    <th>Total Cost ($)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="2">Rayong</td>
+                    <td>Processed Seafood</td>
+                    <td>8,000</td>
+                    <td>200</td>
+                    <td>1,600,000</td>
+                  </tr>
+                  <tr>
+                    <td>Rubber</td>
+                    <td>2,000</td>
+                    <td>250</td>
+                    <td>500,000</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="1">Ayutthaya</td>
+                    <td>Jasmine Rice</td>
+                    <td>15,000</td>
+                    <td>140</td>
+                    <td>2,100,000</td>
+                  </tr>
+                  <tr>
+                    <td>Chiang Mai</td>
+                    <td>Palm Oil</td>
+                    <td>7,000</td>
+                    <td>185</td>
+                    <td>1,295,000</td>
+                  </tr>
+                  <tr>
+                    <td>Hat Yai</td>
+                    <td>Rubber</td>
+                    <td>5,500</td>
+                    <td>255</td>
+                    <td>1,402,500</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="2"><strong>Total Production</strong></td>
+                    <td><strong>37,500 tons</strong></td>
+                    <td></td>
+                    <td><strong>$6,897,500</strong></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            
+            <div class="card">
+              <h3 class="card-title">Factory Capacity Utilization</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Factory</th>
+                    <th>Total Production (tons)</th>
+                    <th>Total Capacity (tons)</th>
+                    <th>Utilization (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Rayong</td>
+                    <td>10,000</td>
+                    <td>10,000</td>
+                    <td class="highlight">100.0%</td>
+                  </tr>
+                  <tr>
+                    <td>Ayutthaya</td>
+                    <td>15,000</td>
+                    <td>15,000</td>
+                    <td class="highlight">100.0%</td>
+                  </tr>
+                  <tr>
+                    <td>Chiang Mai</td>
+                    <td>7,000</td>
+                    <td>8,000</td>
+                    <td>87.5%</td>
+                  </tr>
+                  <tr>
+                    <td>Hat Yai</td>
+                    <td>5,500</td>
+                    <td>12,000</td>
+                    <td>45.8%</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td><strong>Overall</strong></td>
+                    <td><strong>37,500</strong></td>
+                    <td><strong>45,000</strong></td>
+                    <td><strong>83.3%</strong></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          
+          <!-- Transport Tab -->
+          <div id="transport-tab" class="tab-content">
+            <div class="card">
+              <h3 class="card-title">Transport Mode Selection</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Destination</th>
+                    <th>Ocean (tons)</th>
+                    <th>Road (tons)</th>
+                    <th>Air (tons)</th>
+                    <th>Total Volume (tons)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Singapore</td>
+                    <td>11,875</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>11,875</td>
+                  </tr>
+                  <tr>
+                    <td>Kuala Lumpur</td>
+                    <td>7,875</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>7,875</td>
+                  </tr>
+                  <tr>
+                    <td>Jakarta</td>
+                    <td>5,875</td>
+                    <td>0</td>
+                    <td>1,425</td>
+                    <td>7,300</td>
+                  </tr>
+                  <tr>
+                    <td>Ho Chi Minh City</td>
+                    <td>9,875</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>9,875</td>
+                  </tr>
+                  <tr>
+                    <td>Manila</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>30,000</td>
+                    <td>30,000</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong>35,500</strong></td>
+                    <td><strong>0</strong></td>
+                    <td><strong>31,425</strong></td>
+                    <td><strong>66,925</strong></td>
+                  </tr>
+                </tfoot>
+              </table>
+              <p class="secondary">Note: Ocean transport is preferred for most routes due to optimal balance of cost and emissions, while air transport is used exclusively for Manila and partially for Jakarta.</p>
+            </div>
+            
+            <div class="card">
+              <h3 class="card-title">Transport Cost and Emission Comparison</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Transport Mode</th>
+                    <th>Cost ($ per ton-km)</th>
+                    <th>Emissions (kg CO2 per ton)</th>
+                    <th>Volume Share (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Ocean</td>
+                    <td>0.04 - 0.12</td>
+                    <td>15 - 30</td>
+                    <td>53.0%</td>
+                  </tr>
+                  <tr>
+                    <td>Road</td>
+                    <td>0.18 - 0.30</td>
+                    <td>60 - 120</td>
+                    <td>0.0%</td>
+                  </tr>
+                  <tr>
+                    <td>Air</td>
+                    <td>1.80 - 2.90</td>
+                    <td>800 - 1,100</td>
+                    <td>47.0%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <!-- Costs Tab -->
+          <div id="costs-tab" class="tab-content">
+            <div class="card">
+              <h3 class="card-title">Cost Comparison Across Scenarios</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Baseline</th>
+                    <th>Fuel Surge (Fixed Logistics)</th>
+                    <th>Fuel Surge (Optimized)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Total Production Cost ($M)</td>
+                    <td>1.88</td>
+                    <td>1.88</td>
+                    <td>1.88</td>
+                  </tr>
+                  <tr>
+                    <td>Total Transport Cost ($M)</td>
+                    <td>0.046</td>
+                    <td>0.059</td>
+                    <td>0.059</td>
+                  </tr>
+                  <tr>
+                    <td>Total Storage Cost ($M)</td>
+                    <td>0.165</td>
+                    <td>0.299</td>
+                    <td>0.165</td>
+                  </tr>
+                  <tr>
+                    <td>Total Cost ($M)</td>
+                    <td>2.09</td>
+                    <td>2.23</td>
+                    <td>2.10</td>
+                  </tr>
+                  <tr>
+                    <td>Cost Increase from Baseline (%)</td>
+                    <td>-</td>
+                    <td>+6.7%</td>
+                    <td>+0.5%</td>
+                  </tr>
+                  <tr>
+                    <td>Savings from Optimization (%)</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>5.8%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="card">
+              <h3 class="card-title">Cost Breakdown by Component</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Cost Component</th>
+                    <th>Baseline ($M)</th>
+                    <th>Baseline (%)</th>
+                    <th>Fuel Surge (Optimized) ($M)</th>
+                    <th>Fuel Surge (Optimized) (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Production</td>
+                    <td>1.88</td>
+                    <td>89.9%</td>
+                    <td>1.88</td>
+                    <td>89.3%</td>
+                  </tr>
+                  <tr>
+                    <td>Transportation</td>
+                    <td>0.046</td>
+                    <td>2.2%</td>
+                    <td>0.059</td>
+                    <td>2.8%</td>
+                  </tr>
+                  <tr>
+                    <td>Storage</td>
+                    <td>0.165</td>
+                    <td>7.9%</td>
+                    <td>0.165</td>
+                    <td>7.9%</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong>2.09</strong></td>
+                    <td><strong>100%</strong></td>
+                    <td><strong>2.10</strong></td>
+                    <td><strong>100%</strong></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          
+          <!-- Summary Tab -->
+          <div id="summary-tab" class="tab-content">
+            <div class="card">
+              <h3 class="card-title">Optimization Insights</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Optimization Area</th>
+                    <th>Key Insights</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Production Allocation</td>
+                    <td>
+                      <ul>
+                        <li>Rayong and Ayutthaya are operating at 100% capacity</li>
+                        <li>Product manufacturing is specialized by facility to minimize costs</li>
+                        <li>Jasmine Rice production is concentrated in Ayutthaya due to lowest production cost</li>
+                        <li>Hat Yai is significantly underutilized (45.8%) suggesting potential for increased production</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Transport Mode Selection</td>
+                    <td>
+                      <ul>
+                        <li>Ocean shipping selected for most destinations (53% of volume)</li>
+                        <li>Air transport heavily used for Manila and partially for Jakarta (47% of volume)</li>
+                        <li>Road transport not utilized due to higher costs compared to ocean shipping</li>
+                        <li>Each destination has an optimal mode pattern that balances cost, time, and emissions</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Cost Optimization</td>
+                    <td>
+                      <ul>
+                        <li>30% fuel surge would increase costs by 6.7% if logistics remained fixed</li>
+                        <li>Re-optimization during fuel surge limited overall cost increase to just 0.5%</li>
+                        <li>Storage costs were successfully optimized, reducing them by 44.8% compared to fixed logistics</li>
+                        <li>Production costs dominate the total cost structure (89.3-89.9%)</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="card">
+              <h3 class="card-title">Optimization Recommendations</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Recommendation</th>
+                    <th>Expected Impact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Rebalance production between facilities</td>
+                    <td>Better capacity utilization; potential for 10-15% reduction in manufacturing costs</td>
+                  </tr>
+                  <tr>
+                    <td>Implement dynamic re-optimization during fuel price fluctuations</td>
+                    <td>Enhanced resilience to market volatility; ~6% cost savings during price surges</td>
+                  </tr>
+                  <tr>
+                    <td>Evaluate alternative routes for Manila shipments</td>
+                    <td>Potential to reduce dependency on air transport; 20-30% reduction in emissions possible</td>
+                  </tr>
+                  <tr>
+                    <td>Negotiate better ocean freight rates for high-volume routes</td>
+                    <td>Potential for 8-10% reduction in transportation costs</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
       
-      <!-- Related Projects -->
-      <h2 class="related-projects-title">Related Projects</h2>
-      <div class="related-projects">
-        <a href="churn-prediction.html" class="related-card">
-          <div class="related-img">Predictive Analytics</div>
-          <div class="related-content">
-            <h3 class="related-title">Customer Churn Prediction</h3>
-            <p class="related-desc">Machine learning model to predict customer churn based on behavioral signals.</p>
-          </div>
-        </a>
-        
-        <a href="sales-dashboard.html" class="related-card">
-          <div class="related-img">Dashboard</div>
-          <div class="related-content">
-            <h3 class="related-title">Sales Performance Dashboard</h3>
-            <p class="related-desc">Interactive dashboard visualizing sales metrics by region and product category.</p>
-          </div>
-        </a>
-        
-        <a href="recommendation-engine.html" class="related-card">
-          <div class="related-img">Recommendation</div>
-          <div class="related-content">
-            <h3 class="related-title">Product Recommendation Engine</h3>
-            <p class="related-desc">Collaborative filtering algorithm for personalized product recommendations.</p>
-          </div>
-        </a>
-      </div>
+      <h2 id="conclusion">Conclusion</h2>
+      <p>
+        This project demonstrates the power of data-driven optimization in managing complex supply chain networks. Key conclusions include:
+      </p>
+      <ul>
+        <li><strong>Proven Value of Integrated Optimization</strong>: Without re-optimization, rising fuel costs would have increased overall expenses by 6.7%; with optimization, the increase was limited to just 0.5%</li>
+        <li><strong>Measurable Cost Mitigation</strong>: The optimization model successfully minimized disruption impacts, delivering 5.8% cost savings compared to fixed logistics during a fuel surge</li>
+        <li><strong>Strategic Mode Selection</strong>: The analysis revealed that ocean transport is the most efficient mode for most destinations, while air transport, despite higher costs, remains necessary for time-sensitive routes</li>
+        <li><strong>Resilience Through Analytics</strong>: Dynamic optimization enables the supply chain to adapt to changing conditions, maintaining efficiency despite external disruptions</li>
+      </ul>
       
-      <!-- Footer -->
-      <footer class="footer">
-        <p>© 2025 Darlene Robertson. All rights reserved.</p>
-      </footer>
-    </div>
-    
-    <script>
-      function toggleMath() {
-        const mathContent = document.getElementById('mathContent');
-        if (mathContent.style.display === 'block') {
-          mathContent.style.display = 'none';
-        } else {
-          mathContent.style.display = 'block';
+      <p>
+        This approach ensures more cost-efficient, resilient, and sustainable logistics planning under dynamic market conditions.
+      </p>
+      
+      <style>
+      /* Results grid styling */
+      .results-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin: 25px 0 35px;
+      }
+      
+      .result-card {
+        background: white;
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 25px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      }
+      
+      .result-card h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #1E88E5;
+      }
+      
+      .stat {
+        font-size: 36px;
+        font-weight: 700;
+        margin: 15px 0;
+        color: #333;
+      }
+      
+      /* Interactive table styling */
+      .results-container {
+        font-family: 'Inter', sans-serif;
+        color: #333;
+      }
+      
+      .tab-container {
+        overflow: hidden;
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      
+      .tab-button {
+        background: rgba(30, 136, 229, 0.08);
+        color: #1E88E5;
+        border: 1px solid rgba(30, 136, 229, 0.2);
+        outline: none;
+        cursor: pointer;
+        padding: 10px 15px;
+        border-radius: 6px;
+        transition: 0.3s;
+        font-weight: 500;
+        font-size: 14px;
+      }
+      
+      .tab-button:hover {
+        background: rgba(30, 136, 229, 0.15);
+      }
+      
+      .tab-button.active {
+        background: linear-gradient(90deg, #1E88E5, #00ACC1);
+        color: white;
+        border-color: transparent;
+      }
+      
+      .tab-content {
+        display: none;
+        padding: 5px;
+        border-radius: 8px;
+      }
+      
+      .card {
+        background: white;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      }
+      
+      .card-title {
+        font-size: 18px;
+        margin: 0 0 15px 0;
+        color: #1E88E5;
+        font-weight: 600;
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+      
+      th {
+        background: rgba(30, 136, 229, 0.1);
+        color: #1E88E5;
+        text-align: left;
+        padding: 12px 15px;
+        font-weight: 600;
+      }
+      
+      td {
+        border-bottom: 1px solid #eee;
+        padding: 12px 15px;
+        color: #444;
+      }
+      
+      tr:last-child td {
+        border-bottom: none;
+      }
+      
+      tr:hover td {
+        background-color: rgba(0,0,0,0.01);
+      }
+      
+      .highlight {
+        color: #1E88E5;
+        font-weight: bold;
+      }
+      
+      .secondary {
+        font-size: 13px;
+        color: #777;
+        margin-top: 10px;
+        font-style: italic;
+      }
+      
+      @media (max-width: 768px) {
+        .results-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        table {
+          display: block;
+          overflow-x: auto;
+        }
+        
+        .tab-button {
+          padding: 8px 12px;
+          font-size: 13px;
         }
       }
-    </script>
-  </body>
-</html>
+      </style>
+      
+      <script>
+      function openTab(tabName) {
+        var i, tabContent, tabButtons;
+        
+        // Hide all tab content
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+          tabContent[i].style.display = "none";
+        }
+        
+        // Remove 'active' class from all tab buttons
+        tabButtons = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tabButtons.length; i++) {
+          tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+        }
+        
+        // Show the selected tab and add 'active' class to the button
+        document.getElementById(tabName).style.display = "block";
+        event.currentTarget.className += " active";
+      }
+      </script>
+              
+              <!-- Sidebar with revised order and button changes -->
+            <div class="sidebar">
+              <div class="sidebar-box">
+                <h3 class="sidebar-title">Table of Contents</h3>
+                <ul class="table-of-contents">
+                  <li><a href="#overview">Project Overview</a></li>
+                  <li><a href="#challenge">Business Context & Challenge</a></li>
+                  <li><a href="#approach">Solution Approach</a></li>
+                  <li><a href="#implementation">Technical Implementation</a></li>
+                  <li><a href="#scenario-analysis">Scenario Analysis</a></li>
+                  <li><a href="#results">Results & Business Impact</a></li>
+                  <li><a href="#conclusion">Conclusion</a></li>
+                </ul>
+              </div>
+              
+              <div class="sidebar-box">
+                <h3 class="sidebar-title">Technologies Used</h3>
+                <div class="tech-list">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Pandas</span>
+                  <span class="tech-tag">NumPy</span>
+                  <span class="tech-tag">Matplotlib</span>
+                  <span class="tech-tag">Linear Programming</span>
+                  <span class="tech-tag">PuLP</span>
+                </div>
+                
+                <div class="project-links">
+                  <a href="#" class="project-btn btn-secondary">Code</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Related Projects -->
+            <h2 class="related-projects-title">Related Projects</h2>
+            <div class="related-projects">
+              <a href="churn-prediction.html" class="related-card">
+                <div class="related-img">Predictive Analytics</div>
+                <div class="related-content">
+                  <h3 class="related-title">Customer Churn Prediction</h3>
+                  <p class="related-desc">Machine learning model to predict customer churn based on behavioral signals.</p>
+                </div>
+              </a>
+              
+              <a href="sales-dashboard.html" class="related-card">
+                <div class="related-img">Dashboard</div>
+                <div class="related-content">
+                  <h3 class="related-title">Sales Performance Dashboard</h3>
+                  <p class="related-desc">Interactive dashboard visualizing sales metrics by region and product category.</p>
+                </div>
+              </a>
+              
+              <a href="recommendation-engine.html" class="related-card">
+                <div class="related-img">Recommendation</div>
+                <div class="related-content">
+                  <h3 class="related-title">Product Recommendation Engine</h3>
+                  <p class="related-desc">Collaborative filtering algorithm for personalized product recommendations.</p>
+                </div>
+              </a>
+            </div>
+            
+            <!-- Footer -->
+            <footer class="footer">
+              <p>© 2025 Darlene Robertson. All rights reserved.</p>
+            </footer>
+          </div>
+          
+          <script>
+            function toggleMath() {
+              const mathContent = document.getElementById('mathContent');
+              if (mathContent.style.display === 'block') {
+                mathContent.style.display = 'none';
+              } else {
+                mathContent.style.display = 'block';
+              }
+            }
+          </script>
+        </body>
+      </html>
