@@ -659,60 +659,115 @@
           </button>
           
           <div id="mathContent" class="math-content">
-              <h3>Decision Variables</h3>
-              <p>Let:</p>
-              <ul>
-                <li><strong>Production<sub>p,l</sub></strong> = Quantity produced at each plant l for each product p</li>
-                <li><strong>Transport<sub>l,h</sub></strong> = Amount transported from each plant l to an intermodal hub h</li>
-                <li><strong>Ship<sub>h,c,m</sub></strong> = Amount shipped from hub h to country c using transport mode m</li>
-              </ul>
-              
-              <h3>Objective Function: Minimize Total Cost</h3>
-              <pre><code>min ∑(p,l) (ProductionCost_{p,l} · Production_{p,l}) 
-    + ∑(l,h) (TransportCost_{l,h} · Transport_{l,h}) 
-    + ∑(h,c,m) (ShippingCost_{h,c,m} · Ship_{h,c,m})</code></pre>
-              
-              <p>where:</p>
-              <ul>
-                <li><strong>ProductionCost</strong> includes manufacturing expenses</li>
-                <li><strong>TransportCost</strong> includes domestic trucking costs</li>
-                <li><strong>ShippingCost</strong> includes ocean freight, air transport, and tariffs</li>
-              </ul>
-              
-              <h3>Constraints</h3>
-              
-              <h4>(A) Production Constraints</h4>
-              <p><strong>1. Factory Capacity Limits</strong></p>
-              <div class="constraint-formula">
-                ∑<sub>p</sub> Production<sub>p,l</sub> ≤ FactoryCapacity<sub>l</sub>, ∀l
-              </div>
-              
-              <p><strong>2. Meet Demand</strong></p>
-              <div class="constraint-formula">
-                ∑<sub>l</sub> Production<sub>p,l</sub> ≥ Demand<sub>p</sub>, ∀p
-              </div>
-              
-              <h4>(B) Domestic Transportation Constraints</h4>
-              <p><strong>3. Flow Conservation at Hubs</strong> (Inbound = Outbound)</p>
-              <div class="constraint-formula">
-                ∑<sub>l</sub> Transport<sub>l,h</sub> = ∑<sub>c,m</sub> Ship<sub>h,c,m</sub>, ∀h
-              </div>
-              
-              <p><strong>4. Hub Capacity Limits</strong></p>
-              <div class="constraint-formula">
-                ∑<sub>p</sub> Transport<sub>l,h</sub> ≤ HubCapacity<sub>h</sub>, ∀h
-              </div>
-              
-              <h4>(C) International Shipping Constraints</h4>
-              <p><strong>5. Mode-Specific Capacity Limits</strong></p>
-              <div class="constraint-formula">
-                Ship<sub>h,c,m</sub> ≤ ModeCapacity<sub>h,m</sub>, ∀h, c, m
-              </div>
-              
-              <p><strong>6. Carbon Emissions Limit</strong></p>
-              <div class="constraint-formula">
-                ∑<sub>h,c,m</sub> (CO2Emission<sub>m</sub> · Ship<sub>h,c,m</sub>) ≤ EmissionLimit
-              </div>
+  <h3>Decision Variables</h3>
+  <p>Let:</p>
+  <ul>
+    <li><strong>x<sub>p,l</sub></strong> = Quantity of product p produced at plant l</li>
+    <li><strong>y<sub>l,h</sub></strong> = Amount transported from plant l to intermodal hub h</li>
+    <li><strong>z<sub>h,c,m</sub></strong> = Amount shipped from hub h to country c using transport mode m</li>
+  </ul>
+  
+  <h3>Objective Function: Minimize Total Cost</h3>
+  <div class="constraint-formula">
+    min ∑<sub>p,l</sub> (c<sub>p,l</sub><sup>prod</sup> · x<sub>p,l</sub>) + ∑<sub>l,h</sub> (c<sub>l,h</sub><sup>trans</sup> · y<sub>l,h</sub>) + ∑<sub>h,c,m</sub> (c<sub>h,c,m</sub><sup>ship</sup> · z<sub>h,c,m</sub>)
+  </div>
+  
+  <p>where:</p>
+  <ul>
+    <li><strong>c<sub>p,l</sub><sup>prod</sup></strong> = Unit production cost for product p at plant l</li>
+    <li><strong>c<sub>l,h</sub><sup>trans</sup></strong> = Unit transportation cost from plant l to hub h</li>
+    <li><strong>c<sub>h,c,m</sub><sup>ship</sup></strong> = Unit shipping cost from hub h to country c via mode m</li>
+  </ul>
+  
+  <h3>Constraints</h3>
+  
+  <h4>(A) Production Constraints</h4>
+  <p><strong>1. Factory Capacity Limits</strong></p>
+  <div class="constraint-formula">
+    ∑<sub>p</sub> x<sub>p,l</sub> ≤ Cap<sub>l</sub>, ∀l
+  </div>
+  
+  <p><strong>2. Meet Demand</strong></p>
+  <div class="constraint-formula">
+    ∑<sub>l</sub> x<sub>p,l</sub> ≥ D<sub>p</sub>, ∀p
+  </div>
+  
+  <h4>(B) Domestic Transportation Constraints</h4>
+  <p><strong>3. Flow Conservation at Hubs</strong> (Inbound = Outbound)</p>
+  <div class="constraint-formula">
+    ∑<sub>l</sub> y<sub>l,h</sub> = ∑<sub>c,m</sub> z<sub>h,c,m</sub>, ∀h
+  </div>
+  
+  <p><strong>4. Hub Capacity Limits</strong></p>
+  <div class="constraint-formula">
+    ∑<sub>p</sub> y<sub>l,h</sub> ≤ HCap<sub>h</sub>, ∀h
+  </div>
+  
+  <h4>(C) International Shipping Constraints</h4>
+  <p><strong>5. Mode-Specific Capacity Limits</strong></p>
+  <div class="constraint-formula">
+    z<sub>h,c,m</sub> ≤ MCap<sub>h,m</sub>, ∀h, c, m
+  </div>
+  
+  <p><strong>6. Carbon Emissions Limit</strong></p>
+  <div class="constraint-formula">
+    ∑<sub>h,c,m</sub> (e<sub>m</sub> · z<sub>h,c,m</sub>) ≤ E<sub>max</sub>
+  </div>
+  
+  <h3>Optimization Outcome</h3>
+  <p>Solving this multi-stage LP model provides:</p>
+  <ul>
+    <li>Cost-optimal production and transportation decisions</li>
+    <li>The best transport mode mix to minimize fuel costs and emissions</li>
+    <li>Adaptability to real-world constraints (e.g., fuel price surge, trade policies)</li>
+  </ul>
+</div>
+
+<style>
+/* Improved styling for mathematical formulations */
+.constraint-formula {
+  background: rgba(30, 136, 229, 0.05);
+  padding: 18px;
+  border-radius: 8px;
+  margin: 15px 0 25px 0;
+  font-family: 'Cambria Math', 'Times New Roman', serif;
+  font-size: 18px;
+  text-align: center;
+  color: #333;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  line-height: 1.8;
+}
+
+#mathContent h3 {
+  color: #1E88E5;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+#mathContent h4 {
+  color: #444;
+  margin-top: 25px;
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+#mathContent ul {
+  margin-bottom: 20px;
+}
+
+#mathContent li {
+  margin-bottom: 8px;
+}
+
+#mathContent sub, #mathContent sup {
+  font-size: 70%;
+}
+
+#mathContent strong {
+  color: #1E88E5;
+}
+</style>
               
             <!--  <h3>Optimization Outcome</h3>
               <p>Solving this multi-stage LP model provides:</p>
