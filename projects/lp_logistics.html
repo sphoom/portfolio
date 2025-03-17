@@ -379,21 +379,51 @@
         box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       }
 
-      .math-content h3, .math-content h4 {
-        color: #1E88E5;
-      }
-
+      <style>
+      /* Improved styling for mathematical formulations */
       .constraint-formula {
         background: rgba(30, 136, 229, 0.05);
-        padding: 15px;
+        padding: 18px;
         border-radius: 8px;
         margin: 15px 0 25px 0;
-        font-family: 'Courier New', monospace;
-        font-size: 16px;
+        font-family: 'Cambria Math', 'Times New Roman', serif;
+        font-size: 18px;
         text-align: center;
         color: #333;
         box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        line-height: 1.8;
       }
+      
+      #mathContent h3 {
+        color: #1E88E5;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 20px;
+      }
+      
+      #mathContent h4 {
+        color: #444;
+        margin-top: 25px;
+        margin-bottom: 12px;
+        font-size: 18px;
+      }
+      
+      #mathContent ul {
+        margin-bottom: 20px;
+      }
+      
+      #mathContent li {
+        margin-bottom: 8px;
+      }
+      
+      #mathContent sub, #mathContent sup {
+        font-size: 70%;
+      }
+      
+      #mathContent strong {
+        color: #1E88E5;
+      }
+      </style>
 
       /* Results section */
       .results-grid {
@@ -723,52 +753,6 @@
   </ul>
 </div>
 
-<style>
-/* Improved styling for mathematical formulations */
-.constraint-formula {
-  background: rgba(30, 136, 229, 0.05);
-  padding: 18px;
-  border-radius: 8px;
-  margin: 15px 0 25px 0;
-  font-family: 'Cambria Math', 'Times New Roman', serif;
-  font-size: 18px;
-  text-align: center;
-  color: #333;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-  line-height: 1.8;
-}
-
-#mathContent h3 {
-  color: #1E88E5;
-  margin-top: 30px;
-  margin-bottom: 15px;
-  font-size: 20px;
-}
-
-#mathContent h4 {
-  color: #444;
-  margin-top: 25px;
-  margin-bottom: 12px;
-  font-size: 18px;
-}
-
-#mathContent ul {
-  margin-bottom: 20px;
-}
-
-#mathContent li {
-  margin-bottom: 8px;
-}
-
-#mathContent sub, #mathContent sup {
-  font-size: 70%;
-}
-
-#mathContent strong {
-  color: #1E88E5;
-}
-</style>
-              
             <!--  <h3>Optimization Outcome</h3>
               <p>Solving this multi-stage LP model provides:</p>
               <ul>
