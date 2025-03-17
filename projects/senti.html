@@ -543,12 +543,12 @@
         <div class="main-content">
           <h2 id="overview">Project Overview</h2>
           <p>
-            In this project, I developed a <strong>deep learning-based sentiment analysis model</strong> to help a <strong>digital content company</strong> predict <strong>reader reactions</strong> to future articles. The goal was to enable the <strong>marketing team</strong> to understand audience sentiment and optimize content strategy.
+            In this project, I developed a deep learning-based sentiment analysis model to help a digital content company predict reader reactions to future articles. The goal was to enable the marketing team to understand audience sentiment and optimize content strategy.
           </p>
           <p>
-            Using <strong>historical user sentiment data</strong>, I built <strong>three deep learning models</strong>—<strong>Convolutional Neural Network (CNN), Neural Network (NN), and Long Short-Term Memory (LSTM)</strong>—to classify sentiment as <strong>positive, neutral, or negative</strong>.
+            Using historical user sentiment data, I built three deep learning models: Convolutional Neural Network (CNN), Neural Network (NN), and Long Short-Term Memory (LSTM)—to classify sentiment as positive, neutral, or negative.
           </p>
-          <p>By selecting the <strong>best-performing model</strong>, the company can:</p>
+          <p>By selecting the best-performing model, the company can:</p>
           <ul>
             <li><strong>Optimize Content Strategy</strong> – Publish more engaging articles</li>
             <li><strong>Enhance Customer Engagement</strong> – Personalize recommendations</li>
@@ -575,7 +575,7 @@
 
           <div class="chart-container">
             <img src="../projects/image/senti_hist.png" alt="Distribution of sentiment classes in the dataset">
-            <p>Class distribution showing the imbalance between positive, neutral, and negative sentiment in the dataset</p>
+            <p>Histogram shows that most samples are short sentences</p>
           </div>
                   
           <h2 id="approach">Solution Approach</h2>
@@ -586,14 +586,14 @@
           <h3>1. Data Preprocessing</h3>
           <ul>
             <li><strong>Text Cleaning:</strong> Removed punctuation, stopwords, numbers, and extra spaces</li>
-            <li><strong>Tokenization:</strong> Used <strong>NLTK word_tokenize</strong> for text splitting</li>
-            <li><strong>Word Embeddings:</strong> Used <strong>pre-trained embeddings (nnlm-en-dim50 from TensorFlow Hub)</strong> for better word representation</li>
-            <li><strong>Handled Class Imbalance:</strong> Applied <strong>Stratified K-Fold Cross-Validation</strong> and <strong>class-weighted loss</strong> to ensure fair training</li>
+            <li><strong>Tokenization:</strong> Used NLTK word_tokenize for text splitting</li>
+            <li><strong>Word Embeddings:</strong> Used pre-trained embeddings (nnlm-en-dim50 from TensorFlow Hub) for better word representation since it was trained on Google News which has similar contents to this use case.</li>
+            <li><strong>Handled Class Imbalance:</strong> Applied Stratified K-Fold Cross-Validation and class-weighted loss to ensure fair training</li>
           </ul>
           
           <div class="chart-container">
             <img src="../projects/image/senti_balance_bar.png" alt="Class balance visualization">
-            <p>Visualization of class imbalance before and after applying balancing techniques</p>
+            <p>Class distribution showing the imbalance between positive, neutral, and negative sentiment in the dataset</p>
           </div>
           
           <h3>2. Model Selection</h3>
@@ -604,10 +604,7 @@
             <li><strong>LSTM:</strong> Captures long-term dependencies but prone to overfitting with small data</li>
           </ul>
           
-          <div class="chart-container">
-            <img src="../projects/image/senti_architech.png" alt="Model architecture comparison">
-            <p>Architectural comparison of the three deep learning models evaluated for sentiment analysis</p>
-          </div>
+      
           
           <h3>3. Statistical Evaluation</h3>
           <ul>
@@ -625,40 +622,18 @@
             <li><strong>Embedding Layer:</strong> Used pre-trained TensorFlow Hub embeddings (nnlm-en-dim50) to provide semantic understanding</li>
             <li><strong>Cross-Validation:</strong> Implemented stratified K-fold cross-validation to ensure robust evaluation</li>
           </ul>
-          
-          <p>Each model had a distinct architecture:</p>
-          
-          <h3>CNN Implementation</h3>
-          <ul>
-            <li>Embedding layer connected to multiple parallel convolutional layers</li>
-            <li>Different filter sizes to capture various n-gram patterns</li>
-            <li>Global max pooling to extract the most important features</li>
-            <li>Dropout layers (0.5) to prevent overfitting</li>
-          </ul>
-          
-          <h3>LSTM Implementation</h3>
-          <ul>
-            <li>Embedding layer followed by LSTM layer (64 units)</li>
-            <li>Heavy dropout (0.8) to combat overfitting</li>
-            <li>Dense layers with L2 regularization</li>
-          </ul>
-          
-          <h3>Neural Network Implementation</h3>
-          <ul>
-            <li>Embedding layer followed by flattening operation</li>
-            <li>Multiple dense layers with decreasing units</li>
-            <li>Dropout layers (0.4) between dense layers</li>
-          </ul>
+           
+           <div class="chart-container">
+            <img src="../projects/image/senti_model_architech.png" alt="Model architecture comparison">
+            <p>Architectural comparison of the three deep learning models evaluated for sentiment analysis</p>
+          </div>
           
           <h2 id="results">Results & Business Impact</h2>
           <p>
             After rigorous testing and statistical analysis, the CNN model emerged as the clear winner, demonstrating superior performance across all key metrics.
           </p>
           
-          <div class="chart-container">
-            <img src="../projects/image/senti_results_bar.png" alt="Model performance comparison">
-            <p>Performance comparison of CNN, LSTM, and NN models across multiple metrics</p>
-          </div>
+          
           
           <h3>Model Performance Comparison</h3>
           
@@ -728,32 +703,7 @@
           
           <h3>Business Impact</h3>
           
-          <div class="results-grid">
-            <div class="result-card">
-              <h4>Content Optimization</h4>
-              <p>Ability to predict reader sentiment before publication</p>
-              <div class="stat">85%</div>
-              <p>Accuracy in predicting reader reactions</p>
-            </div>
-            <div class="result-card">
-              <h4>Engagement Improvement</h4>
-              <p>Estimated increase in reader engagement with optimized content</p>
-              <div class="stat">23%</div>
-              <p>Projected increase in time-on-site metrics</p>
-            </div>
-            <div class="result-card">
-              <h4>Resource Efficiency</h4>
-              <p>Reduction in editorial time spent on content planning</p>
-              <div class="stat">40%</div>
-              <p>Efficiency gain in content strategy meetings</p>
-            </div>
-            <div class="result-card">
-              <h4>Potential Revenue Impact</h4>
-              <p>Projected increase in ad revenue from improved engagement</p>
-              <div class="stat">18%</div>
-              <p>Estimated revenue growth from personalized content</p>
-            </div>
-          </div>
+
           
           <h2 id="challenges">Challenges & Solutions</h2>
           
@@ -763,8 +713,8 @@
           </p>
           <ul>
             <li><strong>Problem:</strong> Class imbalance caused biased training results and poor generalization</li>
-            <li><strong>Solution:</strong> Implemented Stratified K-Fold Cross-Validation to maintain class proportions across training and validation sets</li>
-            <li><strong>Solution:</strong> Applied class weights during model training to give higher importance to underrepresented classes</li>
+            <li><strong>Solution 1:</strong> Implemented Stratified K-Fold Cross-Validation to maintain class proportions across training and validation sets</li>
+            <li><strong>Solution 2:</strong> Applied class weights during model training to give higher importance to underrepresented classes</li>
           </ul>
           
           <h3>Challenge: Overfitting in LSTM Model</h3>
@@ -773,8 +723,8 @@
           </p>
           <ul>
             <li><strong>Problem:</strong> Complex LSTM architecture was memorizing the training data rather than learning general patterns</li>
-            <li><strong>Solution:</strong> Implemented aggressive dropout (0.8) to force the model to learn more robust features</li>
-            <li><strong>Solution:</strong> Added L2 regularization to penalize large weights</li>
+            <li><strong>Solution 1:</strong> Implemented aggressive dropout (0.8) to force the model to learn more robust features</li>
+            <li><strong>Solution 2:</strong> Added L2 regularization to penalize large weights</li>
             <li><strong>Outcome:</strong> Despite these efforts, the CNN model still demonstrated better generalization ability</li>
           </ul>
           
@@ -789,17 +739,6 @@
             <li><strong>Future Applications:</strong> The model can be extended to real-time sentiment tracking and personalized content recommendations</li>
           </ul>
           
-          <h3>Next Steps & Improvements</h3>
-          <ul>
-            <li><strong>Fine-Tune Pre-Trained Embeddings:</strong> Instead of using static embeddings, fine-tuning could improve performance</li>
-            <li><strong>Explore Transformer Models (BERT, DistilBERT):</strong> These models could capture contextual meaning better</li>
-            <li><strong>Deploy as a Web API:</strong> Integrating the model into a real-world application would add business value</li>
-          </ul>
-          
-          <p>
-            This project strengthened my <strong>NLP, deep learning, and model evaluation</strong> skills. It also reinforced my ability to <strong>balance model complexity with real-world constraints</strong> like <strong>small datasets and overfitting risks</strong>.
-          </p>
-        </div>
         
         <!-- Sidebar -->
         <div class="sidebar">
