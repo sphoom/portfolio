@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Northern Lights Air: Loyalty Program Analysis - Darlene Robertson</title>
+    <title>Loyalty Program Analysis - Darlene Robertson</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
       /* Reset and base styles */
@@ -442,37 +442,19 @@
         border-top: 1px solid #f0f0f0;
       }
 
-      /* Cluster table styling */
-      .cluster-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 25px 0 35px;
-        font-size: 15px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        border-radius: 8px;
-        overflow: hidden;
+      /* References styling */
+      .references-section {
+        margin: 20px 0 40px;
       }
 
-      .cluster-table th {
-        background-color: rgba(30, 136, 229, 0.1);
-        color: #1E88E5;
-        text-align: left;
-        padding: 15px;
-        font-weight: 600;
+      .references-section ol {
+        padding-left: 20px;
       }
 
-      .cluster-table td {
-        border-bottom: 1px solid #eee;
-        padding: 15px;
-        color: #444;
-      }
-
-      .cluster-table tr:last-child td {
-        border-bottom: none;
-      }
-
-      .cluster-table tr:hover td {
-        background-color: rgba(0,0,0,0.01);
+      .references-section li {
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #555;
       }
 
       /* Responsive */
@@ -531,10 +513,10 @@
         <div class="breadcrumb">
           <a href="../index.html">Home</a> / 
           <a href="../projects.html">Projects</a> / 
-          <span>Airline Loyalty Analysis</span>
+          <span>Customer Segmentation & Retention</span>
         </div>
         
-        <h1 class="project-title">Northern Lights Air: Loyalty Program Analysis</h1>
+        <h1 class="project-title">Customer Segmentation & Retention: Insights from Loyalty Analytics</h1>
         
         <div class="project-meta">
           <div class="meta-item">
@@ -543,11 +525,6 @@
             </svg>
             Data Analysis
           </div>
-          
-          <h2 id="results">Results & Business Impact</h2>
-          <p>
-            The analysis delivered several key insights that challenged conventional assumptions about loyalty programs and provided NLA with actionable strategies to enhance program performance.
-          </p>
           <div class="meta-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
               <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
@@ -568,7 +545,7 @@
       <div class="project-banner">
         <img src="../projects/image/airline_retention.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" alt="Airline Loyalty Analysis Banner">
         <div class="banner-overlay">
-          <div class="banner-title">Northern Lights Air: Loyalty Program Analysis</div>
+          <div class="banner-title">Customer Segmentation & Retention: Insights from Loyalty Analytics</div>
           <div class="banner-subtitle">Leveraging Data Science to Drive Customer Loyalty and Maximize CLV</div>
         </div>
       </div>
@@ -607,106 +584,7 @@
             <img src="../projects/image/airline_boxplot.png" alt="CLV Distribution by Customer Cluster">
             <p>Box plot showing distribution of Customer Lifetime Value (CLV) across the four identified customer segments</p>
           </div>
-          
-          <h3>Promotion Impact</h3>
-          <p>
-            The 2018 promotional campaign not only significantly increased program enrollments but also attracted customers with superior retention rates. This challenges the conventional marketing wisdom that promotional customers are less loyal.
-          </p>
-          
-          <div class="results-grid">
-            <div class="result-card">
-              <h4>Enrollment Increase</h4>
-              <p>Percentage increase in loyalty program enrollment during the promotional period</p>
-              <div class="stat">75%</div>
-              <p>Statistically significant increase with p-value of 0.0139</p>
-            </div>
-            <div class="result-card">
-              <h4>Retention Improvement</h4>
-              <p>Post-promotion customer retention rate vs pre-promotion baseline</p>
-              <div class="stat">99%</div>
-              <p>Up from ~85% average retention before the promotion</p>
-            </div>
-            <div class="result-card">
-              <h4>Projected Revenue Gain</h4>
-              <p>Estimated annual revenue increase from improved customer retention</p>
-              <div class="stat">$3.5M+</div>
-              <p>Based on projected 15-20% increase in customer retention rates</p>
-            </div>
-            <div class="result-card">
-              <h4>Effect Size</h4>
-              <p>Cohen's d measure of practical significance for promotion impact</p>
-              <div class="stat">5.28</div>
-              <p>Far exceeds the 0.8 threshold for "large" effect size</p>
-            </div>
-          </div>
-          
-          <h3>Segmentation Insights</h3>
-          <p>
-            The clustering analysis revealed four distinct customer segments with different value profiles and engagement patterns, providing a foundation for targeted marketing strategies:
-          </p>
-          <ul>
-            <li><strong>Frequent Travelers (39%):</strong> Long-term loyal customers who represent the stable core of the program</li>
-            <li><strong>Points Accumulators (26%):</strong> Customers who collect points but rarely redeem them, representing a significant opportunity for activation</li>
-            <li><strong>Occasional Travelers (15%):</strong> Low-engagement customers who require incentives to increase participation</li>
-            <li><strong>High-Value Redeemers (20%):</strong> Most valuable segment with highest spending and strong points redemption behavior</li>
-          </ul>
-          
-          <p>
-            Perhaps most surprisingly, loyalty tier emerged as the strongest predictor of customer lifetime value (correlation coefficient: 0.83), while gender and enrollment type had minimal impact on segmentation outcomes.
-          </p>
-          
-          <h2 id="recommendations">Strategic Recommendations</h2>
-          <p>
-            Based on the analysis findings, I developed a set of actionable recommendations to enhance NLA's loyalty program performance:
-          </p>
-          
-          <h3>1. Promotion Strategy Enhancement</h3>
-          <ul>
-            <li>Implement tiered promotional campaigns to sustain enrollment growth</li>
-            <li>Add time-limited offers to create urgency and accelerate decision-making</li>
-            <li>Develop targeted promotions for high-potential customer demographics</li>
-            <li>Structure campaigns to coincide with seasonal travel patterns identified in the data</li>
-          </ul>
-          
-          <h3>2. Retention Strategy Optimization</h3>
-          <ul>
-            <li>Develop special onboarding sequences for promotion-acquired customers</li>
-            <li>Create early engagement touchpoints to reinforce program value</li>
-            <li>Implement "quick win" redemption opportunities within first 90 days</li>
-            <li>Send personalized engagement suggestions based on enrollment source</li>
-          </ul>
-          
-          <h3>3. Segment-Specific Marketing Strategies</h3>
-          <ul>
-            <li><strong>Frequent Travelers:</strong> Exclusive status benefits and recognition to strengthen loyalty</li>
-            <li><strong>Points Accumulators:</strong> Targeted campaigns highlighting redemption opportunities and benefits</li>
-            <li><strong>Occasional Travelers:</strong> Tier advancement incentives and smaller redemption options</li>
-            <li><strong>High-Value Redeemers:</strong> Premium offerings and personalized concierge services</li>
-          </ul>
-          
-          <h2 id="conclusion">Conclusion</h2>
-          <p>
-            The analysis demonstrates that Northern Lights Air's loyalty program effectiveness can be significantly enhanced through strategic promotions that not only increase enrollment but also drive superior long-term retention, contradicting common concerns about promotional customers having low loyalty.
-          </p>
-          
-          <p>
-            By implementing data-driven segmentation and targeted engagement strategies, NLA can transform its loyalty program from a cost center into a significant competitive advantage in the Canadian airline market. The recommendations from this analysis have the potential to deliver:
-          </p>
-          
-          <ul>
-            <li><strong>Improved Retention:</strong> 15-20% increase in customer retention rates</li>
-            <li><strong>Program Growth:</strong> 25-30% growth in loyalty program enrollment</li>
-            <li><strong>Revenue Impact:</strong> $3.5-4.2M estimated annual revenue increase from improved customer lifetime value</li>
-            <li><strong>Competitive Advantage:</strong> Enhanced positioning against larger carriers through personalized customer engagement</li>
-          </ul>
-          
-          <p>
-            This project demonstrates how statistical analysis and machine learning techniques can transform customer loyalty programs from simple point-collection systems into powerful engines for customer retention and revenue growth.
-          </p>
-          <img src="../projects/image/airline_signups.png" alt="Monthly Loyalty Program Signups Over Time">
-            <p>Monthly loyalty program sign-ups (2012-2019) showing the dramatic impact of the 2018 promotional campaign</p>
-          </div>
-                  
+
           <h2 id="approach">Solution Approach</h2>
           <p>
             To address NLA's loyalty program challenges, I implemented a comprehensive analytical approach combining statistical hypothesis testing with advanced clustering techniques, utilizing the airline's historical customer database containing enrollment data, transaction histories, and customer profiles.
@@ -826,4 +704,190 @@
             The analysis delivered several key insights that challenged conventional assumptions about loyalty programs and provided NLA with actionable strategies to enhance program performance.
           </p>
           
+          <h3>Promotion Impact</h3>
+          <p>
+            The 2018 promotional campaign not only significantly increased program enrollments but also attracted customers with superior retention rates. This challenges the conventional marketing wisdom that promotional customers are less loyal.
+          </p>
+          
+          <div class="results-grid">
+            <div class="result-card">
+              <h4>Enrollment Increase</h4>
+              <p>Percentage increase in loyalty program enrollment during the promotional period</p>
+              <div class="stat">75%</div>
+              <p>Statistically significant increase with p-value of 0.0139</p>
+            </div>
+            <div class="result-card">
+              <h4>Retention Improvement</h4>
+              <p>Post-promotion customer retention rate vs pre-promotion baseline</p>
+              <div class="stat">99%</div>
+              <p>Up from ~85% average retention before the promotion</p>
+            </div>
+            <div class="result-card">
+              <h4>Projected Revenue Gain</h4>
+              <p>Estimated annual revenue increase from improved customer retention</p>
+              <div class="stat">$3.5M+</div>
+              <p>Based on projected 15-20% increase in customer retention rates</p>
+            </div>
+            <div class="result-card">
+              <h4>Effect Size</h4>
+              <p>Cohen's d measure of practical significance for promotion impact</p>
+              <div class="stat">5.28</div>
+              <p>Far exceeds the 0.8 threshold for "large" effect size</p>
+            </div>
+          </div>
+          
+          <h3>Segmentation Insights</h3>
+          <p>
+            The clustering analysis revealed four distinct customer segments with different value profiles and engagement patterns, providing a foundation for targeted marketing strategies:
+          </p>
+          <ul>
+            <li><strong>Frequent Travelers (39%):</strong> Long-term loyal customers who represent the stable core of the program</li>
+            <li><strong>Points Accumulators (26%):</strong> Customers who collect points but rarely redeem them, representing a significant opportunity for activation</li>
+            <li><strong>Occasional Travelers (15%):</strong> Low-engagement customers who require incentives to increase participation</li>
+            <li><strong>High-Value Redeemers (20%):</strong> Most valuable segment with highest spending and strong points redemption behavior</li>
+          </ul>
+          
+          <p>
+            Perhaps most surprisingly, loyalty tier emerged as the strongest predictor of customer lifetime value (correlation coefficient: 0.83), while gender and enrollment type had minimal impact on segmentation outcomes.
+          </p>
+          
+          <h2 id="recommendations">Strategic Recommendations</h2>
+          <p>
+            Based on the analysis findings, I developed a set of actionable recommendations to enhance NLA's loyalty program performance:
+          </p>
+          
+          <h3>1. Promotion Strategy Enhancement</h3>
+          <ul>
+            <li>Implement tiered promotional campaigns to sustain enrollment growth</li>
+            <li>Add time-limited offers to create urgency and accelerate decision-making</li>
+            <li>Develop targeted promotions for high-potential customer demographics</li>
+            <li>Structure campaigns to coincide with seasonal travel patterns identified in the data</li>
+          </ul>
+          
+          <h3>2. Retention Strategy Optimization</h3>
+          <ul>
+            <li>Develop special onboarding sequences for promotion-acquired customers</li>
+            <li>Create early engagement touchpoints to reinforce program value</li>
+            <li>Implement "quick win" redemption opportunities within first 90 days</li>
+            <li>Send personalized engagement suggestions based on enrollment source</li>
+          </ul>
+          
+          <h3>3. Segment-Specific Marketing Strategies</h3>
+          <ul>
+            <li><strong>Frequent Travelers:</strong> Exclusive status benefits and recognition to strengthen loyalty</li>
+            <li><strong>Points Accumulators:</strong> Targeted campaigns highlighting redemption opportunities and benefits</li>
+            <li><strong>Occasional Travelers:</strong> Tier advancement incentives and smaller redemption options</li>
+            <li><strong>High-Value Redeemers:</strong> Premium offerings and personalized concierge services</li>
+          </ul>
+          
+          <h2 id="conclusion">Conclusion</h2>
+          <p>
+            The analysis demonstrates that Northern Lights Air's loyalty program effectiveness can be significantly enhanced through strategic promotions that not only increase enrollment but also drive superior long-term retention, contradicting common concerns about promotional customers having low loyalty.
+          </p>
+          
+          <p>
+            By implementing data-driven segmentation and targeted engagement strategies, NLA can transform its loyalty program from a cost center into a significant competitive advantage in the Canadian airline market. The recommendations from this analysis have the potential to deliver:
+          </p>
+          
+          <ul>
+            <li><strong>Improved Retention:</strong> 15-20% increase in customer retention rates</li>
+            <li><strong>Program Growth:</strong> 25-30% growth in loyalty program enrollment</li>
+            <li><strong>Revenue Impact:</strong> $3.5-4.2M estimated annual revenue increase from improved customer lifetime value</li>
+            <li><strong>Competitive Advantage:</strong> Enhanced positioning against larger carriers through personalized customer engagement</li>
+          </ul>
+          
+          <p>
+            This project demonstrates how statistical analysis and machine learning techniques can transform customer loyalty programs from simple point-collection systems into powerful engines for customer retention and revenue growth.
+          </p>
+          
           <div class="chart-container">
+            <img src="../projects/image/airline_signups.png" alt="Monthly Loyalty Program Signups Over Time">
+            <p>Monthly loyalty program sign-ups (2012-2019) showing the dramatic impact of the 2018 promotional campaign</p>
+          </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <div class="sidebar-box">
+            <h3 class="sidebar-title">Table of Contents</h3>
+            <ul class="table-of-contents">
+              <li><a href="#overview">Project Overview</a></li>
+              <li><a href="#challenge">Business Context & Challenge</a></li>
+              <li><a href="#approach">Solution Approach</a></li>
+              <li><a href="#implementation">Technical Implementation</a></li>
+              <li><a href="#results">Results & Business Impact</a></li>
+              <li><a href="#recommendations">Strategic Recommendations</a></li>
+              <li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+          </div>
+          
+          <div class="sidebar-box">
+            <h3 class="sidebar-title">Technologies Used</h3>
+            <div class="tech-list">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">NumPy</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">SciPy</span>
+              <span class="tech-tag">Matplotlib</span>
+              <span class="tech-tag">Seaborn</span>
+              <span class="tech-tag">Statistical Testing</span>
+              <span class="tech-tag">K-means</span>
+              <span class="tech-tag">PCA</span>
+            </div>
+            
+            <div class="project-links">
+              <a href="#" class="project-btn btn-primary">View GitHub Repository</a>
+              <a href="#" class="project-btn btn-secondary">Download Report PDF</a>
+            </div>
+          </div>
+        </div>
+      </div> <!-- Close project-content -->
+      
+      <!-- References Section -->
+      <h2 class="related-projects-title">References</h2>
+      <div class="references-section">
+        <ol>
+          <li>Cohen, J. (1988). <em>Statistical Power Analysis for the Behavioral Sciences</em> (2nd ed.). Lawrence Erlbaum Associates. [Effect size guidelines: small (d=0.2), medium (d=0.5), and large (d=0.8)]</li>
+          <li>Sawilowsky, S. (2009). New Effect Size Rules of Thumb. <em>Journal of Modern Applied Statistical Methods, 8</em>(2), 597-599. [Extended Cohen's scale: very large (d=1.2) and huge (d=2.0)]</li>
+          <li>Kumar, V., & Petersen, J. A. (2012). Statistical Methods in Customer Relationship Management. Wiley.</li>
+          <li>Breiman, L. (2001). Random forests. <em>Machine Learning, 45</em>(1), 5-32.</li>
+          <li>Tibshirani, R., Walther, G., & Hastie, T. (2001). Estimating the number of clusters in a data set via the gap statistic. <em>Journal of the Royal Statistical Society: Series B (Statistical Methodology), 63</em>(2), 411-423.</li>
+        </ol>
+      </div>
+      
+      <!-- Related Projects -->
+      <h2 class="related-projects-title">Related Projects</h2>
+      <div class="related-projects">
+        <a href="market-basket-analysis.html" class="related-card">
+          <div class="related-img">Association Analytics</div>
+          <div class="related-content">
+            <h3 class="related-title">Retail Market Basket Analysis</h3>
+            <p class="related-desc">Uncovering hidden patterns in customer purchasing behavior to optimize product placement and promotions</p>
+          </div>
+        </a>
+        
+        <a href="senti.html" class="related-card">
+          <div class="related-img">NLP Analytics</div>
+          <div class="related-content">
+            <h3 class="related-title">Sentiment Analysis on News Articles</h3>
+            <p class="related-desc">Using CNN, LSTM & NN models to predict reader sentiment in news articles</p>
+          </div>
+        </a>
+        
+        <a href="sales_powerbi.html" class="related-card">
+          <div class="related-img">Business Intelligence</div>
+          <div class="related-content">
+            <h3 class="related-title">Interactive Sales Dashboard</h3>
+            <p class="related-desc">Creating an interactive dashboard with dynamic filtering capabilities to visualize sales performance</p>
+          </div>
+        </a>
+      </div>
+      
+      <!-- Footer -->
+      <footer class="footer">
+        <p>© 2025 Darlene Robertson. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>
