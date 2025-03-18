@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Loyalty Program Analysis - Darlene Robertson</title>
+    <title>Customer Segmentation & Retention: Insights from Loyalty Analytics - Darlene Robertson</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
       /* Reset and base styles */
@@ -220,7 +220,7 @@
       }
 
       /* Table styling */
-      .data-table {
+      .data-table, .cluster-table {
         width: 100%;
         border-collapse: collapse;
         margin: 25px 0 35px;
@@ -230,7 +230,7 @@
         overflow: hidden;
       }
 
-      .data-table th {
+      .data-table th, .cluster-table th {
         background-color: rgba(30, 136, 229, 0.1);
         color: #1E88E5;
         text-align: left;
@@ -238,17 +238,17 @@
         font-weight: 600;
       }
 
-      .data-table td {
+      .data-table td, .cluster-table td {
         border-bottom: 1px solid #eee;
         padding: 15px;
         color: #444;
       }
 
-      .data-table tr:last-child td {
+      .data-table tr:last-child td, .cluster-table tr:last-child td {
         border-bottom: none;
       }
 
-      .data-table tr:hover td {
+      .data-table tr:hover td, .cluster-table tr:hover td {
         background-color: rgba(0,0,0,0.01);
       }
 
@@ -444,17 +444,17 @@
 
       /* References styling */
       .references-section {
-        margin: 20px 0 40px;
+        max-width: 900px;
+        margin: 0 auto 60px;
+        padding: 30px;
+        background-color: rgba(30, 136, 229, 0.05);
+        border-radius: 12px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       }
 
       .references-section ol {
-        padding-left: 20px;
-      }
-
-      .references-section li {
-        margin-bottom: 10px;
-        font-size: 14px;
-        color: #555;
+        margin-left: 30px;
+        line-height: 1.8;
       }
 
       /* Responsive */
@@ -581,10 +581,10 @@
           </ul>
 
           <div class="chart-container">
-            <img src="../projects/image/airline_boxplot.png" alt="CLV Distribution by Customer Cluster">
-            <p>Box plot showing distribution of Customer Lifetime Value (CLV) across the four identified customer segments</p>
+            <img src="../projects/image/airline_signups.png" alt="Monthly Loyalty Program Signups Over Time">
+            <p>Monthly loyalty program sign-ups (2012-2019) showing the dramatic impact of the 2018 promotional campaign</p>
           </div>
-
+                  
           <h2 id="approach">Solution Approach</h2>
           <p>
             To address NLA's loyalty program challenges, I implemented a comprehensive analytical approach combining statistical hypothesis testing with advanced clustering techniques, utilizing the airline's historical customer database containing enrollment data, transaction histories, and customer profiles.
@@ -649,11 +649,15 @@
           </ul>
           
           <div class="chart-container">
-            <img src="../projects/image/airline_heatmap.png" alt="Behavioral Heatmap of Customer Segments">
-            <p>Behavioral differences across identified customer segments showing key attributes that differentiate the clusters</p>
+            <img src="../projects/image/airline_retention.png" alt="Customer Retention Rate Over Time">
+            <p>Customer retention rate visualization showing the significant improvement after the 2018 promotional campaign</p>
           </div>
           
           <h3>Segmentation Analysis</h3>
+          
+          <p>I implemented two distinct clustering approaches to segment NLA's customer base:</p>
+          
+          <h4>Model 1: Behavioral Segmentation (Flight & Engagement Metrics)</h4>
           
           <table class="cluster-table">
             <thead>
@@ -692,11 +696,37 @@
             </tbody>
           </table>
           
-          <p>The enhanced segmentation model incorporated additional features including CLV, loyalty tier, gender, and enrollment type. This revealed that loyalty tier was the strongest predictor of customer value (importance score: 0.42), while gender and enrollment type had minimal impact on segmentation outcomes (importance scores &lt;0.05).</p>
+          <div class="chart-container">
+            <img src="../projects/image/airline_heatmap1.png" alt="Behavioral Clustering Heatmap">
+            <p>Behavioral differences across identified customer segments using flight activity and program engagement metrics</p>
+          </div>
+          
+          <h4>Model 2: Enhanced Segmentation (Behavioral + Customer Attributes)</h4>
+          <p>The enhanced segmentation model incorporated both behavioral data and customer attributes to provide a more holistic view:</p>
+          
+          <p>Additional features integrated:</p>
+          <ul>
+            <li>Customer Lifetime Value (CLV)</li>
+            <li>Loyalty Card Tier</li>
+            <li>Gender</li>
+            <li>Enrollment Type</li>
+          </ul>
+          
+          <p>The enhanced model revealed that loyalty tier was the strongest predictor of customer value (importance score: 0.42), while gender and enrollment type had minimal impact on segmentation outcomes (importance scores &lt;0.05).</p>
           
           <div class="chart-container">
-            <img src="../projects/image/airlinr_pca.png" alt="Customer Segments PCA Visualization">
+            <img src="../projects/image/airline_heatmap2.png" alt="Enhanced Clustering Heatmap">
+            <p>Behavioral and demographic differences across customer segments with the enhanced model incorporating all attributes</p>
+          </div>
+          
+          <div class="chart-container">
+            <img src="../projects/image/airlinr_pca2.png" alt="Customer Segments PCA Visualization">
             <p>Principal Component Analysis (PCA) visualization showing clear separation between identified customer segments</p>
+          </div>
+          
+          <div class="chart-container">
+            <img src="../projects/image/airline_boxplot2.png" alt="CLV Distribution by Customer Cluster">
+            <p>Box plot showing distribution of Customer Lifetime Value (CLV) across the four identified customer segments</p>
           </div>
           
           <h2 id="results">Results & Business Impact</h2>
@@ -799,11 +829,6 @@
           <p>
             This project demonstrates how statistical analysis and machine learning techniques can transform customer loyalty programs from simple point-collection systems into powerful engines for customer retention and revenue growth.
           </p>
-          
-          <div class="chart-container">
-            <img src="../projects/image/airline_signups.png" alt="Monthly Loyalty Program Signups Over Time">
-            <p>Monthly loyalty program sign-ups (2012-2019) showing the dramatic impact of the 2018 promotional campaign</p>
-          </div>
         </div>
         
         <!-- Sidebar -->
