@@ -1,75 +1,495 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <h1 class="logo">My<span>Portfolio</span></h1>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="projects">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <!-- Project 1 -->
-            <div class="project-card">
-                <img src="images/financial-portfolio.jpg" alt="Financial Portfolio Optimization">
-                <div class="project-details">
-                    <h3>Financial Portfolio Optimization</h3>
-                    <p>Optimizing asset allocation using statistical and machine learning techniques to maximize returns.</p>
-                    <div class="tags">
-                        <span>Finance</span>
-                        <span>Optimization</span>
-                        <span>Python</span>
-                    </div>
-                    <a href="projects/financial-portfolio.html" class="project-link">View Project →</a>
-                </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-card">
-                <img src="images/hospital-wait-time.jpg" alt="Hospital Waiting Time Analysis">
-                <div class="project-details">
-                    <h3>Hospital Waiting Time Analysis</h3>
-                    <p>Analyzed hospital wait times and proposed strategies to improve patient flow efficiency.</p>
-                    <div class="tags">
-                        <span>Healthcare</span>
-                        <span>Data Analytics</span>
-                        <span>R</span>
-                    </div>
-                    <a href="projects/hospital-wait-time.html" class="project-link">View Project →</a>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card">
-                <img src="images/powerbi-dashboard.jpg" alt="Power BI Dashboard for Retail">
-                <div class="project-details">
-                    <h3>Power BI Dashboard for Retail</h3>
-                    <p>Developed an interactive dashboard to track sales, revenue trends, and customer behavior.</p>
-                    <div class="tags">
-                        <span>Business Intelligence</span>
-                        <span>Power BI</span>
-                        <span>Retail</span>
-                    </div>
-                    <a href="projects/powerbi-dashboard.html" class="project-link">View Project →</a>
-                </div>
-            </div>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects - Darlene Robertson</title>
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      body {
+        background-color: #0a0a0a;
+        color: #f5f5f5;
+        line-height: 1.6;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      /* Navigation */
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 0;
+      }
+      
+      .nav-logo {
+        font-size: 24px;
+        font-weight: 700;
+      }
+      
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+      
+      .nav-links a {
+        color: #f5f5f5;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      
+      .nav-links a:hover {
+        color: #1E88E5;
+      }
+      
+      /* Hero section */
+      .hero {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 60px 0;
+      }
+      
+      .hero-title {
+        font-size: 48px;
+        background: linear-gradient(90deg, #1E88E5, #00ACC1);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 20px;
+      }
+      
+      .hero-desc {
+        max-width: 800px;
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+      
+      /* Section headers */
+      .section-header {
+        font-size: 14px;
+        letter-spacing: 2px;
+        color: #1E88E5;
+        margin: 40px 0 30px;
+        text-transform: uppercase;
+      }
+      
+      /* Projects grid */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+      
+      @media (max-width: 1024px) {
+        .projects-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      .project-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .project-card:hover {
+        transform: translateY(-5px);
+      }
+      
+      .project-img {
+        width: 100%;
+        height: 180px;
+        background: linear-gradient(45deg, #1E88E5, #00ACC1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .project-content {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .project-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      
+      .project-desc {
+        color: #aaa;
+        margin-bottom: 15px;
+        flex-grow: 1;
+      }
+      
+      .project-tech {
+        color: #1E88E5;
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+      
+      .project-links {
+        display: flex;
+        gap: 15px;
+        margin-top: auto;
+      }
+      
+      .project-btn {
+        padding: 8px 15px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+      }
+      
+      .btn-primary {
+        background: linear-gradient(90deg, #1E88E5, #00ACC1);
+        color: white;
+      }
+      
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: #f5f5f5;
+      }
+      
+      /* Filter controls */
+      .filter-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+      
+      .filter-btn {
+        padding: 8px 20px;
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid #333;
+        color: #f5f5f5;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s;
+      }
+      
+      .filter-btn:hover, .filter-btn.active {
+        background: #1E88E5;
+        border-color: #1E88E5;
+      }
+      
+      /* Gradient accents */
+      .gradient-accent {
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        filter: blur(150px);
+        opacity: 0.15;
+        z-index: -1;
+      }
+      
+      .accent-1 {
+        background: #1E88E5;
+        top: 10%;
+        left: -100px;
+      }
+      
+      .accent-2 {
+        background: #00ACC1;
+        bottom: 10%;
+        right: -100px;
+      }
+      
+      /* Back to top button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(90deg, #1E88E5, #00ACC1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      
+      .back-to-top.visible {
+        opacity: 1;
+      }
+      
+      /* Footer */
+      .footer {
+        margin-top: 80px;
+        padding: 40px 0;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Gradient accents -->
+    <div class="gradient-accent accent-1"></div>
+    <div class="gradient-accent accent-2"></div>
+    
+    <div class="container">
+      <!-- Navigation -->
+      <nav class="nav">
+        <div class="nav-logo">DR.</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#contact">Contact</a>
         </div>
-    </section>
-
-    <footer>
-        <p>Connect with me on <a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a></p>
-    </footer>
-</body>
+      </nav>
+      
+      <!-- Hero section -->
+      <section class="hero">
+        <h1 class="hero-title">My Projects</h1>
+        <p class="hero-desc">
+          A collection of my data analytics, machine learning, and visualization projects. 
+          Each project demonstrates different skills and techniques I've acquired in my journey 
+          as a data analyst and scientist.
+        </p>
+        
+        <!-- Filter controls -->
+        <div class="filter-controls">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="data-analysis">Data Analysis</button>
+          <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
+          <button class="filter-btn" data-filter="visualization">Visualization</button>
+          <button class="filter-btn" data-filter="optimization">Optimization</button>
+        </div>
+      </section>
+      
+      <!-- Projects section -->
+      <div class="section-header">All Projects</div>
+      <section class="projects-grid">
+        <!-- Airline Loyalty Analytics -->
+        <div class="project-card" data-category="data-analysis machine-learning">
+          <div class="project-img" style="position: relative; overflow: hidden;">
+            <img src="projects/image/airline_banner.png" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+            <!-- Dark overlay for better text readability -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)); z-index: 1;"></div>
+            <!-- Title with text shadow -->
+            <span style="position: relative; z-index: 2; font-size: 22px; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">Airline Loyalty Analytics</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Customer Segmentation & Retention: Insights from Loyalty Analytics</h3>
+            <p class="project-desc">
+              Analysis of Northern Lights Air's loyalty program using statistical testing and clustering techniques to identify key customer segments and optimize retention strategies.
+            </p>
+            <div class="project-tech">K-means Clustering • A/B Testing • Hypothesis Testing • Statistical Analysis • PCA • Python • Pandas • Scikit-learn</div>
+            <div class="project-links">
+              <a href="projects/airline.html" class="project-btn btn-primary">View Project</a>
+              <a href="#" class="project-btn btn-secondary">Github</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sales Dashboard -->
+        <div class="project-card" data-category="visualization data-analysis">
+          <div class="project-img" style="position: relative; overflow: hidden;">
+            <!-- Dark overlay for better text readability -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)); z-index: 1;"></div>
+            <!-- Title with text shadow -->
+            <span style="position: relative; z-index: 2; font-size: 22px; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">Sales Dashboard</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Interactive Sales Dashboard</h3>
+            <p class="project-desc">
+              Created an interactive dashboard with dynamic filtering capabilities to visualize sales performance across regions, helping stakeholders identify trends and opportunities.
+            </p>
+            <div class="project-tech">Tableau • SQL • Excel</div>
+            <div class="project-links">
+              <a href="projects/sales_powerbi.html" class="project-btn btn-primary">View Project</a>
+              <a href="#" class="project-btn btn-secondary">Code</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Supply Chain Network -->
+        <div class="project-card" data-category="optimization data-analysis">
+          <div class="project-img" style="position: relative; overflow: hidden;">
+            <img src="projects/image/lp_logist_banner.png" style="position: absolute; width: 100%; height: 100%; object-fit: cover;">
+            <!-- Dark overlay for better text readability -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)); z-index: 1;"></div>
+            <!-- Title with text shadow -->
+            <span style="position: relative; z-index: 2; font-size: 22px; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">Supply Chain Network</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Supply Chain Network Optimization</h3>
+            <p class="project-desc">
+              Multi-stage linear programming model that optimizes production allocation, transportation routes, and shipping modes across Southeast Asia, reducing costs by 15.31% during fuel price surges.
+            </p>
+            <div class="project-tech">Python • Linear Programming • PuLP • Gurobi • Pandas • Matplotlib</div>
+            <div class="project-links">
+              <a href="projects/lp_logistics.html" class="project-btn btn-primary">View Project</a>
+              <a href="#" class="project-btn btn-secondary">Github</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sentiment Analysis -->
+        <div class="project-card" data-category="machine-learning">
+          <div class="project-img" style="position: relative; overflow: hidden;">
+            <img src="projects/image/senti_banner.png" style="position: absolute; width: 100%; height: 100%; object-fit: cover;">
+            <!-- Dark overlay for better text readability -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)); z-index: 1;"></div>
+            <!-- Title with text shadow -->
+            <span style="position: relative; z-index: 2; font-size: 24px; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">Sentiment Analysis</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Sentiment Analysis</h3>
+            <p class="project-desc">
+              Using Deep Learning Models: Convolutional Network(CNN), Long-Short Term Memory(LSTM), and Neural Network(NN) models to predict reader sentiment in news articles.
+            </p>
+            <div class="project-tech">Machine Learning • Deep Learning • NLP • Python • Classification</div>
+            <div class="project-links">
+              <a href="projects/senti.html" class="project-btn btn-primary">View Project</a>
+              <a href="#" class="project-btn btn-secondary">Github</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Market Basket Analysis -->
+        <div class="project-card" data-category="data-analysis">
+          <div class="project-img" style="position: relative; overflow: hidden;">
+            <!-- Dark overlay for better text readability -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)); z-index: 1;"></div>
+            <!-- Title with text shadow -->
+            <span style="position: relative; z-index: 2; font-size: 22px; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">Market Analysis</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Market Basket Analysis</h3>
+            <p class="project-desc">
+              Used association rule mining to identify frequently co-purchased products for a retail client, enabling targeted cross-selling strategies and optimized store layouts.
+            </p>
+            <div class="project-tech">R • Python • SQL • Gephi</div>
+            <div class="project-links">
+              <a href="#" class="project-btn btn-primary">View Project</a>
+              <a href="#" class="project-btn btn-secondary">Code</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Automated ETL Pipeline -->
+        <div class="project-card" data-category="data-analysis">
+          <div class="project-img" style="position: relative; overflow: hidden;">
+            <!-- Dark overlay for better text readability -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)); z-index: 1;"></div>
+            <!-- Title with text shadow -->
+            <span style="position: relative; z-index: 2; font-size: 22px; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">Data Pipeline</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Automated ETL Pipeline</h3>
+            <p class="project-desc">
+              Designed and implemented an ETL pipeline to automate data processing and reporting workflows, reducing manual effort by 70% and increasing data reliability.
+            </p>
+            <div class="project-tech">Airflow • Python • SQL • AWS</div>
+            <div class="project-links">
+              <a href="#" class="project-btn btn-primary">View Project</a>
+              <a href="#" class="project-btn btn-secondary">Code</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Back to top button -->
+      <a href="#" class="back-to-top" id="backToTop">↑</a>
+      
+      <!-- Footer -->
+      <footer class="footer">
+        <p>© 2025 Darlene Robertson. All rights reserved.</p>
+      </footer>
+    </div>
+    
+    <!-- JavaScript for filtering projects and back to top button -->
+    <script>
+      // Project filtering functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        // Add click event to filter buttons
+        filterButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Get filter value
+            const filterValue = button.getAttribute('data-filter');
+            
+            // Show/hide project cards based on filter
+            projectCards.forEach(card => {
+              if (filterValue === 'all') {
+                card.style.display = 'block';
+              } else {
+                const categories = card.getAttribute('data-category');
+                if (categories && categories.includes(filterValue)) {
+                  card.style.display = 'block';
+                } else {
+                  card.style.display = 'none';
+                }
+              }
+            });
+          });
+        });
+        
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 300) {
+            backToTopButton.classList.add('visible');
+          } else {
+            backToTopButton.classList.remove('visible');
+          }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      });
+    </script>
+  </body>
 </html>
