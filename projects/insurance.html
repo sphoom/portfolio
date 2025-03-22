@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -587,7 +586,107 @@
           <a href="../projects.html">Projects</a>
           <a href="../index.html#experience">Experience</a>
           <a href="../contact.html">Contact</a>
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <div class="sidebar-box">
+            <h3 class="sidebar-title">Table of Contents</h3>
+            <ul class="table-of-contents">
+              <li><a href="#overview">Executive Summary</a></li>
+              <li><a href="#business-context">Business Context & Objectives</a></li>
+              <li><a href="#data-overview">Data Overview</a></li>
+              <li><a href="#exploratory-analysis">Exploratory Analysis</a></li>
+              <li><a href="#statistical-testing">Statistical Testing</a></li>
+              <li><a href="#predictive-modeling">Predictive Modeling</a></li>
+              <li><a href="#customer-segmentation">Customer Segmentation</a></li>
+              <li><a href="#strategic-implications">Strategic Implications</a></li>
+              <li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+          </div>
+          
+          <div class="sidebar-box">
+            <h3 class="sidebar-title">Technologies Used</h3>
+            <div class="tech-list">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">Statsmodels</span>
+              <span class="tech-tag">Seaborn</span>
+              <span class="tech-tag">Matplotlib</span>
+              <span class="tech-tag">Jupyter</span>
+            </div>
+            
+            <div class="project-links">
+              <a href="#" class="project-btn btn-primary">View Full Notebook</a>
+              <a href="#" class="project-btn btn-secondary">GitHub Repository</a>
+            </div>
+          </div>
         </div>
+      </div>
+      
+      <!-- Related Projects -->
+      <h2 class="related-projects-title">Related Projects</h2>
+      <div class="related-projects">
+        <a href="supply-chain-optimization.html" class="related-card">
+          <div class="related-img">Optimization</div>
+          <div class="related-content">
+            <h3 class="related-title">Supply Chain Network Optimization</h3>
+            <p class="related-desc">Linear programming model to optimize logistics network across production, transportation, and distribution.</p>
+          </div>
+        </a>
+        
+        <a href="customer-churn.html" class="related-card">
+          <div class="related-img">Predictive</div>
+          <div class="related-content">
+            <h3 class="related-title">Customer Churn Prediction</h3>
+            <p class="related-desc">Machine learning model to predict and prevent customer churn using behavioral indicators.</p>
+          </div>
+        </a>
+        
+        <a href="market-segmentation.html" class="related-card">
+          <div class="related-img">Clustering</div>
+          <div class="related-content">
+            <h3 class="related-title">Market Segmentation Analysis</h3>
+            <p class="related-desc">Identifying distinct customer groups for targeted marketing campaigns.</p>
+          </div>
+        </a>
+      </div>
+      
+      <!-- Footer -->
+      <footer class="footer">
+        <p>© 2025 DR. All rights reserved.</p>
+      </footer>
+    </div>
+    
+    <script>
+      function toggleCodeSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section.style.display === 'block') {
+          section.style.display = 'none';
+        } else {
+          section.style.display = 'block';
+        }
+      }
+      
+      function changeCodeTab(panelId, tabElement) {
+        // Hide all code panels
+        const panels = tabElement.parentElement.parentElement.getElementsByClassName('code-panel');
+        for (let i = 0; i < panels.length; i++) {
+          panels[i].classList.remove('active');
+        }
+        
+        // Deactivate all tabs
+        const tabs = tabElement.parentElement.getElementsByClassName('code-tab');
+        for (let i = 0; i < tabs.length; i++) {
+          tabs[i].classList.remove('active');
+        }
+        
+        // Activate the selected tab and panel
+        document.getElementById(panelId).classList.add('active');
+        tabElement.classList.add('active');
+      }
+    </script>
+  </body>
+</html>
       </nav>
       
       <!-- Project Header -->
@@ -735,4 +834,366 @@
           <button class="code-toggle-btn" onclick="toggleCodeSection('edaCode')">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
               <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-              <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5
+              <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/>
+            </svg>
+            Show EDA Code
+          </button>
+          
+          <div id="edaCode" class="code-content">
+            <div class="code-tabs">
+              <div class="code-tab active" onclick="changeCodeTab('chargeAnalysis', this)">Charge Analysis</div>
+              <div class="code-tab" onclick="changeCodeTab('factorVisualization', this)">Factor Visualization</div>
+            </div>
+            
+            <div id="chargeAnalysis" class="code-panel active">
+              <p>Jupyter notebook code will be embedded here</p>
+            </div>
+            
+            <div id="factorVisualization" class="code-panel">
+              <p>Jupyter notebook code will be embedded here</p>
+            </div>
+          </div>
+
+          <h2 id="statistical-testing">Statistical Testing</h2>
+          <p>
+            To quantify the impact of key factors on insurance charges, I conducted rigorous statistical testing using appropriate methods for each hypothesis.
+          </p>
+          
+          <h3>Smoking Status Impact</h3>
+          <p>
+            A t-test comparing smokers vs. non-smokers revealed:
+          </p>
+          <ul>
+            <li><strong>t-statistic: 46.35</strong></li>
+            <li><strong>p-value: &lt; 0.00001</strong></li>
+            <li>This confirms smoking status has an extremely significant impact on insurance charges</li>
+          </ul>
+          
+          <h3>Regional Differences</h3>
+          <p>
+            ANOVA testing on regional variations showed:
+          </p>
+          <ul>
+            <li><strong>F-statistic: 2.93</strong></li>
+            <li><strong>p-value: 0.0328</strong></li>
+            <li>A post-hoc Tukey HSD test identified that only the southeast vs. southwest comparison was significant (p = 0.0477)</li>
+          </ul>
+          
+          <h3>BMI and Smoking Interaction</h3>
+          <p>
+            ANCOVA analysis revealed a powerful interaction between BMI and smoking:
+          </p>
+          <ul>
+            <li><strong>Smoker effect: F = 3199.85, p &lt; 0.001</strong></li>
+            <li><strong>BMI effect: F = 197.25, p &lt; 0.001</strong></li>
+            <li><strong>Interaction effect: F = 433.13, p &lt; 0.001</strong></li>
+            <li>This indicates that BMI not only impacts charges independently but also significantly amplifies the cost effect of smoking</li>
+          </ul>
+          
+          <!-- Visualization Placeholder for BMI and Smoking Interaction -->
+          <div class="viz-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <p>BMI and Smoking Interaction Visualization</p>
+            <p>(Showing the combined effect of BMI and smoking status on charges)</p>
+          </div>
+          
+          <button class="code-toggle-btn" onclick="toggleCodeSection('statisticalCode')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+              <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/>
+            </svg>
+            Show Statistical Testing Code
+          </button>
+          
+          <div id="statisticalCode" class="code-content">
+            <div class="code-tabs">
+              <div class="code-tab active" onclick="changeCodeTab('ttest', this)">T-Test (Smokers)</div>
+              <div class="code-tab" onclick="changeCodeTab('anova', this)">ANOVA (Regions)</div>
+              <div class="code-tab" onclick="changeCodeTab('ancova', this)">ANCOVA (BMI & Smoking)</div>
+            </div>
+            
+            <div id="ttest" class="code-panel active">
+              <p>Jupyter notebook code will be embedded here</p>
+            </div>
+            
+            <div id="anova" class="code-panel">
+              <p>Jupyter notebook code will be embedded here</p>
+            </div>
+            
+            <div id="ancova" class="code-panel">
+              <p>Jupyter notebook code will be embedded here</p>
+            </div>
+          </div>
+
+          <h2 id="predictive-modeling">Predictive Modeling</h2>
+          <p>
+            To create a reliable pricing model, I developed and evaluated several predictive approaches, refining them to achieve the highest possible accuracy.
+          </p>
+          
+          <h3>Linear Regression Challenges</h3>
+          <p>
+            Initial linear regression models revealed several challenges:
+          </p>
+          <ul>
+            <li>The target variable (charges) showed significant non-linearity and heteroscedasticity</li>
+            <li>Residuals were not normally distributed, violating key regression assumptions</li>
+            <li>Box-Cox transformation improved the model but didn't fully resolve these issues</li>
+          </ul>
+          
+          <h3>Polynomial Regression Solution</h3>
+          <p>
+            A polynomial regression model with carefully selected features and transformations achieved significantly better results:
+          </p>
+          <ul>
+            <li><strong>R² = 0.864</strong> on the test set</li>
+            <li><strong>RMSE = 0.295</strong> (on log-transformed charges)</li>
+            <li>The model captured both the main effects and interactions between key variables</li>
+          </ul>
+          
+          <!-- Visualization Placeholder for Prediction Results -->
+          <div class="viz-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+            <p>Actual vs Predicted Charges Visualization</p>
+            <p>(Showing model prediction accuracy across the range of insurance charges)</p>
+          </div>
+          
+          <h3>High-Cost Classification Model</h3>
+          <p>
+            To support risk screening, I developed a logistic regression model to identify potentially high-cost customers (top quartile):
+          </p>
+          <ul>
+            <li><strong>AUC = 0.86</strong></li>
+            <li><strong>Accuracy = 76%</strong></li>
+            <li><strong>Precision = 0.275</strong>, <strong>Recall = 0.786</strong>, <strong>F1 = 0.407</strong></li>
+            <li>Most influential predictors: smoker status, BMI, and sex</li>
+          </ul>
+          
+          <!-- Visualization Placeholder for Classification Results -->
+          <div class="viz-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+            <p>ROC Curve and Feature Importance Visualization</p>
+            <p>(Showing classification performance and key predictive features)</p>
+          </div>
+          
+          <button class="code-toggle-btn" onclick="toggleCodeSection('modelingCode')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+              <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/>
+            </svg>
+            Show Modeling Code
+          </button>
+          
+          <div id="modelingCode" class="code-content">
+            <div class="code-tabs">
+              <div class="code-tab active" onclick="changeCodeTab('polyRegression', this)">Polynomial Regression</div>
+              <div class="code-tab" onclick="changeCodeTab('logisticRegression', this)">Logistic Regression</div>
+              <div class="code-tab" onclick="changeCodeTab('modelEvaluation', this)">Model Evaluation</div>
+            </div>
+            
+            <div id="polyRegression" class="code-panel active">
+              <p>Jupyter notebook code will be embedded here</p>
+            </div>
+            
+            <div id="logisticRegression" class="code-panel">
+              <p>Jupyter notebook code will be embedded here</p>
+            </div>
+            
+            <div id="modelEvaluation" class="code-panel">
+              <p>Jupyter notebook code will be embedded here</p>
+            </div>
+          </div>
+          
+          <h2 id="customer-segmentation">Customer Segmentation</h2>
+          <p>
+            To enable targeted marketing and pricing strategies, I performed customer segmentation using KMeans clustering with careful feature selection and preprocessing.
+          </p>
+          
+          <h3>Clustering Approach</h3>
+          <p>
+            The clustering analysis involved:
+          </p>
+          <ul>
+            <li>Selecting an optimal number of clusters (k=4) using the elbow method</li>
+            <li>Using principal component analysis (PCA) for dimensionality reduction and visualization</li>
+            <li>Standardizing features to ensure equal weighting in the clustering process</li>
+          </ul>
+          
+          <!-- Visualization Placeholder for Customer Clusters -->
+          <div class="viz-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+            <p>Customer Segmentation Visualization</p>
+            <p>(Showing the four distinct customer clusters based on PCA)</p>
+          </div>
+          
+          <h3>Cluster Profiles</h3>
+          <p>
+            The analysis revealed four distinct customer segments, each with unique characteristics:
+          </p>
+          
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Cluster</th>
+                <th>Age</th>
+                <th>BMI</th>
+                <th>Children</th>
+                <th>Charges</th>
+                <th>Smoker Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>40.1</td>
+                <td>30.0</td>
+                <td>2.7</td>
+                <td>$10,969</td>
+                <td>12.3%</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>25.4</td>
+                <td>29.2</td>
+                <td>0.4</td>
+                <td>$5,431</td>
+                <td>10.0%</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>39.4</td>
+                <td>35.3</td>
+                <td>1.1</td>
+                <td>$41,056</td>
+                <td>95.5%</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>52.5</td>
+                <td>31.0</td>
+                <td>0.4</td>
+                <td>$12,788</td>
+                <td>9.9%</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <h3>Segment Descriptions</h3>
+          <div class="results-grid">
+            <div class="result-card">
+              <h4>Cluster 0: Family-Oriented</h4>
+              <p>Middle-aged families with multiple children. They show moderate BMI and are mostly non-smokers. Their charges are mid-range, suggesting typical health plan users with some dependents.</p>
+              <div class="stat">40.1</div>
+              <p>Average age (years)</p>
+            </div>
+            <div class="result-card">
+              <h4>Cluster 1: Young Adults</h4>
+              <p>Young adults with few or no children. Low average charges and low smoker rate. Ideal candidates for low-tier or digital-first health plans.</p>
+              <div class="stat">$5,431</div>
+              <p>Average annual charges</p>
+            </div>
+            <div class="result-card">
+              <h4>Cluster 2: High-Risk</h4>
+              <p>High-risk individuals with the highest charges, elevated BMI, and a smoker rate over 95%. This group would be most impacted by lifestyle-based pricing adjustments.</p>
+              <div class="stat">95.5%</div>
+              <p>Smoker rate</p>
+            </div>
+            <div class="result-card">
+              <h4>Cluster 3: Older Adults</h4>
+              <p>Older adults with no children, moderately high BMI, and mid-to-high charges. Their profile aligns with individuals nearing or in retirement.</p>
+              <div class="stat">52.5</div>
+              <p>Average age (years)</p>
+            </div>
+          </div>
+          
+          <button class="code-toggle-btn" onclick="toggleCodeSection('clusteringCode')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+              <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/>
+            </svg>
+            Show Clustering Code
+          </button>
+          
+          <div id="clusteringCode" class="code-content">
+            <div class="code-tabs">
+              <div class="code-tab active" onclick="changeCodeTab('kmeansCluster', this)">KMeans Clustering</div>
+              <div class="code-tab" onclick="changeCodeTab('clusterVisualization', this)">Cluster Visualization</div>
+              <div class="code-tab" onclick="changeCodeTab('clusterAnalysis', this)">Cluster Analysis</div>
+            </div>
+            
+            <div id="kmeansCluster" class="code-panel active">
+              <p>Jupyter notebook code will be embedded here</p>
+            </div>
+            
+            <div id="clusterVisualization" class="code-panel">
+              <p>Jupyter notebook code will be embedded here</p>
+            </div>
+            
+            <div id="clusterAnalysis" class="code-panel">
+              <p>Jupyter notebook code will be embedded here</p>
+            </div>
+          </div>
+          
+          <h2 id="strategic-implications">Strategic Implications</h2>
+          <p>
+            The analysis and modeling results provide several actionable strategic opportunities for the insurance provider:
+          </p>
+          
+          <h3>Personalized Pricing Strategy</h3>
+          <ul>
+            <li><strong>Pricing Engine:</strong> Deploy the polynomial regression model as a pricing tool to generate data-driven quote estimates</li>
+            <li><strong>Risk-Based Pricing:</strong> Implement tiered pricing based on the significant risk factors identified (smoking status, BMI, age)</li>
+            <li><strong>Targeted Discounts:</strong> Offer conditional discounts for lifestyle improvements that directly impact costs (e.g., smoking cessation programs)</li>
+          </ul>
+          
+          <h3>Customer Segment-Specific Approaches</h3>
+          <p>
+            Each identified segment requires a tailored strategy:
+          </p>
+          <ul>
+            <li><strong>Cluster 1 (Young Adults):</strong> Develop entry-tier plans with digital-first options and preventive care focus</li>
+            <li><strong>Cluster 0 (Family-Oriented):</strong> Create family bundle plans with dependent coverage and school health partnership options</li>
+            <li><strong>Cluster 3 (Older Adults):</strong> Design age-focused plans with expanded prescription coverage and chronic condition management</li>
+            <li><strong>Cluster 2 (High-Risk):</strong> Implement premium plans with wellness program incentives and lifestyle coaching to mitigate costs</li>
+          </ul>
+          
+          <h3>Customer Acquisition & Retention</h3>
+          <ul>
+            <li><strong>Risk Screening:</strong> Apply the logistic regression classifier to identify high-risk applicants for additional underwriting</li>
+            <li><strong>Targeted Marketing:</strong> Focus acquisition efforts on the most profitable customer segments</li>
+            <li><strong>Retention Programs:</strong> Develop loyalty incentives tied to improved health metrics for high-risk customers</li>
+          </ul>
+          
+          <h2 id="conclusion">Conclusion</h2>
+          <p>
+            This analysis provides a comprehensive understanding of insurance cost drivers and customer segments, offering a foundation for data-driven decision-making in pricing, product development, and marketing strategies.
+          </p>
+          <p>
+            Key takeaways include:
+          </p>
+          <ul>
+            <li>Smoking status is the single most influential factor affecting insurance costs, with smokers paying 278% more on average</li>
+            <li>BMI has a synergistic effect with smoking, creating a compounding risk profile for certain customers</li>
+            <li>Age remains a significant predictor of cost, but its impact varies greatly by segment</li>
+            <li>The four identified customer segments provide clear guidance for targeted product development and marketing</li>
+            <li>The predictive model achieves strong accuracy (R² = 0.86) suitable for production deployment in pricing systems</li>
+          </ul>
+          
+          <p>
+            By implementing the recommendations from this analysis, the insurance provider can potentially increase profitability while developing more personalized and competitive offerings for different customer segments.
+          </p>
+        </div>
