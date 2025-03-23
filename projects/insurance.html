@@ -793,40 +793,51 @@
           </div>
 
           <h2 id="statistical-testing">Statistical Testing</h2>
-          <p>
-            To quantify the impact of key factors on insurance charges, I conducted rigorous statistical testing using appropriate methods for each hypothesis.
-          </p>
-          
-          <h3>Smoking Status Impact</h3>
-          <p>
-            A t-test comparing smokers vs. non-smokers revealed:
-          </p>
-          <ul>
-            <li><strong>t-statistic: 46.35</strong></li>
-            <li><strong>p-value: &lt; 0.00001</strong></li>
-            <li>This confirms smoking status has an extremely significant impact on insurance charges</li>
-          </ul>
-          
-          <h3>Regional Differences</h3>
-          <p>
-            ANOVA testing on regional variations showed:
-          </p>
-          <ul>
-            <li><strong>F-statistic: 2.93</strong></li>
-            <li><strong>p-value: 0.0328</strong></li>
-            <li>A post-hoc Tukey HSD test identified that only the southeast vs. southwest comparison was significant (p = 0.0477)</li>
-          </ul>
-          
-          <h3>BMI and Smoking Interaction</h3>
-          <p>
-            ANCOVA analysis revealed a powerful interaction between BMI and smoking:
-          </p>
-          <ul>
-            <li><strong>Smoker effect: F = 3199.85, p &lt; 0.001</strong></li>
-            <li><strong>BMI effect: F = 197.25, p &lt; 0.001</strong></li>
-            <li><strong>Interaction effect: F = 433.13, p &lt; 0.001</strong></li>
-            <li>This indicates that BMI not only impacts charges independently but also significantly amplifies the cost effect of smoking</li>
-          </ul>
+            <p>
+              I conducted hypothesis testing at a 95% confidence level to assess how key factors influence insurance charges. 
+              This means the results are statistically reliable, with a low probability (5%) of observing the results by random chance alone.
+            </p>
+            
+            <h3>Methodology Overview</h3>
+            <p>
+              Each testing approach was selected to match the specific hypothesis and data characteristics:
+            </p>
+            <ul>
+              <li><strong>t-test:</strong> Used to compare means between two independent groups (smokers vs. non-smokers)</li>
+              <li><strong>ANOVA:</strong> Applied to analyze variance across multiple groups (regions)</li>
+              <li><strong>ANCOVA:</strong> Employed to assess interaction effects between continuous and categorical variables (BMI and smoking status)</li>
+            </ul>
+            
+            <h3>Smoking Status Impact</h3>
+            <p>
+              A t-test comparing smokers vs. non-smokers revealed:
+            </p>
+            <ul>
+              <li><strong>t-statistic: 46.35</strong></li>
+              <li><strong>p-value: &lt; 0.00001</strong></li>
+              <li>This confirms smoking status has an extremely significant impact on insurance charges</li>
+            </ul>
+            
+            <h3>Regional Differences</h3>
+            <p>
+              ANOVA testing on regional variations showed:
+            </p>
+            <ul>
+              <li><strong>F-statistic: 2.93</strong></li>
+              <li><strong>p-value: 0.0328</strong></li>
+              <li>A post-hoc Tukey HSD test identified that only the southeast vs. southwest comparison was significant (p = 0.0477)</li>
+            </ul>
+            
+            <h3>BMI and Smoking Interaction</h3>
+            <p>
+              ANCOVA analysis revealed a powerful interaction between BMI and smoking:
+            </p>
+            <ul>
+              <li><strong>Smoker effect: F = 3199.85, p &lt; 0.001</strong></li>
+              <li><strong>BMI effect: F = 197.25, p &lt; 0.001</strong></li>
+              <li><strong>Interaction effect: F = 433.13, p &lt; 0.001</strong></li>
+              <li>This indicates that BMI not only impacts charges independently but also significantly amplifies the cost effect of smoking</li>
+            </ul>
           
           <!-- Visualization Placeholder for BMI and Smoking Interaction -->
           <div class="viz-placeholder">
