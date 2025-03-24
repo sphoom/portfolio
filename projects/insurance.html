@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Insurance Risk and Pricing Analysis</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs2015.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    
     <style>
       /* Reset and base styles */
       * {
@@ -13,27 +19,27 @@
         box-sizing: border-box;
         font-family: 'Inter', sans-serif;
       }
-
+    
       body {
         background-color: #ffffff;
         color: #333;
         line-height: 1.7;
         font-size: 16px;
       }
-
+    
       .container {
         max-width: 1140px;
         margin: 0 auto;
         padding: 0 20px;
       }
-
+    
       /* Typography improvements */
       p {
         margin-bottom: 1.5rem;
         font-size: 16px;
         color: #444;
       }
-
+    
       h2 {
         font-size: 28px;
         margin: 40px 0 20px;
@@ -41,21 +47,21 @@
         padding-bottom: 8px;
         border-bottom: 2px solid #f0f0f0;
       }
-
+    
       h3 {
         font-size: 22px;
         margin: 30px 0 15px;
         color: #444;
       }
-
+    
       ul, ol {
         margin: 0 0 1.5rem 1.5rem;
       }
-
+    
       li {
         margin-bottom: 0.7rem;
       }
-
+    
       /* Navigation */
       .nav {
         display: flex;
@@ -65,34 +71,34 @@
         border-bottom: 1px solid #f0f0f0;
         margin-bottom: 20px;
       }
-
+    
       .nav-logo {
         font-size: 26px;
         font-weight: 700;
         color: #1E88E5;
       }
-
+    
       .nav-links {
         display: flex;
         gap: 30px;
       }
-
+    
       .nav-links a {
         color: #1E88E5;
         text-decoration: none;
         font-weight: 500;
         transition: color 0.3s;
       }
-
+    
       .nav-links a:hover {
         color: #00ACC1;
       }
-
+    
       /* Project Header */
       .project-header {
         padding: 40px 0 30px;
       }
-
+    
       .breadcrumb {
         display: flex;
         gap: 10px;
@@ -100,19 +106,19 @@
         margin-bottom: 20px;
         color: #666;
       }
-
+    
       .breadcrumb a {
         color: #1E88E5;
         text-decoration: none;
       }
-
+    
       .project-title {
         font-size: 36px;
         color: #1E88E5;
         margin-bottom: 20px;
         line-height: 1.2;
       }
-
+    
       .project-meta {
         display: flex;
         flex-wrap: wrap;
@@ -121,13 +127,13 @@
         color: #666;
         font-size: 14px;
       }
-
+    
       .meta-item {
         display: flex;
         align-items: center;
         gap: 8px;
       }
-
+    
       /* Project Banner */
       .project-banner {
         width: 100%;
@@ -138,7 +144,7 @@
         position: relative;
         overflow: hidden;
       }
-
+    
       .banner-overlay {
         position: absolute;
         top: 0;
@@ -153,18 +159,18 @@
         text-align: center;
         color: white;
       }
-
+    
       .banner-title {
         font-size: 32px;
         font-weight: 600;
         margin-bottom: 10px;
       }
-
+    
       .banner-subtitle {
         font-size: 18px;
         opacity: 0.9;
       }
-
+    
       /* Project Content */
       .project-content {
         display: grid;
@@ -172,15 +178,21 @@
         gap: 40px;
         margin-bottom: 60px;
       }
-
+    
+      /* Main content with overflow control */
+      .main-content {
+        overflow-x: hidden;
+        max-width: 100%;
+      }
+    
       .main-content h2 {
         margin-top: 40px;
       }
-
+    
       .main-content h2:first-child {
         margin-top: 0;
       }
-
+    
       /* Improve visibility of links */
       .main-content a {
         color: #1E88E5;
@@ -189,11 +201,11 @@
         border-bottom: 1px solid transparent;
         transition: border-color 0.3s;
       }
-
+    
       .main-content a:hover {
         border-color: #1E88E5;
       }
-
+    
       /* Image containers with better spacing */
       .chart-container {
         background: white;
@@ -204,13 +216,13 @@
         text-align: center;
         box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       }
-
+    
       .chart-container img {
         max-width: 90%;
         height: auto;
         border-radius: 4px;
       }
-
+    
       .chart-container p {
         margin-top: 15px;
         margin-bottom: 0;
@@ -218,7 +230,7 @@
         font-style: italic;
         font-size: 14px;
       }
-
+    
       /* Table styling */
       .data-table {
         width: 100%;
@@ -229,7 +241,7 @@
         border-radius: 8px;
         overflow: hidden;
       }
-
+    
       .data-table th {
         background-color: rgba(30, 136, 229, 0.1);
         color: #1E88E5;
@@ -237,28 +249,30 @@
         padding: 15px;
         font-weight: 600;
       }
-
+    
       .data-table td {
         border-bottom: 1px solid #eee;
         padding: 15px;
         color: #444;
       }
-
+    
       .data-table tr:last-child td {
         border-bottom: none;
       }
-
+    
       .data-table tr:hover td {
         background-color: rgba(0,0,0,0.01);
       }
-
+    
       /* Sidebar improvements */
       .sidebar {
         position: sticky;
         top: 30px;
-        align-self: start;
+        height: calc(100vh - 60px);
+        overflow-y: auto;
+        z-index: 10;
       }
-
+    
       .sidebar-box {
         background: rgba(30, 136, 229, 0.05);
         border: 1px solid rgba(30, 136, 229, 0.1);
@@ -267,7 +281,7 @@
         margin-bottom: 30px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.03);
       }
-
+    
       .sidebar-title {
         font-size: 18px;
         margin-bottom: 20px;
@@ -275,11 +289,11 @@
         padding-bottom: 10px;
         border-bottom: 1px solid rgba(30, 136, 229, 0.1);
       }
-
+    
       .tech-list {
         margin-bottom: 25px;
       }
-
+    
       .tech-tag {
         display: inline-block;
         background: rgba(30, 136, 229, 0.1);
@@ -291,13 +305,13 @@
         margin: 0 5px 10px 0;
         font-weight: 500;
       }
-
+    
       .project-links {
         display: flex;
         flex-direction: column;
         gap: 12px;
       }
-
+    
       .project-btn {
         padding: 12px 15px;
         border-radius: 6px;
@@ -308,32 +322,42 @@
         display: block;
         transition: transform 0.2s, box-shadow 0.2s;
       }
-
+    
       .project-btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       }
-
+    
       .btn-primary {
         background: linear-gradient(90deg, #1E88E5, #00ACC1);
         color: white;
       }
-
+    
       .btn-secondary {
         background: rgba(0, 0, 0, 0.05);
         color: #444;
       }
-
+    
       .table-of-contents {
-        list-style-type: none;
-        margin-left: 0;
+        max-height: calc(100vh - 180px);
+        overflow-y: auto;
+        scrollbar-width: thin;
       }
-
+    
+      .table-of-contents::-webkit-scrollbar {
+        width: 4px;
+      }
+    
+      .table-of-contents::-webkit-scrollbar-thumb {
+        background-color: rgba(30, 136, 229, 0.3);
+        border-radius: 4px;
+      }
+    
       .table-of-contents li {
         margin-bottom: 12px;
         line-height: 1.4;
       }
-
+    
       .table-of-contents a {
         color: #1E88E5;
         text-decoration: none;
@@ -341,12 +365,12 @@
         display: block;
         padding-left: 0;
       }
-
+    
       .table-of-contents a:hover {
         color: #00ACC1;
         padding-left: 5px;
       }
-
+    
       /* Code toggle styling */
       .code-toggle-btn {
         display: inline-flex;
@@ -363,12 +387,15 @@
         font-weight: 500;
         transition: background-color 0.2s;
       }
-
+    
       .code-toggle-btn:hover {
         background: rgba(30, 136, 229, 0.12);
       }
-
+    
+      /* Code content container */
       .code-content {
+        position: relative;
+        z-index: 1;
         background: #f9fbff;
         border: 1px solid #e0e9f5;
         border-radius: 10px;
@@ -378,8 +405,324 @@
         color: #333;
         box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         overflow-x: auto;
+        max-width: 100%;
+      }
+    
+      /* Code tabs styling */
+      .code-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e1e4e8;
+        padding-bottom: 1px;
+      }
+    
+      .code-tab {
+        padding: 8px 16px;
+        cursor: pointer;
+        border: 1px solid #e1e4e8;
+        border-bottom: none;
+        margin-bottom: -1px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        color: #1E88E5;
+        font-size: 14px;
+        transition: all 0.2s ease;
+        background-color: rgba(30, 136, 229, 0.05);
+      }
+    
+      .code-tab.active {
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #1E88E5;
+        color: #1E88E5;
+        font-weight: 500;
+      }
+    
+      .code-tab:hover:not(.active) {
+        background-color: rgba(30, 136, 229, 0.1);
+      }
+    
+      /* Code panel styling */
+      .code-panel {
+        display: none;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+    
+      .code-panel.active {
+        display: block;
+      }
+    
+      /* Pre and code styling */
+      pre {
+        margin: 0;
+        max-width: 100%;
+      }
+    
+      pre code, pre code.python {
+        display: block;
+        white-space: pre;
+        overflow-x: auto;
+        word-wrap: normal;
+        max-width: 100%;
+        background: #282c34; /* Dark background for better contrast */
+        color: #abb2bf; /* Light gray for main text */
+        border: 1px solid #1e232a;
+        border-radius: 8px;
+        padding: 20px;
+        font-family: "JetBrains Mono", "Fira Code", "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        letter-spacing: 0.5px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+    
+      /* Scrollbar styling */
+      .code-content::-webkit-scrollbar,
+      pre::-webkit-scrollbar,
+      pre code::-webkit-scrollbar {
+        height: 8px;
+      }
+    
+      .code-content::-webkit-scrollbar-thumb,
+      pre::-webkit-scrollbar-thumb,
+      pre code::-webkit-scrollbar-thumb {
+        background-color: rgba(30, 136, 229, 0.3);
+        border-radius: 4px;
+      }
+    
+      .code-content::-webkit-scrollbar-track,
+      pre::-webkit-scrollbar-track,
+      pre code::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    
+      /* Output container styling */
+      .output-container {
+        margin-top: 20px;
+        background: #f0f7ff;
+        border: 1px solid #d0e3f7;
+        border-radius: 6px;
+        padding: 15px;
+        max-width: 100%;
+      }
+    
+      .output-text {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        padding: 10px;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 13px;
+        line-height: 1.4;
+        overflow-x: auto;
+        margin-bottom: 15px;
+        color: #333;
+        white-space: pre-wrap;
+      }
+    
+      /* Syntax highlighting color scheme - One Dark inspired */
+      .hljs-keyword {
+        color: #c678dd !important; /* Purple for keywords */
+        font-weight: 600;
+      }
+    
+      .hljs-built_in {
+        color: #56b6c2 !important; /* Cyan for built-in functions */
+      }
+    
+      .hljs-type {
+        color: #e5c07b !important; /* Yellow for types */
+      }
+    
+      .hljs-literal {
+        color: #d19a66 !important; /* Orange for literals */
+      }
+    
+      .hljs-number {
+        color: #d19a66 !important; /* Orange for numbers */
+      }
+    
+      .hljs-regexp {
+        color: #98c379 !important; /* Green for regexps */
+      }
+    
+      .hljs-string {
+        color: #98c379 !important; /* Green for strings */
+      }
+    
+      .hljs-comment {
+        color: #7f848e !important; /* Darker gray for comments */
+        font-style: italic;
+      }
+    
+      .hljs-doctag {
+        color: #c678dd !important; /* Purple for doc tags */
+      }
+    
+      .hljs-meta {
+        color: #61afef !important; /* Blue for meta info */
+      }
+    
+      .hljs-tag {
+        color: #e06c75 !important; /* Red for tags */
+      }
+    
+      .hljs-attr {
+        color: #d19a66 !important; /* Orange for attributes */
+      }
+    
+      .hljs-function .hljs-title, 
+      .hljs-title.function {
+        color: #61afef !important; /* Blue for function names */
+        font-weight: 600;
+      }
+    
+      .hljs-class .hljs-title, 
+      .hljs-title.class {
+        color: #e5c07b !important; /* Yellow for class names */
+        font-weight: 600;
+      }
+    
+      .hljs-section {
+        color: #61afef !important; /* Blue for sections */
+        font-weight: 600;
+      }
+    
+      .hljs-selector-tag {
+        color: #c678dd !important; /* Purple for selector tags */
+      }
+    
+      .hljs-selector-id {
+        color: #e06c75 !important; /* Red for selector IDs */
+      }
+    
+      .hljs-selector-class {
+        color: #d19a66 !important; /* Orange for selector classes */
+      }
+    
+      .hljs-variable {
+        color: #e06c75 !important; /* Red for variables */
+      }
+    
+      /* Line highlighting (for important lines) */
+      .hljs-line-highlight {
+        background-color: rgba(97, 175, 239, 0.1);
+        display: block;
+        margin-right: -20px;
+        margin-left: -20px;
+        padding-right: 20px;
+        padding-left: 16px;
+        border-left: 4px solid #61afef;
+      }
+    
+      /* Add subtle line numbers (needs additional markup) */
+      .code-with-line-numbers {
+        counter-reset: line;
+        padding-left: 1em;
+      }
+    
+      .code-with-line-numbers .line {
+        position: relative;
+        display: block;
+      }
+    
+      .code-with-line-numbers .line:before {
+        counter-increment: line;
+        content: counter(line);
+        position: absolute;
+        left: -2em;
+        color: #5c6370;
+        text-align: right;
+        width: 1.5em;
+      }
+    
+      /* Add a title/label for code blocks */
+      .code-title {
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #abb2bf;
+        background: #21252b;
+        border: 1px solid #282c34;
+        border-bottom: none;
+        border-radius: 8px 8px 0 0;
+        padding: 8px 15px;
+        display: inline-block;
+        margin-bottom: -1px;
+        position: relative;
+        z-index: 5;
       }
 
+    /* Jupyter-style output container with code syntax highlighting */
+    .output-container {
+      margin-top: 20px;
+      background: #282c34; /* Same dark background as code blocks */
+      border: 1px solid #1e232a;
+      border-radius: 6px;
+      padding: 15px;
+      max-width: 100%;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .output-text {
+      background: #21252b; /* Slightly lighter than the container */
+      border: 1px solid #1e232a;
+      border-radius: 4px;
+      padding: 15px;
+      font-family: "JetBrains Mono", "Fira Code", "Consolas", "Monaco", "Courier New", monospace;
+      font-size: 14px;
+      line-height: 1.5;
+      overflow-x: auto;
+      margin-bottom: 0;
+      color: #abb2bf; /* Same light text color as code */
+      white-space: pre;
+    }
+
+    /* Add a title to the output container similar to Jupyter's "Out[n]:" */
+    .output-label {
+      font-family: "JetBrains Mono", "Fira Code", "Consolas", "Monaco", "Courier New", monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: #61afef; /* Blue color matching function names */
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    /* Style for numeric output values */
+    .output-number {
+      color: #d19a66; /* Orange color for numbers */
+    }
+
+    /* Style for string output values */
+    .output-string {
+      color: #98c379; /* Green color for strings */
+    }
+
+    /* Optional: Add a separator between code and output */
+    .code-output-separator {
+      height: 1px;
+      background: #3e4451;
+      margin: 10px 0;
+      border: none;
+    }
+
+    /* Scrollbar styling for output */
+    .output-text::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+
+    .output-text::-webkit-scrollbar-thumb {
+      background-color: #4d5566;
+      border-radius: 4px;
+    }
+
+    .output-text::-webkit-scrollbar-track {
+      background-color: #282c34;
+    }
+    
       /* Results section */
       .results-grid {
         display: grid;
@@ -387,28 +730,41 @@
         gap: 25px;
         margin: 25px 0 35px;
       }
-
+    
       .result-card {
-        background: white;
-        border: 1px solid #eee;
+        background: #282c34; /* Same dark background as code blocks */
+        border: 1px solid #1e232a;
         border-radius: 10px;
         padding: 25px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        color: #abb2bf; /* Light text color matching code */
+        overflow: hidden;
       }
-
+    
       .result-card h4 {
         font-size: 18px;
         margin-bottom: 15px;
-        color: #1E88E5;
+        color: #61afef; /* Blue color matching function names in code */
+        font-weight: 600;
+        border-bottom: 1px solid #3e4451;
+        padding-bottom: 10px;
       }
 
+      .result-card p {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #abb2bf; /* Same color as main code text */
+        margin-bottom: 15px;
+      }
+          
       .stat {
         font-size: 36px;
         font-weight: 700;
         margin: 15px 0;
-        color: #333;
+        color: #98c379; /* Green color matching strings in code */
+        font-family: "JetBrains Mono", "Fira Code", "Consolas", "Monaco", "Courier New", monospace;
       }
-
+          
       /* Related projects */
       .related-projects-title {
         font-size: 28px;
@@ -417,13 +773,24 @@
         text-align: center;
       }
 
+      .result-badge {
+        display: inline-block;
+        background: rgba(97, 175, 239, 0.1);
+        color: #61afef;
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-weight: 500;
+        margin-top: 10px;
+      }
+    
       .related-projects {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 25px;
         margin-bottom: 60px;
       }
-
+    
       .related-card {
         background: white;
         border: 1px solid #eee;
@@ -433,12 +800,12 @@
         text-decoration: none;
         box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       }
-
+    
       .related-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 16px rgba(0,0,0,0.1);
       }
-
+    
       .related-img {
         height: 120px;
         background: linear-gradient(45deg, #1E88E5, #00ACC1);
@@ -449,23 +816,23 @@
         font-weight: 500;
         font-size: 18px;
       }
-
+    
       .related-content {
         padding: 20px;
       }
-
+    
       .related-title {
         font-size: 18px;
         margin-bottom: 10px;
         color: #1E88E5;
       }
-
+    
       .related-desc {
         font-size: 14px;
         color: #555;
         line-height: 1.5;
       }
-
+    
       /* Footer */
       .footer {
         text-align: center;
@@ -474,7 +841,7 @@
         margin-top: 60px;
         border-top: 1px solid #f0f0f0;
       }
-
+    
       /* Visualization placeholder */
       .viz-placeholder {
         background-color: #f5f7fa;
@@ -487,58 +854,20 @@
         margin: 25px 0;
         flex-direction: column;
       }
-
+    
       .viz-placeholder svg {
         margin-bottom: 15px;
         color: #90a4ae;
       }
-
+    
       .viz-placeholder p {
         margin: 0;
         color: #607d8b;
         font-size: 16px;
         text-align: center;
       }
-
-      /* Code section styling */
-      .code-tabs {
-        display: flex;
-        border-bottom: 1px solid #e1e4e8;
-        margin-bottom: 15px;
-      }
-
-      .code-tab {
-        padding: 8px 16px;
-        cursor: pointer;
-        border: 1px solid transparent;
-        border-bottom: none;
-        margin-bottom: -1px;
-        color: #1E88E5;
-        font-size: 14px;
-        transition: background-color 0.2s;
-      }
-
-      .code-tab.active {
-        background-color: #f8f9fa;
-        border-color: #e1e4e8;
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
-        font-weight: 500;
-      }
-
-      .code-tab:hover:not(.active) {
-        background-color: #f1f2f3;
-      }
-
-      .code-panel {
-        display: none;
-      }
-
-      .code-panel.active {
-        display: block;
-      }
-
-      /* Responsive */
+    
+      /* Responsive styles */
       @media (max-width: 900px) {
         .project-content {
           grid-template-columns: 1fr;
@@ -573,15 +902,48 @@
           flex-direction: column;
           gap: 10px;
         }
+        .code-tabs {
+          flex-direction: column;
+          border-bottom: none;
+          gap: 5px;
+        }
+        
+        .code-tab {
+          margin-bottom: 0;
+          border: 1px solid #e1e4e8;
+          border-radius: 4px;
+        }
+        
+        .code-tab.active {
+          border-bottom: 1px solid #1E88E5;
+        }
+        
+        .output-container {
+          padding: 10px;
+        }
+        
+        pre code, pre code.python {
+          font-size: 13px;
+          padding: 15px;
+        }
+        
+        .code-title {
+          font-size: 12px;
+        }
+        .results-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .result-card {
+          padding: 20px;
+        }
+        
+        .stat {
+          font-size: 30px;
+        }
       }
     </style>
-  <html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Insurance Risk and Pricing Analysis</title>
-    <!-- CSS and head content unchanged -->
-  </head>
   <body>
     <div class="container">
       <!-- Navigation -->
@@ -594,38 +956,6 @@
           <a href="../contact.html">Contact</a>
         </div>
       </nav>
-    
-    <script>
-      function toggleCodeSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        if (section.style.display === 'block') {
-          section.style.display = 'none';
-        } else {
-          section.style.display = 'block';
-        }
-      }
-      
-      function changeCodeTab(panelId, tabElement) {
-        // Hide all code panels
-        const panels = tabElement.parentElement.parentElement.getElementsByClassName('code-panel');
-        for (let i = 0; i < panels.length; i++) {
-          panels[i].classList.remove('active');
-        }
-        
-        // Deactivate all tabs
-        const tabs = tabElement.parentElement.getElementsByClassName('code-tab');
-        for (let i = 0; i < tabs.length; i++) {
-          tabs[i].classList.remove('active');
-        }
-        
-        // Activate the selected tab and panel
-        document.getElementById(panelId).classList.add('active');
-        tabElement.classList.add('active');
-      }
-    </script>
-  </body>
-</html>
-      </nav>
       
       <!-- Project Header -->
       <header class="project-header">
@@ -634,7 +964,7 @@
           <a href="../projects.html">Projects</a> / 
           <span>Insurance Risk and Pricing Analysis</span>
         </div>
-        
+  
         <h1 class="project-title">Insurance Risk and Pricing Analysis</h1>
         
         <div class="project-meta">
@@ -867,8 +1197,46 @@
             </div>
             
             <div id="ttest" class="code-panel active">
-              <p>Jupyter notebook code will be embedded here</p>
-            </div>
+              <pre><code class="python">
+            # T-Test for comparing smokers vs non-smokers
+            from scipy import stats
+            smoker_charges = df.loc[df['smoker'] == 'yes', 'log_charges']
+            non_smoker_charges = df.loc[df['smoker'] == 'no', 'log_charges']
+            t_stat, p_value = stats.ttest_ind(smoker_charges, non_smoker_charges, equal_var=False)
+            print(f"t-statistic: {t_stat}, p-value: {p_value}")
+            
+            
+            plt.figure(figsize=(10, 6))
+            ax = sns.boxplot(x='smoker', y='log_charges', data=df)
+            sns.swarmplot(x='smoker', y='log_charges', data=df, color='black', alpha=0.5)
+            y_max = df['log_charges'].max()
+            plt.text(0.5, y_max * 1.05, f't-statistic: {t_stat:.3f}\np-value: {p_value:.5f}', 
+                    horizontalalignment='center', size=12, weight='bold',
+                    bbox=dict(facecolor='white', alpha=0.5))
+            if p_value < 0.05:
+                x1, x2 = 0, 1
+                y = y_max * 1.1
+                plt.plot([x1, x1, x2, x2], [y, y+0.05, y+0.05, y], lw=1.5, c='black')
+                plt.text((x1+x2)*.5, y+0.07, '*' if p_value < 0.05 else '**' if p_value < 0.01 else '***', 
+                        ha='center', va='bottom', color='black')
+            plt.title('Comparison of log_charges between smokers and non-smokers')
+            plt.ylabel('Log Charges')
+            plt.xlabel('Smoker Status')
+            plt.tight_layout()
+            plt.show()
+              </code></pre>
+
+              <div class="output-container">
+                <span class="output-label">Out[1]:</span>
+                <pre class="output-text">t-statistic: <span class="output-number">46.34663745443287</span>
+              p-value: <span class="output-number">6.784986731977081e-234</span></pre>
+              </div>
+              
+             <!-- <div class="result-card">
+                <div class="result-badge">t = 46.35</div>
+                <span class="result-badge">p-value < 0.00001</span>
+              </div>-->
+            </div> 
             
             <div id="anova" class="code-panel">
               <p>Jupyter notebook code will be embedded here</p>
@@ -1189,38 +1557,121 @@
       </div>
 
   </div> <!-- Close .project-content -->
-      <!-- Related Projects -->
-      <h2 class="related-projects-title">Related Projects</h2>
-      <div class="related-projects">
-        <a href="churn-prediction.html" class="related-card">
-          <div class="related-img">Predictive Analytics</div>
-          <div class="related-content">
-            <h3 class="related-title">Customer Churn Prediction</h3>
-            <p class="related-desc">Machine learning model to predict customer churn based on behavioral signals.</p>
-          </div>
-        </a>
-        
-        <a href="sales-dashboard.html" class="related-card">
-          <div class="related-img">Dashboard</div>
-          <div class="related-content">
-            <h3 class="related-title">Sales Performance Dashboard</h3>
-            <p class="related-desc">Interactive dashboard visualizing sales metrics by region and product category.</p>
-          </div>
-        </a>
-        
-        <a href="recommendation-engine.html" class="related-card">
-          <div class="related-img">Recommendation</div>
-          <div class="related-content">
-            <h3 class="related-title">Product Recommendation Engine</h3>
-            <p class="related-desc">Collaborative filtering algorithm for personalized product recommendations.</p>
-          </div>
-        </a>
+  <!-- Related Projects -->
+  <h2 class="related-projects-title">Related Projects</h2>
+  <div class="related-projects">
+    <a href="churn-prediction.html" class="related-card">
+      <div class="related-img">13.16</div>
+      <div class="related-content">
+        <h3 class="related-title">Customer Churn Prediction</h3>
+        <p class="related-desc">Machine learning model to predict customer churn based on behavioral signals.</p>
       </div>
+    </a>
+    
+    <a href="sales-dashboard.html" class="related-card">
+      <div class="related-img">Dashboard</div>
+      <div class="related-content">
+        <h3 class="related-title">Sales Performance Dashboard</h3>
+        <p class="related-desc">Interactive dashboard visualizing sales metrics by region and product category.</p>
+      </div>
+    </a>
+        
+    <a href="recommendation-engine.html" class="related-card">
+      <div class="related-img">Recommendation</div>
+      <div class="related-content">
+        <h3 class="related-title">Product Recommendation Engine</h3>
+        <p class="related-desc">Collaborative filtering algorithm for personalized product recommendations.</p>
+      </div>
+    </a>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Darlene Robertson. All rights reserved.</p>
+  </footer>
+</div>
+
+<script>
+  // Fixed toggle section functionality
+  function toggleCodeSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    const mainContent = document.querySelector('.main-content');
+    
+    // Store current scroll position
+    const scrollPos = window.scrollY;
+    
+    if (section.style.display === 'block') {
+      section.style.display = 'none';
+    } else {
+      section.style.display = 'block';
       
-      <!-- Footer -->
-      <footer class="footer">
-        <p>© 2025 Darlene Robertson. All rights reserved.</p>
-      </footer>
-    </div>
-  </body>
+      // Explicitly enforce main-content overflow settings
+      if (mainContent) {
+        mainContent.style.overflowX = 'hidden';
+        mainContent.style.maxWidth = '100%';
+      }
+      
+      // Apply syntax highlighting
+      if (typeof hljs !== 'undefined') {
+        section.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+      }
+    }
+    
+    // Restore scroll position
+    window.scrollTo(0, scrollPos);
+  }
+
+  function changeCodeTab(panelId, tabElement) {
+    // Store current scroll position
+    const scrollPos = window.scrollY;
+    
+    // Get the code content container
+    const codeContent = tabElement.closest('.code-content');
+    
+    // Hide all panels
+    const panels = codeContent.getElementsByClassName('code-panel');
+    for (let i = 0; i < panels.length; i++) {
+      panels[i].classList.remove('active');
+    }
+    
+    // Deactivate all tabs
+    const tabs = tabElement.parentElement.getElementsByClassName('code-tab');
+    for (let i = 0; i < tabs.length; i++) {
+      tabs[i].classList.remove('active');
+    }
+    
+    // Activate selected tab and panel
+    document.getElementById(panelId).classList.add('active');
+    tabElement.classList.add('active');
+    
+    // Restore scroll position
+    window.scrollTo(0, scrollPos);
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // Set code content sections to hidden by default
+    const codeSections = document.querySelectorAll('.code-content');
+    codeSections.forEach(section => {
+      section.style.display = 'none';
+    });
+    
+    // Apply syntax highlighting if available
+    if (typeof hljs !== 'undefined') {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+    }
+    
+    // Ensure main content has overflow set
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+      mainContent.style.overflowX = 'hidden';
+      mainContent.style.maxWidth = '100%';
+    }
+  });
+</script>
+</body>
 </html>
