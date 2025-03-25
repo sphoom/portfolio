@@ -8,9 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project Title - Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="conponents/components.js"></script>
-    <script src="scripts.js" defer></script>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../components/components.js"></script>
+    <script src="../scripts.js" defer></script>
+
   </head>
   <body>
     <!-- Header placeholder - loaded via components.js -->
@@ -56,7 +57,7 @@
       <!-- Project Banner -->
       <div class="project-banner">
         <!-- Image placeholder - update src attribute with actual image path -->
-        <img src="projects/image/project_banner.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" alt="Project Banner">
+        <img src="image/project_banner.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" alt="Project Banner">
         <div class="banner-overlay">
           <div class="banner-title">Project Title</div>
           <div class="banner-subtitle">Project Subtitle</div>
@@ -90,50 +91,49 @@
         View Full Screen
       </a>
     </section>
-        
-        <!-- Sidebar -->
-        <div class="sidebar">
-          <div class="sidebar-box">
-            <h3 class="sidebar-title">Table of Contents</h3>
-            <ul class="table-of-contents">
-              <li><a href="#overview">Project Overview</a></li>
-              <li><a href="#visualization">Data Visualization</a></li>
-              <li><a href="#results">Results Table</a></li>
-              <li><a href="#technical">Technical Details</a></li>
-              <li><a href="#code">Implementation</a></li>
-              <li><a href="#metrics">Key Metrics</a></li>
-              <li><a href="#conclusion">Conclusion</a></li>
-                </ul>
-              </div>
-               
-          <div class="sidebar-box">
-            <h3 class="sidebar-title">Technologies Used</h3>
-            <div class="tech-list">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">SQL</span>
-              <span class="tech-tag">Pandas</span>
-              <span class="tech-tag">Scikit-learn</span>
-              <span class="tech-tag">Matplotlib</span>
-            </div>
-            
-            <div class="project-links">
-              <a href="#" class="project-btn btn-primary">View Demo</a>
-              <a href="#" class="project-btn btn-secondary">GitHub</a>
-            </div>
-          </div>
-          
-          <div class="sidebar-box">
-            <h3 class="sidebar-title">Key Highlights</h3>
-            <ul style="list-style-type: none; margin-left: 0;">
-              <li>✓ Feature 1: Brief description</li>
-              <li>✓ Feature 2: Brief description</li>
-              <li>✓ Feature 3: Brief description</li>
-              <li>✓ Feature 4: Brief description</li>
-            </ul>
-          </div>
-        </div>
       </div>
-
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-box">
+      <h3 class="sidebar-title">Table of Contents</h3>
+      <ul class="table-of-contents">
+        <li><a href="#overview">Project Overview</a></li>
+        <li><a href="#visualization">Data Visualization</a></li>
+        <li><a href="#results">Results Table</a></li>
+        <li><a href="#technical">Technical Details</a></li>
+        <li><a href="#code">Implementation</a></li>
+        <li><a href="#metrics">Key Metrics</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+          </ul>
+        </div>
+       
+    <div class="sidebar-box">
+      <h3 class="sidebar-title">Technologies Used</h3>
+      <div class="tech-list">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">SQL</span>
+        <span class="tech-tag">Pandas</span>
+        <span class="tech-tag">Scikit-learn</span>
+        <span class="tech-tag">Matplotlib</span>
+      </div>
+      
+      <div class="project-links">
+        <a href="#" class="project-btn btn-primary">View Demo</a>
+        <a href="#" class="project-btn btn-secondary">GitHub</a>
+      </div>
+    </div>
+  
+    <div class="sidebar-box">
+      <h3 class="sidebar-title">Key Highlights</h3>
+      <ul style="list-style-type: none; margin-left: 0;">
+        <li>✓ Feature 1: Brief description</li>
+        <li>✓ Feature 2: Brief description</li>
+        <li>✓ Feature 3: Brief description</li>
+        <li>✓ Feature 4: Brief description</li>
+      </ul>
+    </div>
+  </div>
+</div>
         <!-- Related Projects -->
         <h2 class="related-projects-title">Related Projects</h2>
         <div class="related-projects">
@@ -162,6 +162,9 @@
           </a>
         </div>
       </div>
-      
   <!-- Footer placeholder -->
+   <footer>
   <div id="footer-placeholder"></div>
+  </footer>
+  </body>
+</html>

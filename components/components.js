@@ -10,10 +10,10 @@ function loadComponent(url, elementId) {
   
   document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('header-placeholder')) {
-      loadComponent('components/header.html', 'header-placeholder');
+      loadComponent('../components/header.html', 'header-placeholder');
     }
     
     if (document.getElementById('footer-placeholder')) {
-      loadComponent('components/footer.html', 'footer-placeholder');
+      loadComponent('../components/footer.html', 'footer-placeholder');
     }
   });
