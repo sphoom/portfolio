@@ -15,11 +15,11 @@ This repository contains the code for projects featured on my portfolio website.
 **Featured Projects**:
 Insurance Charges Prediction
 Predictive models to estimate insurance charges and segment customers into distinct risk profiles.
-[View Project Report](https://sphoom.github.io/portfolio/projects/insurance.html) | [View Code](/projects/insurance/code)
+[View Project Report](https://sphoom.github.io/portfolio/projects/insurance.html) | [View Code](/projects/code/insurance)
 
 Supply Chain Network Optimization
 Multi-stage linear programming model that optimizes production allocation, transportation routes, and shipping modes across Southeast Asia.
-[View Project Report](https://sphoom.github.io/portfolio/projects/lp_logistics.html) | [View Code](/projects/supply-chain-optimization/code)
+[View Project Report](https://sphoom.github.io/portfolio/projects/lp_logistics.html) | [View Code](/projects/code/supply-chain-optimization)
 
 See my [Webpage](https://sphoom.github.io/portfolio) for more projects.
 
