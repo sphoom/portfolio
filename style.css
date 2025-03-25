@@ -193,12 +193,15 @@ body.dark-theme a:hover {
 */
 
 .nav {
+  padding: 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 20px;
+}
+
+.nav-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border-light);
-  margin-bottom: 20px;
 }
 
 .nav-logo {
