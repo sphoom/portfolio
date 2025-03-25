@@ -3,59 +3,380 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sales Dashboard Project</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Project Title - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="components.js"></script>
     <script src="scripts.js" defer></script>
   </head>
   <body>
-    <!-- Header placeholder -->
+    <!-- Header placeholder - loaded via components.js -->
     <div id="header-placeholder"></div>
+    
     <!-- Project Header -->
-    <header class="project-header">
-      <div class="breadcrumb">
-        <a href="../index.html">Home</a> / 
-        <a href="../projects.html">Projects</a> / 
-        <span>Interactive Sales Dashboards</span>
+    <div class="container">
+      <header class="project-header">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> / 
+          <a href="projects.html">Projects</a> / 
+          <span>Project Title</span>
+        </div>
+        
+        <h1 class="project-title">Project Title</h1>
+        
+        <div class="project-meta">
+          <div class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+            </svg>
+            <!-- Category placeholder -->
+            Category
+          </div>
+          <div class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+            </svg>
+            <!-- Date placeholder -->
+            Completed: March 2025
+          </div>
+          <div class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+            </svg>
+            <!-- Project type placeholder -->
+            Project Type
+          </div>
+        </div>
+      </header>
+      
+      <!-- Project Banner -->
+      <div class="project-banner">
+        <!-- Image placeholder - update src attribute with actual image path -->
+        <img src="projects/image/project_banner.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" alt="Project Banner">
+        <div class="banner-overlay">
+          <div class="banner-title">Project Title</div>
+          <div class="banner-subtitle">Project Subtitle</div>
+        </div>
+      </div>
+      
+      <!-- Project Content -->
+      <div class="project-content">
+        <div class="main-content">
+          <!-- Overview Section -->
+          <h2 id="overview">Project Overview</h2>
+          <p>
+            <!-- Project overview placeholder -->
+            Brief description of the project, including its purpose, scope, and significance. 
+            Explain the problem being addressed and the approach taken to solve it.
+          </p>
+
+          <!-- Image Example -->
+          <h2 id="visualization">Data Visualization</h2>
+          <p>
+            Example of how to include a visualization image with caption.
+          </p>
+          <div class="chart-container">
+            <img src="projects/image/chart_example.png" alt="Data visualization chart">
+            <p>Figure 1: Chart showing relationship between variables X and Y</p>
+          </div>
+          
+          <!-- Table Example -->
+          <h2 id="results">Results Table</h2>
+          <p>
+            Example of how to include a data table in your project.
+          </p>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Baseline</th>
+                <th>Result</th>
+                <th>Change</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Metric 1</td>
+                <td>10.5</td>
+                <td>15.8</td>
+                <td>+50.5%</td>
+              </tr>
+              <tr>
+                <td>Metric 2</td>
+                <td>85.2</td>
+                <td>92.1</td>
+                <td>+8.1%</td>
+              </tr>
+              <tr>
+                <td>Metric 3</td>
+                <td>42.0</td>
+                <td>38.5</td>
+                <td>-8.3%</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <!-- Toggle Section Example -->
+          <h2 id="technical">Technical Details</h2>
+          <p>
+            Example of using a toggle button to show/hide technical details.
+          </p>
+          
+          <button class="math-toggle-btn" onclick="toggleMath()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+              <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/>
+            </svg>
+            Show Technical Details
+          </button>
+          
+          <div id="mathContent" class="math-content">
+            <h3>Technical Approach</h3>
+            <p>
+              This section contains detailed technical information that can be toggled on/off.
+            </p>
+            
+            <h4>Mathematical Formulation</h4>
+            <div class="constraint-formula">
+              f(x) = Σ<sub>i=1</sub><sup>n</sup> w<sub>i</sub>x<sub>i</sub> + b
+            </div>
+            
+            <p>Where:</p>
+            <ul>
+              <li><strong>f(x)</strong> = Output function</li>
+              <li><strong>w<sub>i</sub></strong> = Weight for feature i</li>
+              <li><strong>x<sub>i</sub></strong> = Input feature i</li>
+              <li><strong>b</strong> = Bias term</li>
+            </ul>
+          </div>
+          
+          <!-- Code Example -->
+          <h2 id="code">Implementation</h2>
+          <p>
+            Example of how to include code snippets in your project.
+          </p>
+          
+          <button class="code-toggle-btn" onclick="toggleCodeSection('codeSection1')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+              <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/>
+            </svg>
+            Show Code
+          </button>
+          
+          <div id="codeSection1" class="code-content">
+            <div class="code-tabs">
+              <div class="code-tab active" onclick="changeCodeTab('pythonCode', this)">Python</div>
+              <div class="code-tab" onclick="changeCodeTab('sqlCode', this)">SQL</div>
+            </div>
+            
+            <div id="pythonCode" class="code-panel active">
+              <span class="code-title">data_preprocessing.py</span>
+              <pre><code class="python">
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+
+def preprocess_data(df):
+    """
+    Preprocess the data for modeling
+    
+    Parameters:
+    df (pandas.DataFrame): Raw input data
+    
+    Returns:
+    pandas.DataFrame: Processed data ready for modeling
+    """
+    # Handle missing values
+    df = df.fillna(df.mean())
+    
+    # Create new features
+    df['feature_ratio'] = df['feature_1'] / df['feature_2']
+    
+    # Scale numerical features
+    scaler = StandardScaler()
+    numeric_cols = df.select_dtypes(include=[np.number]).columns
+    df[numeric_cols] = scaler.fit_transform(df[numeric_cols])
+    
+    return df
+              </code></pre>
+              
+              <div class="output-container">
+                <span class="output-label">Output:</span>
+                <div class="output-text">
+DataFrame shape: (1000, 15)
+Features created: ['feature_ratio', 'feature_squared']
+Scaling applied to 8 numeric columns
+                </div>
+              </div>
+            </div>
+            
+            <div id="sqlCode" class="code-panel">
+              <span class="code-title">data_extraction.sql</span>
+              <pre><code class="sql">
+-- Extract relevant data from transaction table
+SELECT 
+    t.customer_id,
+    c.customer_segment,
+    t.transaction_date,
+    SUM(t.amount) AS total_amount,
+    COUNT(t.transaction_id) AS transaction_count,
+    AVG(t.amount) AS average_transaction_value
+FROM 
+    transactions t
+JOIN 
+    customers c ON t.customer_id = c.customer_id
+WHERE 
+    t.transaction_date BETWEEN '2024-01-01' AND '2024-12-31'
+    AND t.status = 'completed'
+GROUP BY 
+    t.customer_id,
+    c.customer_segment,
+    t.transaction_date
+ORDER BY 
+    t.transaction_date;
+              </code></pre>
+            </div>
+          </div>
+          
+          <!-- Scorecard Results Example -->
+          <h2 id="metrics">Key Metrics</h2>
+          <p>
+            Example of displaying key metrics as scorecards.
+          </p>
+          <div class="results-grid">
+            <div class="result-card">
+              <h4>Accuracy</h4>
+              <p>Model prediction accuracy on test dataset</p>
+              <div class="stat">92.7%</div>
+              <p>+5.3% from baseline model</p>
+            </div>
+            <div class="result-card">
+              <h4>Processing Time</h4>
+              <p>Average time to process each request</p>
+              <div class="stat">245ms</div>
+              <p>-35% from previous implementation</p>
+            </div>
+            <div class="result-card">
+              <h4>Cost Reduction</h4>
+              <p>Estimated annual savings from implementation</p>
+              <div class="stat">$52K</div>
+              <p>Based on current usage patterns</p>
+            </div>
+            <div class="result-card">
+              <h4>User Satisfaction</h4>
+              <p>Survey results post-implementation</p>
+              <div class="stat">4.8/5</div>
+              <p>Based on 120 user responses</p>
+            </div>
+          </div>
+          
+          <!-- Conclusion -->
+          <h2 id="conclusion">Conclusion</h2>
+          <p>
+            <!-- Conclusion placeholder -->
+            Summary of project outcomes, insights gained, and potential future work. 
+            Discuss the implications of the results and how they address the initial problem.
+          </p>
+          
+          <!-- Dashboard Example -->
+          <h2 id="dashboard">Interactive Dashboard</h2>
+          <p>
+            Example of embedding an interactive dashboard (Power BI, Tableau, etc.)
+          </p>
+          
+          <div class="dashboard-container">
+            <!-- Replace with actual dashboard embed code -->
+            <div class="dashboard-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M0 0h16v16H0V0zm1 1v14h14V1H1z"/>
+                <path d="M5 13V3h2v10H5zm4 0V3h2v10H9z"/>
+              </svg>
+              <h3>Interactive Dashboard</h3>
+              <p>Dashboard would be embedded here</p>
+            </div>
+          </div>
+          
+          <a href="#" class="fullscreen-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+            View Full Screen
+          </a>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <div class="sidebar-box">
+            <h3 class="sidebar-title">Table of Contents</h3>
+            <ul class="table-of-contents">
+              <li><a href="#overview">Project Overview</a></li>
+              <li><a href="#visualization">Data Visualization</a></li>
+              <li><a href="#results">Results Table</a></li>
+              <li><a href="#technical">Technical Details</a></li>
+              <li><a href="#code">Implementation</a></li>
+              <li><a href="#metrics">Key Metrics</a></li>
+              <li><a href="#conclusion">Conclusion</a></li>
+                </ul>
+              </div>
+               
+          <div class="sidebar-box">
+            <h3 class="sidebar-title">Technologies Used</h3>
+            <div class="tech-list">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">Matplotlib</span>
+            </div>
+            
+            <div class="project-links">
+              <a href="#" class="project-btn btn-primary">View Demo</a>
+              <a href="#" class="project-btn btn-secondary">GitHub</a>
+            </div>
+          </div>
+          
+          <div class="sidebar-box">
+            <h3 class="sidebar-title">Key Highlights</h3>
+            <ul style="list-style-type: none; margin-left: 0;">
+              <li>✓ Feature 1: Brief description</li>
+              <li>✓ Feature 2: Brief description</li>
+              <li>✓ Feature 3: Brief description</li>
+              <li>✓ Feature 4: Brief description</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <h1 class="project-title">Interactive Sales Dashboards</h1>
-      <div class="project-meta">
-        <div class="meta-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
-            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-          </svg>
-          Retail
-        </div>
-        <div class="meta-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
-            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-          </svg>
-          Completed: February 2025
-        </div>
-        <div class="meta-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
-            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-          </svg>
-          Power BI
+        <!-- Related Projects -->
+        <h2 class="related-projects-title">Related Projects</h2>
+        <div class="related-projects">
+          <a href="#" class="related-card">
+            <div class="related-img">Project 1</div>
+            <div class="related-content">
+              <h3 class="related-title">Related Project Title 1</h3>
+              <p class="related-desc">Brief description of a related project that uses similar techniques or addresses a related problem.</p>
+            </div>
+          </a>
+          
+          <a href="#" class="related-card">
+            <div class="related-img">Project 2</div>
+            <div class="related-content">
+              <h3 class="related-title">Related Project Title 2</h3>
+              <p class="related-desc">Brief description of another related project showcasing complementary skills or techniques.</p>
+            </div>
+          </a>
+          
+          <a href="#" class="related-card">
+            <div class="related-img">Project 3</div>
+            <div class="related-content">
+              <h3 class="related-title">Related Project Title 3</h3>
+              <p class="related-desc">Brief description of a third related project that might be interesting to users viewing the current project.</p>
+            </div>
+          </a>
         </div>
       </div>
-    </header>
-    
-    <!-- Project Banner -->
-    <div class="project-banner">
-      <img src="../projects/image/insurance_banner.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" alt="Insurnce Charges Prediction Banner">
-      <div class="banner-overlay">
-        <div class="banner-title">Insurance Risk and Pricing Analysis</div>
-        <div class="banner-subtitle">Predictive Modeling for Cost Estimation and Customer Segmentation</div>
-      </div>
-    </div>
-    
-    <!-- page content goes here -->
-    
-    <!-- Footer placeholder -->
-    <div id="footer-placeholder"></div>
-  </body>
-</html>
+      
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
