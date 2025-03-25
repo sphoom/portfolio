@@ -700,6 +700,12 @@
       color: #98c379; /* Green color for strings */
     }
 
+    .output-plot img, .output-image {
+      max-width: 60%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
     /* Optional: Add a separator between code and output */
     .code-output-separator {
       height: 1px;
@@ -1032,43 +1038,11 @@
             <li><strong>Target Variable:</strong> Insurance charges (annual cost in USD)</li>
           </ul>
           
-          <button class="code-toggle-btn" onclick="toggleCodeSection('dataLoadingCode')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-              <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/>
-            </svg>
-            Show Data Loading & Exploration Code
-          </button>
-          
-          <div id="dataLoadingCode" class="code-content">
-            <div class="code-tabs">
-              <div class="code-tab active" onclick="changeCodeTab('dataLoading', this)">Data Loading</div>
-              <div class="code-tab" onclick="changeCodeTab('dataExploration', this)">Initial Exploration</div>
-            </div>
-            
-            <div id="dataLoading" class="code-panel active">
-              <p>Jupyter notebook code will be embedded here</p>
-            </div>
-            
-            <div id="dataExploration" class="code-panel">
-              <p>Jupyter notebook code will be embedded here</p>
-            </div>
-          </div>
-
-          <h2 id="exploratory-analysis">Exploratory Data Analysis</h2>
-          <p>
-            Initial exploration revealed several key insights about our insurance dataset:
-          </p>
           
           <!-- Visualization Placeholder for Charges Distribution -->
-          <div class="viz-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="3" y1="9" x2="21" y2="9"></line>
-              <line x1="9" y1="21" x2="9" y2="9"></line>
-            </svg>
-            <p>Charges Distribution Visualization</p>
-            <p>(Insurance charges showing significant right skew and bimodal pattern)</p>
+          <div class="chart-container">
+            <img src="../projects/image/insurance_pairplot.png" alt="Charges Distribution Visualization">
+            <p>Insurance charges showing significant right skew and bimodal pattern</p>
           </div>
           
           <ul>
@@ -1080,16 +1054,9 @@
           </ul>
           
           <!-- Visualization Placeholder for Correlation Matrix -->
-          <div class="viz-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="3" y1="9" x2="21" y2="9"></line>
-              <line x1="3" y1="15" x2="21" y2="15"></line>
-              <line x1="9" y1="3" x2="9" y2="21"></line>
-              <line x1="15" y1="3" x2="15" y2="21"></line>
-            </svg>
-            <p>Correlation Matrix Visualization</p>
-            <p>(Showing relationships between key variables and insurance charges)</p>
+          <div class="chart-container">
+            <img src="../projects/image/insurance_coor.png" alt="Charges Distribution Visualization">
+            <p>Correlation Matrix: Showing relationships between key variables and insurance charges</p>
           </div>
           
           <button class="code-toggle-btn" onclick="toggleCodeSection('edaCode')">
@@ -1102,16 +1069,85 @@
           
           <div id="edaCode" class="code-content">
             <div class="code-tabs">
-              <div class="code-tab active" onclick="changeCodeTab('chargeAnalysis', this)">Charge Analysis</div>
-              <div class="code-tab" onclick="changeCodeTab('factorVisualization', this)">Factor Visualization</div>
+              <div class="code-tab active" onclick="changeCodeTab('EDA', this)">EDA</div>
+              <div class="code-tab" onclick="changeCodeTab('EDA_Plot', this)">EDA Plot</div>
             </div>
-            
-            <div id="chargeAnalysis" class="code-panel active">
-              <p>Jupyter notebook code will be embedded here</p>
-            </div>
-            
-            <div id="factorVisualization" class="code-panel">
-              <p>Jupyter notebook code will be embedded here</p>
+
+            <div id="EDA" class="code-panel active">
+              <pre><code class="python">
+                print(df.describe())
+                print(df.info())
+                print(df.isna().sum())
+                print(df.duplicated())
+                df = df.drop_duplicates()
+                df = df.dropna()
+              </code></pre>
+
+              <div class="output-container">
+                <span class="output-label">Out[1]:</span>
+                <pre class="output-text">
+                              age          bmi     children       charges
+                  count  1338.000000  1338.000000  1338.000000   1338.000000
+                  mean     39.207025    30.663397     1.094918  13270.422265
+                  std      14.049960     6.098187     1.205493  12110.011237
+                  min      18.000000    15.960000     0.000000   1121.873900
+                  25%      27.000000    26.296250     0.000000   4740.287150
+                  50%      39.000000    30.400000     1.000000   9382.033000
+                  75%      51.000000    34.693750     2.000000  16639.912515
+                  max      64.000000    53.130000     5.000000  63770.428010
+                  
+                  RangeIndex: 1338 entries, 0 to 1337
+                  Data columns (total 7 columns):
+                   #   Column    Non-Null Count  Dtype  
+                  ---  ------    --------------  -----  
+                   0   age       1338 non-null   int64  
+                   1   sex       1338 non-null   object 
+                   2   bmi       1338.000000    float64
+                   3   children  1338 non-null   int64  
+                   4   smoker    1338 non-null   object 
+                   5   region    1338 non-null   object 
+                   6   charges   1338.000000    float64
+                  dtypes: float64(2), int64(2), object(3)
+                  memory usage: 73.3+ KB
+                  None
+                  age         0
+                  sex         0
+                  bmi         0
+                  children    0
+                  smoker      0
+                  region      0
+                  charges     0
+                  dtype: int64
+                  0       False
+                  1       False
+                  2       False
+                  3       False
+                  4       False
+                          ...  
+                  1333    False
+                  1334    False
+                  1335    False
+                  1336    False
+                  1337    False
+                  Length: 1338, dtype: bool
+                    </pre>
+                  </pre>
+              </div>
+            </div> 
+
+            <div id="EDA_Plot" class="code-panel">
+              <pre><code class="python">
+          sns.displot(data = df["charges"])
+          df['log_charges'] =  np.log(df['charges'])
+          sns.displot(data = df['log_charges'])
+              </code></pre>
+              <div class="output-container">
+                <span class="output-label">Out[1]:</span>
+                <pre class="output-plot">
+                  <img src="../projects/image/insurance_charges_dist1.png" alt="Insurance charges distribution 1" class="output-image">
+                  <img src="../projects/image/insurance_charges_dist2.png" alt="Insurance charges distribution 2" class="output-image">
+                </pre>
+              </div>
             </div>
           </div>
 
@@ -1162,16 +1198,11 @@
               <li>This indicates that BMI not only impacts charges independently but also significantly amplifies the cost effect of smoking</li>
             </ul>
           
-          <!-- Visualization Placeholder for BMI and Smoking Interaction -->
-          <div class="viz-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-            <p>BMI and Smoking Interaction Visualization</p>
-            <p>(Showing the combined effect of BMI and smoking status on charges)</p>
-          </div>
+            <div class="chart-container">
+              <img src="../projects/image/insurance_ancova.png" alt="Charges Distribution Visualization">
+              <p>The combined effect of BMI and smoking status on charges</p>
+            </div>
+        
           
           <button class="code-toggle-btn" onclick="toggleCodeSection('statisticalCode')">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -1189,53 +1220,137 @@
             </div>
             
             <div id="ttest" class="code-panel active">
+              <div class="code-title">T-Test</div>
               <pre><code class="python">
-            # T-Test for comparing smokers vs non-smokers
-            from scipy import stats
-            smoker_charges = df.loc[df['smoker'] == 'yes', 'log_charges']
-            non_smoker_charges = df.loc[df['smoker'] == 'no', 'log_charges']
-            t_stat, p_value = stats.ttest_ind(smoker_charges, non_smoker_charges, equal_var=False)
-            print(f"t-statistic: {t_stat}, p-value: {p_value}")
-            
-            
-            plt.figure(figsize=(10, 6))
-            ax = sns.boxplot(x='smoker', y='log_charges', data=df)
-            sns.swarmplot(x='smoker', y='log_charges', data=df, color='black', alpha=0.5)
-            y_max = df['log_charges'].max()
-            plt.text(0.5, y_max * 1.05, f't-statistic: {t_stat:.3f}\np-value: {p_value:.5f}', 
-                    horizontalalignment='center', size=12, weight='bold',
-                    bbox=dict(facecolor='white', alpha=0.5))
-            if p_value < 0.05:
-                x1, x2 = 0, 1
-                y = y_max * 1.1
-                plt.plot([x1, x1, x2, x2], [y, y+0.05, y+0.05, y], lw=1.5, c='black')
-                plt.text((x1+x2)*.5, y+0.07, '*' if p_value < 0.05 else '**' if p_value < 0.01 else '***', 
-                        ha='center', va='bottom', color='black')
-            plt.title('Comparison of log_charges between smokers and non-smokers')
-            plt.ylabel('Log Charges')
-            plt.xlabel('Smoker Status')
-            plt.tight_layout()
-            plt.show()
+          # T-Test for comparing smokers vs non-smokers
+          from scipy import stats
+          smoker_charges = df.loc[df['smoker'] == 'yes', 'log_charges']
+          non_smoker_charges = df.loc[df['smoker'] == 'no', 'log_charges']
+          t_stat, p_value = stats.ttest_ind(smoker_charges, non_smoker_charges, equal_var=False)
+          print(f"t-statistic: {t_stat}, p-value: {p_value}")
+          
+          
+          plt.figure(figsize=(10, 6))
+          ax = sns.boxplot(x='smoker', y='log_charges', data=df)
+          sns.swarmplot(x='smoker', y='log_charges', data=df, color='black', alpha=0.5)
+          y_max = df['log_charges'].max()
+          plt.text(0.5, y_max * 1.05, f't-statistic: {t_stat:.3f}\np-value: {p_value:.5f}', 
+                  horizontalalignment='center', size=12, weight='bold',
+                  bbox=dict(facecolor='white', alpha=0.5))
+          if p_value < 0.05:
+              x1, x2 = 0, 1
+              y = y_max * 1.1
+              plt.plot([x1, x1, x2, x2], [y, y+0.05, y+0.05, y], lw=1.5, c='black')
+              plt.text((x1+x2)*.5, y+0.07, '*' if p_value < 0.05 else '**' if p_value < 0.01 else '***', 
+                      ha='center', va='bottom', color='black')
+          plt.title('Comparison of log_charges between smokers and non-smokers')
+          plt.ylabel('Log Charges')
+          plt.xlabel('Smoker Status')
+          plt.tight_layout()
+          plt.show()
               </code></pre>
-
+          
               <div class="output-container">
                 <span class="output-label">Out[1]:</span>
                 <pre class="output-text">t-statistic: <span class="output-number">46.34663745443287</span>
-              p-value: <span class="output-number">6.784986731977081e-234</span></pre>
+          p-value: <span class="output-number">6.784986731977081e-234</span></pre>
               </div>
-              
-             <!-- <div class="result-card">
-                <div class="result-badge">t = 46.35</div>
-                <span class="result-badge">p-value < 0.00001</span>
-              </div>-->
-            </div> 
-            
-            <div id="anova" class="code-panel">
-              <p>Jupyter notebook code will be embedded here</p>
             </div>
             
+            <div id="anova" class="code-panel">
+              <div class="code-title">ANOVA</div>
+              <pre><code class="python">
+          anova_model = ols('charges ~ C(region)', data=df).fit()
+          anova_results = anova_lm(anova_model)
+          print(anova_results)
+              </code></pre>
+          
+              <div class="output-container">
+                <span class="output-label">Out[1]:</span>
+                <pre class="output-text">                df        sum_sq       mean_sq        F    PR(>F)
+          C(region)     3.0  1.281906e+09  4.273019e+08  2.92614  0.032763
+          Residual   1333.0  1.946569e+11  1.460292e+08      NaN       NaN</pre>
+              </div>
+          
+              <div class="code-title">Tukey HSD</div>
+              <pre><code class="python">
+          tukey_result = pairwise_tukeyhsd(endog = df['charges'], groups = df['region'], alpha = 0.05)
+          print(tukey_result)
+              </code></pre>
+              
+              <div class="output-container">
+                <span class="output-label">Out[2]:</span>
+                <pre class="output-text">Multiple Comparison of Means - Tukey HSD, FWER=0.05       
+          =================================================================
+            group1    group2   meandiff  p-adj    lower      upper   reject
+          -----------------------------------------------------------------
+          northeast northwest  -955.5437 0.7457 -3397.7353  1486.648  False
+          northeast southeast  1329.0269 0.4746 -1045.1237 3703.1776  False
+          northeast southwest -1059.4471 0.6793 -3499.7595 1380.8652  False
+          northwest southeast  2284.5706 0.0643     -89.58 4658.7212  False
+          northwest southwest  -103.9035 0.9995 -2544.2158 2336.4088  False
+          southeast southwest -2388.4741 0.0477 -4760.6915  -16.2567   True
+          -----------------------------------------------------------------</pre>
+              </div>
+              
+              <div class="code-title">Region Boxplot</div>
+              <pre><code class="python">
+          sns.boxplot(data = df, x= "region", y = df['charges'])
+          plt.title("Boxplot by Region")
+              </code></pre>
+          
+              <div class="output-container">
+                <span class="output-label">Out[3]:</span>
+                <pre class="output-plot">
+                  <img src="../projects/image/insurance_anova.png" alt="Insurance region boxplot" class="output-image">
+                </pre>
+              </div>
+            </div>
+          
             <div id="ancova" class="code-panel">
-              <p>Jupyter notebook code will be embedded here</p>
+              <div class="code-title">ANCOVA</div>
+              <pre><code class="python">
+          ancova_model = ols('charges ~ C(smoker) + bmi + C(smoker) * bmi', data=df).fit()
+          ancova_results = anova_lm(ancova_model)
+          print(ancova_results)
+              </code></pre>
+          
+              <div class="output-container">
+                <span class="output-label">Out[1]:</span>
+                <pre class="output-text">                df        sum_sq       mean_sq            F        PR(>F)
+          C(smoker)         1.0  1.214307e+11  1.214307e+11  3199.847642  0.000000e+00
+          bmi               1.0  7.485235e+09  7.485235e+09   197.245054  6.890456e-42
+          C(smoker):bmi     1.0  1.643697e+10  1.643697e+10   433.134192  1.590920e-83
+          Residual       1333.0  5.058590e+10  3.794891e+07          NaN           NaN</pre>
+              </div>
+              
+              <div class="code-title">BMI and Smoking Interaction</div>
+              <pre><code class="python">
+          n_non_smokers = len(non_smoker_charges)
+          n_smokers = len(smoker_charges)
+          df_plot = pd.DataFrame({
+              'BMI': np.concatenate([df.loc[df['smoker'] == 'no', 'bmi'], 
+                                    df.loc[df['smoker'] == 'yes', 'bmi']]),
+              'Charges': np.concatenate([non_smoker_charges, smoker_charges]),
+              'Smoker': ['No'] * n_non_smokers + ['Yes'] * n_smokers
+          })
+          
+          plt.figure(figsize=(10, 6))
+          sns.lineplot(data=df_plot, x='BMI', y='Charges', hue='Smoker', palette='Set1')
+          plt.title('Interaction Between BMI and Smoking on Charges')
+          plt.xlabel('BMI')
+          plt.ylabel('Charges')
+          plt.grid(True)
+          plt.tight_layout()
+          plt.show()
+              </code></pre>
+          
+              <div class="output-container">
+                <span class="output-label">Out[2]:</span>
+                <pre class="output-plot">
+                  <img src="../projects/image/insurance_ancova.png" alt="BMI and smoking interaction" class="output-image">
+                </pre>
+              </div>
             </div>
           </div>
 
@@ -1264,16 +1379,6 @@
             <li>The model captured both the main effects and interactions between key variables</li>
           </ul>
           
-          <!-- Visualization Placeholder for Prediction Results -->
-          <div class="viz-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-              <polyline points="17 6 23 6 23 12"></polyline>
-            </svg>
-            <p>Actual vs Predicted Charges Visualization</p>
-            <p>(Showing model prediction accuracy across the range of insurance charges)</p>
-          </div>
-          
           <h3>High-Cost Classification Model</h3>
           <p>
             To support risk screening, I developed a logistic regression model to identify potentially high-cost customers (top quartile):
@@ -1286,12 +1391,9 @@
           </ul>
           
           <!-- Visualization Placeholder for Classification Results -->
-          <div class="viz-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-            </svg>
-            <p>ROC Curve and Feature Importance Visualization</p>
-            <p>(Showing classification performance and key predictive features)</p>
+          <div class="chart-container">
+            <img src="../projects/image/insurance_roc.png" alt="Charges Distribution Visualization">
+            <p>Insurance charges showing significant right skew and bimodal pattern</p>
           </div>
           
           <button class="code-toggle-btn" onclick="toggleCodeSection('modelingCode')">
@@ -1306,19 +1408,228 @@
             <div class="code-tabs">
               <div class="code-tab active" onclick="changeCodeTab('polyRegression', this)">Polynomial Regression</div>
               <div class="code-tab" onclick="changeCodeTab('logisticRegression', this)">Logistic Regression</div>
-              <div class="code-tab" onclick="changeCodeTab('modelEvaluation', this)">Model Evaluation</div>
+              <div class="code-tab" onclick="changeCodeTab('FeaturesExtraction', this)">Features Extraction</div>
             </div>
             
+            <!-- First Panel: Polynomial Regression -->
             <div id="polyRegression" class="code-panel active">
-              <p>Jupyter notebook code will be embedded here</p>
+              <div class="code-title">Polynomial Regression</div>
+              <pre><code class="python">
+                dfr3 = df.copy()
+                dfr3 = dfr3.drop_duplicates()
+                dfr3 = dfr3.dropna()
+  
+                dfr3['charges_boxcox'], fitted_lambda = stats.boxcox(dfr3['charges'])
+                X = dfr3[['age', 'bmi', 'children', 'sex', 'smoker', 'region']]
+                y = dfr3['charges_boxcox']
+                X_train, X_test, y_train, y_test = train_test_split(X,y, test_size= 0.2, random_state= 42)
+  
+                categorical_cols = ['sex', 'smoker', 'region']
+                numeric_cols = [col for col in X_train.columns if col not in categorical_cols]
+  
+                preprocessor = ColumnTransformer(
+                    transformers=[
+                        ('num', make_pipeline(PolynomialFeatures(degree=2, include_bias=False)), numeric_cols),
+                        ('cat', OneHotEncoder(drop='first'), categorical_cols)
+                    ])
+  
+                pipeline = make_pipeline(preprocessor, LinearRegression())
+                pipeline.fit(X_train, y_train)
+                polynomial_features = pipeline.named_steps['columntransformer'].named_transformers_['num'].named_steps['polynomialfeatures']
+                feature_names = polynomial_features.get_feature_names_out(numeric_cols)
+                print("Polynomial Features:", feature_names)
+                coefficients = pipeline.named_steps['linearregression'].coef_
+                print("Coefficients:", coefficients)
+  
+                y_pred = pipeline.predict(X_test)
+                print(f"R^2 Score: {r2_score(y_test, y_pred)}")
+                print(f"MAE: {mean_absolute_error(y_test, y_pred)}")
+                print(f"RMSE: {np.sqrt(((y_pred - y_test) ** 2).mean())}")
+              </code></pre>
+              <div class="output-container">
+                <span class="output-label">Out[1]:</span>
+                <pre class="output-text">
+                  Polynomial Features: ['age' 'bmi' 'children' 'age^2' 'age bmi' 'age children' 'bmi^2'
+                  'bmi children' 'children^2']
+                 Coefficients: [ 6.83609214e-02  9.86677879e-02  4.13113606e-01 -1.33762222e-04
+                  -1.04395027e-04 -6.87662938e-03 -1.21090630e-03  1.81069503e-03
+                  -1.76705898e-02 -1.17781624e-01  2.32382619e+00 -7.16227728e-02
+                  -1.73474541e-01 -1.46574344e-01]
+                 R^2 Score: 0.834971922647911
+                 MAE: 0.39560095285526164
+                 RMSE: 0.5821801136455046
+                </pre>
+              </div>
+              
+              <!--  a second code block with output -->
+              <div class="code-title">Visualization</div>
+              <pre><code class="python">
+                residuals = y_test - y_pred
+                fig , axes = plt.subplots(1,2,figsize=(10,5))
+                sns.residplot(x=y_pred, y = residuals, lowess=True, line_kws={'color': 'red'}, ax = axes[0])
+                axes[0].set_xlabel("Fitted Values (Predicted Charges)")
+                axes[0].set_ylabel("Residuals")
+                axes[0].set_title("Residual Plot")
+                axes[0].axhline(0, color='black', linestyle='--')
+                stats.probplot(residuals, dist="norm", plot = axes[1])
+                axes[1].set_title("Q-Q Plot of Residuals")
+                axes[1].set_xlabel("Theoretical Quantiles")
+                axes[1].set_ylabel("Ordered Residuals")
+                plt.show()
+              </code></pre>
+              
+              <div class="output-container">
+                <span class="output-label">Out[2]:</span>
+                <pre class="output-plot">
+                  <img src="../projects/image/insurance_lr3.png" alt="resident plot" class="output-image">
+                </pre>
+              </div>
             </div>
             
+            <!-- Second Panel: Logistic Regression -->
             <div id="logisticRegression" class="code-panel">
-              <p>Jupyter notebook code will be embedded here</p>
+              <div class="code-title">Logistic Regression</div>
+              <pre><code class="python">
+                q1,q3 = np.quantile(df['charges'], [0.25,0.75])
+                iqr = q3-q1
+                high_cost = q3+(1.5*iqr)
+                higt_cost_proportion = len(df[(df.charges > high_cost)]) / len(df) * 100
+                
+                df2 = df.copy()
+                df2['is_high_charge'] = (df2['charges'] >= high_cost).astype(int)
+
+                encoder = OneHotEncoder(drop = 'first', sparse_output=False) 
+                encoded_data = encoder.fit_transform(df[["region", "sex", "smoker"]])
+                encoded_df = pd.DataFrame(
+                    encoded_data,
+                    columns=encoder.get_feature_names_out(["region", "sex", "smoker"])
+                )
+                logis_df = pd.concat([df2.drop(["region", "sex", "smoker"], axis=1), encoded_df], axis=1)
+                logis_df.isna().sum()
+                logis_df = logis_df.dropna()
+
+                X = logis_df[['age', 'bmi', 'children', 'region_northwest',
+                      'region_southeast', 'region_southwest', 'sex_male', 'smoker_yes']]
+                y = logis_df['is_high_charge']
+                X_train, X_test, y_train, y_test = train_test_split(X,y, test_size= 0.2, random_state= 42, stratify= y)
+              
+                pipeline = make_pipeline(
+                StandardScaler(),
+                LogisticRegression(class_weight='balanced' , max_iter=1000)
+                )
+                pipeline.fit(X_train, y_train)
+                y_pred = pipeline.predict(X_test)
+                y_prob = pipeline.predict_proba(X_test)[:, 1] 
+                print("Accuracy:", accuracy_score(y_test, y_pred))
+                print("Precision:", precision_score(y_test, y_pred))
+                print("Recall:", recall_score(y_test, y_pred))
+                print("F1 Score:", f1_score(y_test, y_pred))
+              
+              
+              </code></pre>
+              
+              <div class="output-container">
+                <span class="output-label">Out[1]:</span>
+                <pre class="output-text">
+                  Accuracy: 0.7611940298507462
+                  Precision: 0.275
+                  Recall: 0.7857142857142857
+                  F1 Score: 0.40740740740740744
+                </pre>
+              </div>
+              
+              <!-- a second code block with output -->
+              <div class="code-title">Confusion Metrix</div>
+              <pre><code class="python">
+                cm = confusion_matrix(y_test, y_pred)
+                disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["False", "True"])
+                disp.plot(cmap='Blues', values_format='d')
+                plt.title("Confusion Matrix")
+                plt.grid(False)
+                plt.show()
+              </code></pre>
+              
+              <div class="output-container">
+                <span class="output-label">Out[2]:</span>
+                <pre class="output-plot">
+                  <img src="../projects/image/insurance_cm.png" alt="slightly high flase positive, futher engineering might needed to improve the Precision score" class="output-image">
+                </pre>
+              </div>
+
+              <div class="code-title">ROC curve</div>
+              <pre><code class="python">
+                fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+                auc = roc_auc_score(y_test, y_prob)
+                plt.plot(fpr, tpr, label=f"AUC = {auc:.2f}")
+                plt.plot([0, 1], [0, 1], linestyle='--', color='gray')
+                plt.xlabel('False Positive Rate')
+                plt.ylabel('True Positive Rate')
+                plt.title('ROC Curve')
+                plt.legend()
+                plt.grid(True)
+                plt.show()
+              </code></pre>
+              
+              <div class="output-container">
+                <span class="output-label">Out[2]:</span>
+                <pre class="output-plot">
+                  <img src="../projects/image/insurance_roc.png" alt="ROC Curve shows promising signs" class="output-image">
+                </pre>
+              </div>
             </div>
             
-            <div id="modelEvaluation" class="code-panel">
-              <p>Jupyter notebook code will be embedded here</p>
+            <!-- Third Panel: Model Evaluation -->
+            <div id="FeaturesExtraction" class="code-panel">
+              <div class="code-title">Model Evaluation</div>
+              <pre><code class="python">
+                feature_names = X_train.columns.tolist()
+                logistic_model = pipeline.named_steps['logisticregression']
+                coefficients = logistic_model.coef_[0] 
+                coef_df = pd.DataFrame({
+                    'Feature': feature_names,
+                    'Coefficient': coefficients
+                })
+                coef_df['Abs_Coefficient'] = np.abs(coef_df['Coefficient'])
+                coef_df_sorted = coef_df.sort_values('Abs_Coefficient', ascending=False)
+                print(coef_df_sorted)
+              </code></pre>
+              
+              <div class="output-container">
+                <span class="output-label">Out[1]:</span>
+                <pre class="output-text">
+                  Feature  Coefficient  Abs_Coefficient
+                  1               bmi     1.259405         1.259405
+                  7        smoker_yes     0.830175         0.830175
+                  4  region_southeast    -0.289696         0.289696
+                  6          sex_male     0.208010         0.208010
+                  0               age     0.187789         0.187789
+                  5  region_southwest    -0.154147         0.154147
+                  3  region_northwest     0.125632         0.125632
+                  2          children    -0.064070         0.064070
+                </pre>
+              </div>
+              
+              <!-- a second code block with output -->
+              <div class="code-title">Comparison Plot</div>
+              <pre><code class="python">
+                plt.figure(figsize=(12, 8))
+                plt.barh(coef_df_sorted['Feature'], coef_df_sorted['Coefficient'])
+                plt.xlabel('Coefficient Value')
+                plt.ylabel('Feature')
+                plt.title('Logistic Regression Coefficients')
+                plt.axvline(x=0, color='black', linestyle='-', alpha=0.3)
+                plt.tight_layout()
+                #plt.savefig(r'/Users/itt/Documents/Data Projects/Insurance/image/logis_coor.png', dpi=300)
+                plt.show()
+                plt.close() 
+              </code></pre>
+              
+              <div class="output-container">
+                <span class="output-label">Out[2]:</span>
+                <pre class="output-plot">
+                  <img src="../projects/image/insurance_logis_coor.png" alt="Description" class="output-image">
+                </pre>
+              </div>
             </div>
           </div>
           
@@ -1338,16 +1649,9 @@
           </ul>
           
           <!-- Visualization Placeholder for Customer Clusters -->
-          <div class="viz-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="18" cy="5" r="3"></circle>
-              <circle cx="6" cy="12" r="3"></circle>
-              <circle cx="18" cy="19" r="3"></circle>
-              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-            </svg>
-            <p>Customer Segmentation Visualization</p>
-            <p>(Showing the four distinct customer clusters based on PCA)</p>
+          <div class="chart-container">
+            <img src="../projects/image/insurance_pca.png" alt="Charges Distribution Visualization">
+            <p>Customer Segmentation Visualization showing the four distinct customer clusters based on PCA</p>
           </div>
           
           <h3>Cluster Profiles</h3>
@@ -1440,23 +1744,118 @@
           
           <div id="clusteringCode" class="code-content">
             <div class="code-tabs">
-              <div class="code-tab active" onclick="changeCodeTab('kmeansCluster', this)">KMeans Clustering</div>
-              <div class="code-tab" onclick="changeCodeTab('clusterVisualization', this)">Cluster Visualization</div>
-              <div class="code-tab" onclick="changeCodeTab('clusterAnalysis', this)">Cluster Analysis</div>
+              <div class="code-tab active" onclick="changeCodeTab('elbowMethod', this)">Elbow Method</div>
+              <div class="code-tab" onclick="changeCodeTab('kmeansClustering', this)">KMEANS Clustering</div>
+              <div class="code-tab" onclick="changeCodeTab('getCluster', this)">Clusters Attributes</div>
             </div>
-            
-            <div id="kmeansCluster" class="code-panel active">
-              <p>Jupyter notebook code will be embedded here</p>
+              
+              <!-- First Panel -->
+              <div id="elbowMethod" class="code-panel active">
+                <div class="code-title">Elbow Method</div>
+                <pre><code class="python">
+                  df3 = df2.copy()
+                  df3 = df3.drop_duplicates()
+                  df3 = df3.dropna()
+                  df3 = df3.drop(["log_charges", "is_high_charge"], axis=1)
+
+                  numeric_cols = ['age', 'bmi', 'children', 'charges']  
+                  categorical_cols = ['sex', 'smoker', 'region']
+
+                  preprocessor = ColumnTransformer(
+                  transformers=[
+                      ('num', StandardScaler(), numeric_cols),
+                      ('cat', OneHotEncoder(drop='first'), categorical_cols)
+                        ]
+                    )
+
+                    inertias = []
+
+                    for i in range(1, 11):
+                        kmean_pipe = make_pipeline(preprocessor, KMeans(n_clusters=i, random_state=42))
+                        kmean_pipe.fit(df3)
+                        inertia = kmean_pipe.named_steps['kmeans'].inertia_
+                        inertias.append(inertia)
+
+                    plt.plot(range(1, 11), inertias, marker='o')
+                    plt.xlabel('Number of Clusters (k)')
+                    plt.ylabel('Inertia')
+                    plt.title('Elbow Method for Optimal k')
+                    plt.grid(True)
+                    #plt.savefig(r'/Users/itt/Documents/Data Projects/Insurance/image/elbow.png', dpi=300)
+                    plt.show()
+                    plt.close() 
+
+                </code></pre>
+                
+                <div class="output-container">
+                  <span class="output-label">Out[2]:</span>
+                  <pre class="output-plot">
+                    <img src="../projects/image/insurance_elbow.png" alt="Description" class="output-image">
+                  </pre>
+                </div>
+              </div>
+              
+              <!-- Second Panel-->
+              <div id="kmeansClustering" class="code-panel">
+                <div class="code-title">KMEANS Clustering</div>
+                <pre><code class="python">
+                  kmeans = make_pipeline(preprocessor, KMeans(n_clusters=4, random_state=42))
+                  kmeans.fit(df3)
+                  X_transformed = preprocessor.fit_transform(df3)
+                  X_pca = PCA(n_components=2).fit_transform(X_transformed)
+                  cluster_labels = kmeans.named_steps['kmeans'].labels_
+                  
+                  plt.figure(figsize=(8, 6))
+                  scatter = plt.scatter(X_pca[:, 0], X_pca[:, 1], c=cluster_labels, cmap='Set1', alpha=0.7)
+                  # plt.xlabel('PCA Component 1')
+                  # plt.ylabel('PCA Component 2')
+                  plt.title('KMeans Clusters (k=4)')
+                  plt.colorbar(scatter, label='Cluster Label')
+                  plt.grid(True)
+                  #plt.savefig(r'/Users/itt/Documents/Data Projects/Insurance/image/pca.png', dpi=300)
+                  plt.show()
+                  plt.close() 
+                </code></pre>
+                
+                <div class="output-container">
+                  <span class="output-label">Out[2]:</span>
+                  <pre class="output-plot">
+                    <img src="../projects/image/insurance_pca.png" alt="Description" class="output-image">
+                  </pre>
+                </div>
+              </div>
+              
+              <!-- Third Panel: Model Evaluation -->
+              <div id="getCluster" class="code-panel">
+                <div class="code-title">Clusters Attributes</div>
+                <pre><code class="python">
+                  df3_clustered = df3.copy()
+                  df3_clustered['cluster'] = cluster_labels
+                  cluster_profile_full = df3_clustered.groupby('cluster').agg({
+                      'age': 'mean',
+                      'bmi': 'mean',
+                      'children': 'mean',
+                      'charges': 'mean',
+                      'smoker': lambda x: x.value_counts(normalize=True).to_dict(),  
+                      'sex': lambda x: x.value_counts(normalize=True).to_dict(),
+                      'region': lambda x: x.value_counts(normalize=True).to_dict()
+                  }).round(2)
+                  
+                  cluster_profile_full
+                </code></pre>
+                
+                <div class="output-container">
+                  <span class="output-label">Out[1]:</span>
+                  <pre class="output-text">
+                    cluster	age	bmi	children	charges	smoker	sex	region
+                    0	40.11	30.01	2.69	10969.23	{'no': 0.8767908309455588, 'yes': 0.12320916905444126}	{'female': 0.504297994269341, 'male': 0.49570200573065903}	{'northwest': 0.2808022922636103, 'southwest': 0.2492836676217765, 'northeast': 0.23782234957020057, 'southeast': 0.23209169054441262}
+                    1	25.38	29.18	0.42	5430.9	{'no': 0.9, 'yes': 0.1}	{'female': 0.5119047619047619, 'male': 0.4880952380952381}	{'southeast': 0.28809523809523807, 'northwest': 0.2523809523809524, 'northeast': 0.2357142857142857, 'southwest': 0.22380952380952382}
+                    2	39.35	35.33	1.1	41056.03	{'yes': 0.9548387096774194, 'no': 0.04516129032258064}	{'male': 0.6451612903225806, 'female': 0.3548387096774194}	{'southeast': 0.3870967741935484, 'southwest': 0.23225806451612904, 'northeast': 0.2064516129032258, 'northwest': 0.17419354838709677}
+                    3	52.5	30.98	0.43	12787.55	{'no': 0.9007263922518159, 'yes': 0.09927360774818401}	{'female': 0.5230024213075061, 'male': 0.47699757869249393}	{'northeast': 0.26634382566585957, 'southwest': 0.26150121065375304, 'southeast': 0.2469733656174334, 'northwest': 0.22518159806295399}
+                  </pre>
+                </div>
+              </div>
             </div>
-            
-            <div id="clusterVisualization" class="code-panel">
-              <p>Jupyter notebook code will be embedded here</p>
-            </div>
-            
-            <div id="clusterAnalysis" class="code-panel">
-              <p>Jupyter notebook code will be embedded here</p>
-            </div>
-          </div>
           
           <h2 id="strategic-implications">Strategic Implications</h2>
           <p>
