@@ -39,7 +39,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
           </svg>
-          Power BI
+          Data Visualization
         </div>
       </div>
     </header>
@@ -54,7 +54,34 @@
     </div>
     
     <!-- page content goes here -->
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section">
+      <h2 class="dashboard-title">Sales Performance Dashboard</h2>
+      <p class="dashboard-desc">
+        Interactive dashboard analyzing monthly and quarterly sales performance
+        and top customers.
+      </p>
     
+      <div id="salesDashboard" class="dashboard-container">
+        <iframe src="<https://app.powerbi.com/view?r=eyJrIjoiYjU2N2MzMTEtODI4Yi00OGRhLTlkYjYtNTRlOTMzNTg3YTEwIiwidCI6IjRhNTM3OGY5LTI5ZjQtNGQzZS1iZTg5LTY2OWQwM2FkYTlkOCIsImMiOjh9&pageName=5fc24bfe02f94ac0ea85>"
+                title="Sales Dashboard"
+                allowfullscreen></iframe>
+      </div>
+    
+      <a href="<https://app.powerbi.com/view?r=eyJrIjoiYjU2N2MzMTEtODI4Yi00OGRhLTlkYjYtNTRlOTMzNTg3YTEwIiwidCI6IjRhNTM3OGY5LTI5ZjQtNGQzZS1iZTg5LTY2OWQwM2FkYTlkOCIsImMiOjh9&pageName=5fc24bfe02f94ac0ea85>"
+         class="fullscreen-button"
+         data-dashboard="salesDashboard"
+         target="_blank">
+        <svg xmlns="<http://www.w3.org/2000/svg>" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
+        </svg>
+        View Full Screen
+      </a>
+    </section>
+
+
+
     <!-- Footer placeholder -->
     <div id="footer-placeholder"></div>
   </body>
