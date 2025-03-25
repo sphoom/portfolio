@@ -636,9 +636,17 @@
                   
           <h2 id="approach">Solution Approach</h2>
           <p>
-            I developed an integrated optimization model that simultaneously considers all three interdependent stages of our supply chain:
+            Although the ideal model would integrates all three stages into one cost-minimizing objective, practical implementation required decomposition into two sequential models for scalability and realistic decision making.
+
+            Model 1  Production Optimization: Minimized manufacturing costs across four Thai production facilities while ensuring demand fulfillment and capacity constraints.
+
+            Model 2  Routing Optimization: Using Model 1 output, this model minimized domestic and international transportation costs by determining optimal product flows through intermodal hubs to five ASEAN markets. It incorporated mode-specific constraints, hub capacities, and carbon emissions limits.
+
+            This decomposed approach enabled adaptability to changing real-world parameters such as fuel prices and trade disruptions while significantly improving cost-efficiency and delivery reliability across the region.
           </p>
           
+          
+          <h2 id="implementation">Technical Implementation</h2>
           <h3>1. Production Stage</h3>
           <ul>
             <li>Optimized production quantities across four facilities (Rayong, Ayutthaya, Chiang Mai, and Hat Yai)</li>
@@ -653,16 +661,8 @@
             <li>Reduced congestion and storage costs at intermodal facilities</li>
           </ul>
           
-          <h2 id="implementation">Technical Implementation</h2>
-          <p>
-            I formulated this complex challenge as a linear programming model that:
-          </p>
-          <ul>
-            <li><strong>Objective</strong>: Minimizes total costs across all three supply chain stages</li>
-            <li><strong>Decision Variables</strong>: Determines production quantities, domestic transport volumes, and international shipping allocations</li>
-            <li><strong>Key Constraints</strong>: Respects factory capacities, ensures demand fulfillment, maintains flow conservation, and adheres to emissions limits</li>
-          </ul>
-          
+          Please seee Mathemetical Formulation in the toggle section below for detailed optimization function.
+
           <button class="math-toggle-btn" onclick="toggleMath()">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
               <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
@@ -672,69 +672,79 @@
           </button>
           
           <div id="mathContent" class="math-content">
+          
+            <h2>Stage 1: Production Optimization</h2>
             <h3>Decision Variables</h3>
-            <p>Let:</p>
             <ul>
               <li><strong>x<sub>p,l</sub></strong> = Quantity of product p produced at plant l</li>
-              <li><strong>y<sub>l,h</sub></strong> = Amount transported from plant l to intermodal hub h</li>
-              <li><strong>z<sub>h,c,m</sub></strong> = Amount shipped from hub h to country c using transport mode m</li>
             </ul>
-            
-            <h3>Objective Function: Minimize Total Cost</h3>
+          
+            <h3>Objective Function</h3>
             <div class="constraint-formula">
-              min ∑<sub>p,l</sub> (c<sub>p,l</sub><sup>prod</sup> · x<sub>p,l</sub>) + ∑<sub>l,h</sub> (c<sub>l,h</sub><sup>trans</sup> · y<sub>l,h</sub>) + ∑<sub>h,c,m</sub> (c<sub>h,c,m</sub><sup>ship</sup> · z<sub>h,c,m</sub>)
+              min ∑<sub>p,l</sub> (c<sub>p,l</sub><sup>prod</sup> · x<sub>p,l</sub>)
             </div>
-            
-            <p>where:</p>
-            <ul>
-              <li><strong>c<sub>p,l</sub><sup>prod</sup></strong> = Unit production cost for product p at plant l</li>
-              <li><strong>c<sub>l,h</sub><sup>trans</sup></strong> = Unit transportation cost from plant l to hub h</li>
-              <li><strong>c<sub>h,c,m</sub><sup>ship</sup></strong> = Unit shipping cost from hub h to country c via mode m</li>
-            </ul>
-            
+          
             <h3>Constraints</h3>
-            
-            <h4>(A) Production Constraints</h4>
-            <p><strong>1. Factory Capacity Limits</strong></p>
+            <p><strong>1. Factory Capacity</strong></p>
             <div class="constraint-formula">
               ∑<sub>p</sub> x<sub>p,l</sub> ≤ Cap<sub>l</sub>, ∀l
             </div>
-            
+          
             <p><strong>2. Meet Demand</strong></p>
             <div class="constraint-formula">
               ∑<sub>l</sub> x<sub>p,l</sub> ≥ D<sub>p</sub>, ∀p
             </div>
-            
-            <h4>(B) Domestic Transportation Constraints</h4>
+          
+            <hr>
+          
+            <h2>Stage 2: Transportation Optimization</h2>
+            <h3>Decision Variables</h3>
+            <ul>
+              <li><strong>y<sub>l,h</sub></strong> = Amount transported from plant l to intermodal hub h</li>
+              <li><strong>z<sub>h,c,m</sub></strong> = Amount shipped from hub h to country c using transport mode m</li>
+            </ul>
+          
+            <h3>Objective Function</h3>
+            <div class="constraint-formula">
+              min ∑<sub>l,h</sub> (c<sub>l,h</sub><sup>trans</sup> · y<sub>l,h</sub>) + ∑<sub>h,c,m</sub> (c<sub>h,c,m</sub><sup>ship</sup> · z<sub>h,c,m</sub>)
+            </div>
+          
+            <h3>Constraints</h3>
+          
             <p><strong>3. Flow Conservation at Hubs</strong> (Inbound = Outbound)</p>
             <div class="constraint-formula">
               ∑<sub>l</sub> y<sub>l,h</sub> = ∑<sub>c,m</sub> z<sub>h,c,m</sub>, ∀h
             </div>
-            
+          
             <p><strong>4. Hub Capacity Limits</strong></p>
             <div class="constraint-formula">
               ∑<sub>p</sub> y<sub>l,h</sub> ≤ HCap<sub>h</sub>, ∀h
             </div>
-            
-            <h4>(C) International Shipping Constraints</h4>
+          
             <p><strong>5. Mode-Specific Capacity Limits</strong></p>
             <div class="constraint-formula">
               z<sub>h,c,m</sub> ≤ MCap<sub>h,m</sub>, ∀h, c, m
             </div>
-            
+          
             <p><strong>6. Carbon Emissions Limit</strong></p>
             <div class="constraint-formula">
               ∑<sub>h,c,m</sub> (e<sub>m</sub> · z<sub>h,c,m</sub>) ≤ E<sub>max</sub>
             </div>
-            
+          
+            <p><strong>7. Link to Production Output</strong> (from Stage 1)</p>
+            <div class="constraint-formula">
+              ∑<sub>h</sub> y<sub>l,h</sub> = ∑<sub>p</sub> x<sub>p,l</sub><sup>*</sup>, ∀l
+            </div>
+          
             <h3>Optimization Outcome</h3>
-            <p>Solving this multi-stage LP model provides:</p>
             <ul>
-              <li>Cost-optimal production and transportation decisions</li>
-              <li>The best transport mode mix to minimize fuel costs and emissions</li>
-              <li>Adaptability to real-world constraints (e.g., fuel price surge, trade policies)</li>
+              <li>Stage 1 identifies cost-optimal production volumes per facility.</li>
+              <li>Stage 2 determines the most efficient logistics routes and modes under capacity and sustainability constraints.</li>
+              <li>This decomposition improves adaptability to dynamic conditions such as fuel prices or regulatory changes.</li>
             </ul>
+          
           </div>
+          
           
           <h2 id="results">Results & Business Impact</h2>
       <p>
