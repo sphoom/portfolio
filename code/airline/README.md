@@ -20,7 +20,5 @@ Detailed analysis, business insights, and visual summaries are available in the 
 - Jupyter Notebook
 
 ## Notes
-
-- All datasets used are anonymized and processed for analysis.
 - This project was created for educational and portfolio purposes.
 
