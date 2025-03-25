@@ -1,4 +1,4 @@
-**Insurance Charges Prediction and Anakysis**
+**Insurance Charges Prediction and Anakysis**  
 This project aims to help an insurance provider better understand the drivers of insurance costs and identify strategic opportunities in three key areas:
 
 Predictive Pricing: Can we accurately predict how much a customer will be charged?  
