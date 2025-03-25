@@ -1,61 +1,72 @@
+
+
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sales Dashboard Project</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Project Title - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="components.js"></script>
+    <script src="conponents/components.js"></script>
     <script src="scripts.js" defer></script>
   </head>
   <body>
-    <!-- Header placeholder -->
+    <!-- Header placeholder - loaded via components.js -->
     <div id="header-placeholder"></div>
+    
     <!-- Project Header -->
-    <header class="project-header">
-      <div class="breadcrumb">
-        <a href="../index.html">Home</a> / 
-        <a href="../projects.html">Projects</a> / 
-        <span>Interactive Sales Dashboards</span>
-      </div>
-
-      <h1 class="project-title">Interactive Sales Dashboards</h1>
-      <div class="project-meta">
-        <div class="meta-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
-            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-          </svg>
-          Retail
+    <div class="container">
+      <header class="project-header">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> / 
+          <a href="projects.html">Projects</a> / 
+          <span>Project Title</span>
         </div>
-        <div class="meta-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
-            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-          </svg>
-          Completed: February 2025
+        
+        <h1 class="project-title">Project Title</h1>
+        
+        <div class="project-meta">
+          <div class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+            </svg>
+            <!-- Category placeholder -->
+            Category
+          </div>
+          <div class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+            </svg>
+            <!-- Date placeholder -->
+            Completed: March 2025
+          </div>
+          <div class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
+              <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+            </svg>
+            <!-- Project type placeholder -->
+            Project Type
+          </div>
         </div>
-        <div class="meta-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1E88E5" viewBox="0 0 16 16">
-            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-          </svg>
-          Data Visualization
+      </header>
+      
+      <!-- Project Banner -->
+      <div class="project-banner">
+        <!-- Image placeholder - update src attribute with actual image path -->
+        <img src="projects/image/project_banner.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" alt="Project Banner">
+        <div class="banner-overlay">
+          <div class="banner-title">Project Title</div>
+          <div class="banner-subtitle">Project Subtitle</div>
         </div>
       </div>
-    </header>
-    
-    <!-- Project Banner -->
-    <div class="project-banner">
-      <img src="../projects/image/insurance_banner.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" alt="Insurnce Charges Prediction Banner">
-      <div class="banner-overlay">
-        <div class="banner-title">PowerBI</div>
-        <div class="banner-subtitle">PowerBI</div>
-      </div>
-    </div>
-    
-    <!-- page content goes here -->
-
-    <!-- Dashboard Section -->
+      
+      <!-- Project Content -->
+      <div class="project-content">
+        <div class="main-content">
+           <!-- Dashboard Section -->
     <section class="dashboard-section">
       <h2 class="dashboard-title">Sales Performance Dashboard</h2>
       <p class="dashboard-desc">
@@ -79,11 +90,78 @@
         View Full Screen
       </a>
     </section>
-
-       
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <div class="sidebar-box">
+            <h3 class="sidebar-title">Table of Contents</h3>
+            <ul class="table-of-contents">
+              <li><a href="#overview">Project Overview</a></li>
+              <li><a href="#visualization">Data Visualization</a></li>
+              <li><a href="#results">Results Table</a></li>
+              <li><a href="#technical">Technical Details</a></li>
+              <li><a href="#code">Implementation</a></li>
+              <li><a href="#metrics">Key Metrics</a></li>
+              <li><a href="#conclusion">Conclusion</a></li>
+                </ul>
+              </div>
+               
+          <div class="sidebar-box">
+            <h3 class="sidebar-title">Technologies Used</h3>
+            <div class="tech-list">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">Matplotlib</span>
+            </div>
+            
+            <div class="project-links">
+              <a href="#" class="project-btn btn-primary">View Demo</a>
+              <a href="#" class="project-btn btn-secondary">GitHub</a>
+            </div>
+          </div>
           
-         
-    <!-- Footer placeholder -->
-    <div id="footer-placeholder"></div>
-  </body>
-</html>
+          <div class="sidebar-box">
+            <h3 class="sidebar-title">Key Highlights</h3>
+            <ul style="list-style-type: none; margin-left: 0;">
+              <li>✓ Feature 1: Brief description</li>
+              <li>✓ Feature 2: Brief description</li>
+              <li>✓ Feature 3: Brief description</li>
+              <li>✓ Feature 4: Brief description</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+        <!-- Related Projects -->
+        <h2 class="related-projects-title">Related Projects</h2>
+        <div class="related-projects">
+          <a href="#" class="related-card">
+            <div class="related-img">Project 1</div>
+            <div class="related-content">
+              <h3 class="related-title">Related Project Title 1</h3>
+              <p class="related-desc">Brief description of a related project that uses similar techniques or addresses a related problem.</p>
+            </div>
+          </a>
+          
+          <a href="#" class="related-card">
+            <div class="related-img">Project 2</div>
+            <div class="related-content">
+              <h3 class="related-title">Related Project Title 2</h3>
+              <p class="related-desc">Brief description of another related project showcasing complementary skills or techniques.</p>
+            </div>
+          </a>
+          
+          <a href="#" class="related-card">
+            <div class="related-img">Project 3</div>
+            <div class="related-content">
+              <h3 class="related-title">Related Project Title 3</h3>
+              <p class="related-desc">Brief description of a third related project that might be interesting to users viewing the current project.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
