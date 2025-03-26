@@ -33,6 +33,6 @@ The analysis was performed using Python in a Jupyter Notebook (`insurance_code.i
 ###  Extended Report
 
 For a more comprehensive explanation of the methods, insights, and strategic implications, please view the accompanying report at:  
- **[Project Webpage / Report Link]** *(https://sphoom.github.io/portfolio/projects/insurance.html)*
+ **[Project Webpage](https://sphoom.github.io/portfolio/projects/insurance.html)**
 
 ---
