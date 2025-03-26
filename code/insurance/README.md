@@ -1,10 +1,38 @@
-**Insurance Charges Prediction and Anakysis**  
-This project aims to help an insurance provider better understand the drivers of insurance costs and identify strategic opportunities in three key areas:
 
-Predictive Pricing: Can we accurately predict how much a customer will be charged?  
+#  Insurance Charges Prediction & Analysis
 
-Risk Assessment: Which factors most significantly influence insurance costs?  
+This project explores how data-driven insights can support an insurance provider in understanding and managing insurance charges more effectively. The work focuses on three strategic objectives:
 
-Customer Segmentation: Can we identify distinct customer groups for targeted pricing and marketing?
+###  Project Goals
 
-While `insurance_code.ipynb`, the jupyter notebook used for this analysis, is made avalable in this reporitory. Please also see the compliment report showing more context and explaination at [this webpage](https://sphoom.github.io/portfolio/projects/insurance.html).
+- **Predictive Pricing**  
+  Can we accurately predict how much a customer will be charged using statistical and machine learning models?
+
+- **Risk Assessment**  
+  Which factors (e.g., age, BMI, smoking status) most significantly impact insurance costs?
+
+- **Customer Segmentation**  
+  Can we identify distinct customer groups to enable more targeted pricing strategies and personalized marketing?
+
+---
+
+###  Tools & Approach
+The analysis was performed using Python in a Jupyter Notebook (`insurance_code.ipynb`), applying:
+- Exploratory Data Analysis (EDA)
+- Regression modeling
+- Feature importance ranking
+- Visualization techniques
+
+---
+
+### Files in This Repository
+
+- `insurance_code.ipynb` — Main notebook with code, analysis, and visualizations
+
+---
+###  Extended Report
+
+For a more comprehensive explanation of the methods, insights, and strategic implications, please view the accompanying report at:  
+ **[Project Webpage / Report Link]** *(https://sphoom.github.io/portfolio/projects/insurance.html)*
+
+---
