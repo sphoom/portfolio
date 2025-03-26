@@ -635,17 +635,26 @@
           </div>
                   
           <h2 id="approach">Solution Approach</h2>
-          <p>
-            Although the ideal model would integrates all three stages into one cost-minimizing objective, practical implementation required decomposition into two sequential models for scalability and realistic decision making.
-         <p>
-          <ul>
-            <li> Model 1  Production Optimization: Minimized manufacturing costs across four Thai production facilities while ensuring demand fulfillment and capacity constraints.<li>
 
-            <li>  Model 2  Routing Optimization: Using Model 1 output, this model minimized domestic and international transportation costs by determining optimal product flows through intermodal hubs to five ASEAN markets. It incorporated mode-specific constraints, hub capacities, and carbon emissions limits.</li>
+          <p>
+            Although the ideal model would integrate all three stages into one cost-minimizing objective, practical implementation required decomposition into two sequential models for scalability and realistic decision making.
+          </p>
+          
+          <ul>
+            <li>
+              <strong>Model 1: Production Optimization</strong><br>
+              Minimized manufacturing costs across four Thai production facilities while ensuring demand fulfillment and respecting capacity constraints.
+            </li>
+            <li>
+              <strong>Model 2: Routing Optimization</strong><br>
+              Using Model 1 output, this model minimized domestic and international transportation costs by determining optimal product flows through intermodal hubs to five ASEAN markets. It incorporated mode-specific constraints, hub capacities, and carbon emissions limits.
+            </li>
           </ul>
+          
           <p>
             This decomposed approach enabled adaptability to changing real-world parameters such as fuel prices and trade disruptions while significantly improving cost-efficiency and delivery reliability across the region.
-          <p>
+          </p>
+          
           
           
           <h2 id="implementation">Technical Implementation</h2>
